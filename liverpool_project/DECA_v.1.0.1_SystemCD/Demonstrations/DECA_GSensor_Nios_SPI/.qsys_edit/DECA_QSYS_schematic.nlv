@@ -1,0 +1,33 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst DECA_QSYS.nios2_gen2.reset_bridge -pg 1
+preplace inst DECA_QSYS.timer -pg 1 -lvl 4 -y 140
+preplace inst DECA_QSYS.nios2_gen2.clock_bridge -pg 1
+preplace inst DECA_QSYS.jtag_uart -pg 1 -lvl 4 -y 250
+preplace inst DECA_QSYS.nios2_gen2.cpu -pg 1
+preplace inst DECA_QSYS.onchip_memory2 -pg 1 -lvl 4 -y 360
+preplace inst DECA_QSYS -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst DECA_QSYS.pll -pg 1 -lvl 2 -y 310
+preplace inst DECA_QSYS.led -pg 1 -lvl 4 -y 1040
+preplace inst DECA_QSYS.nios2_gen2 -pg 1 -lvl 1 -y 90
+preplace inst DECA_QSYS.mm_clock_crossing_bridge -pg 1 -lvl 3 -y 230
+preplace inst DECA_QSYS.sw -pg 1 -lvl 4 -y 580
+preplace inst DECA_QSYS.sysid_qsys -pg 1 -lvl 4 -y 50
+preplace inst DECA_QSYS.clk_50 -pg 1 -lvl 1 -y 350
+preplace inst DECA_QSYS.spi_gsensor -pg 1 -lvl 2 -y 40
+preplace inst DECA_QSYS.key -pg 1 -lvl 4 -y 450
+preplace netloc EXPORT<net_container>DECA_QSYS</net_container>(SLAVE)DECA_QSYS.pio_sw_external_connection,(SLAVE)sw.external_connection) 1 0 4 NJ 610 NJ 610 NJ 610 NJ
+preplace netloc EXPORT<net_container>DECA_QSYS</net_container>(SLAVE)led.external_connection,(SLAVE)DECA_QSYS.pio_led_external_connection) 1 0 4 NJ 1070 NJ 1070 NJ 1070 NJ
+preplace netloc FAN_OUT<net_container>DECA_QSYS</net_container>(SLAVE)sysid_qsys.control_slave,(SLAVE)timer.s1,(SLAVE)led.s1,(SLAVE)key.s1,(SLAVE)sw.s1,(MASTER)mm_clock_crossing_bridge.m0) 1 3 1 1240
+preplace netloc INTERCONNECT<net_container>DECA_QSYS</net_container>(SLAVE)spi_gsensor.spi_control_port,(SLAVE)jtag_uart.avalon_jtag_slave,(SLAVE)onchip_memory2.s1,(SLAVE)mm_clock_crossing_bridge.s0,(MASTER)nios2_gen2.instruction_master,(MASTER)nios2_gen2.data_master,(SLAVE)nios2_gen2.debug_mem_slave,(SLAVE)pll.pll_slave) 1 0 4 230 240 630 280 990 360 1260
+preplace netloc EXPORT<net_container>DECA_QSYS</net_container>(SLAVE)DECA_QSYS.reset,(SLAVE)clk_50.clk_in_reset) 1 0 1 NJ
+preplace netloc FAN_OUT<net_container>DECA_QSYS</net_container>(SLAVE)key.irq,(SLAVE)timer.irq,(SLAVE)jtag_uart.irq,(MASTER)nios2_gen2.irq,(SLAVE)spi_gsensor.irq,(SLAVE)sw.irq) 1 1 3 610 30 NJ 90 1200
+preplace netloc EXPORT<net_container>DECA_QSYS</net_container>(SLAVE)spi_gsensor.external,(SLAVE)DECA_QSYS.spi_gsensor_external) 1 0 2 NJ 260 NJ
+preplace netloc EXPORT<net_container>DECA_QSYS</net_container>(SLAVE)key.external_connection,(SLAVE)DECA_QSYS.pio_key_external_connection) 1 0 4 NJ 480 NJ 480 NJ 480 NJ
+preplace netloc FAN_OUT<net_container>DECA_QSYS</net_container>(MASTER)pll.c0,(SLAVE)nios2_gen2.clk,(SLAVE)sysid_qsys.clk,(SLAVE)jtag_uart.clk,(SLAVE)onchip_memory2.clk1,(SLAVE)timer.clk,(SLAVE)mm_clock_crossing_bridge.s0_clk) 1 0 4 210 300 NJ 300 950 380 1280
+preplace netloc FAN_OUT<net_container>DECA_QSYS</net_container>(SLAVE)key.clk,(SLAVE)mm_clock_crossing_bridge.m0_clk,(SLAVE)sw.clk,(MASTER)pll.c1,(SLAVE)led.clk) 1 2 2 930 460 1220
+preplace netloc INTERCONNECT<net_container>DECA_QSYS</net_container>(SLAVE)timer.reset,(SLAVE)led.reset,(SLAVE)sysid_qsys.reset,(SLAVE)nios2_gen2.reset,(SLAVE)mm_clock_crossing_bridge.s0_reset,(SLAVE)spi_gsensor.reset,(SLAVE)onchip_memory2.reset1,(SLAVE)key.reset,(SLAVE)mm_clock_crossing_bridge.m0_reset,(SLAVE)sw.reset,(MASTER)nios2_gen2.debug_reset_request,(SLAVE)pll.inclk_interface_reset,(MASTER)clk_50.clk_reset,(SLAVE)jtag_uart.reset) 1 0 4 250 280 690 260 970 400 1300
+preplace netloc EXPORT<net_container>DECA_QSYS</net_container>(SLAVE)DECA_QSYS.clk,(SLAVE)clk_50.clk_in) 1 0 1 NJ
+preplace netloc FAN_OUT<net_container>DECA_QSYS</net_container>(MASTER)clk_50.clk,(SLAVE)pll.inclk_interface,(SLAVE)spi_gsensor.clk) 1 1 1 650
+levelinfo -pg 1 0 180 1500
+levelinfo -hier DECA_QSYS 190 370 740 1070 1340 1490

@@ -1,0 +1,16 @@
+Analysis & Synthesis Status : Successful - Mon Mar 23 17:38:46 2015
+Quartus II 64-Bit Version : 15.0.0 Internal Build 130 02/26/2015 Patches 0.01zb SJ Full Version
+Revision Name : DECA_TEMP
+Top-level Entity Name : DECA_TEMP
+Family : MAX 10
+Total logic elements : 5,568
+    Total combinational functions : 4,120
+    Dedicated logic registers : 3,671
+Total registers : 3671
+Total pins : 227
+Total virtual pins : 0
+Total memory bits : 1,115,744
+Embedded Multiplier 9-bit elements : 6
+Total PLLs : 1
+UFM blocks : 0
+ADC blocks : 0

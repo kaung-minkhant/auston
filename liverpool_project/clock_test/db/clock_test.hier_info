@@ -1,0 +1,47 @@
+|clock_test
+ADC_CLK_10 => ~NO_FANOUT~
+MAX10_CLK1_50 => clock_divider[0].CLK
+MAX10_CLK1_50 => clock_divider[1].CLK
+MAX10_CLK1_50 => clock_divider[2].CLK
+MAX10_CLK1_50 => clock_divider[3].CLK
+MAX10_CLK1_50 => clock_divider[4].CLK
+MAX10_CLK1_50 => clock_divider[5].CLK
+MAX10_CLK1_50 => clock_divider[6].CLK
+MAX10_CLK1_50 => clock_divider[7].CLK
+MAX10_CLK1_50 => clock_divider[8].CLK
+MAX10_CLK1_50 => clock_divider[9].CLK
+MAX10_CLK1_50 => clock_divider[10].CLK
+MAX10_CLK1_50 => clock_divider[11].CLK
+MAX10_CLK1_50 => clock_divider[12].CLK
+MAX10_CLK1_50 => clock_divider[13].CLK
+MAX10_CLK1_50 => clock_divider[14].CLK
+MAX10_CLK1_50 => clock_divider[15].CLK
+MAX10_CLK1_50 => clock_divider[16].CLK
+MAX10_CLK1_50 => clock_divider[17].CLK
+MAX10_CLK1_50 => clock_divider[18].CLK
+MAX10_CLK1_50 => clock_divider[19].CLK
+MAX10_CLK1_50 => clock_divider[20].CLK
+MAX10_CLK1_50 => clock_divider[21].CLK
+MAX10_CLK1_50 => clock_divider[22].CLK
+MAX10_CLK1_50 => clock_divider[23].CLK
+MAX10_CLK1_50 => clock_divider[24].CLK
+MAX10_CLK1_50 => clock_divider[25].CLK
+MAX10_CLK1_50 => clock_divider[26].CLK
+MAX10_CLK1_50 => clock_divider[27].CLK
+MAX10_CLK1_50 => clock_divider[28].CLK
+MAX10_CLK1_50 => clock_divider[29].CLK
+MAX10_CLK1_50 => clock_divider[30].CLK
+MAX10_CLK1_50 => clock_divider[31].CLK
+MAX10_CLK2_50 => ~NO_FANOUT~
+LED[0] << clock_divider[24].DB_MAX_OUTPUT_PORT_TYPE
+LED[1] << <VCC>
+LED[2] << <VCC>
+LED[3] << <VCC>
+LED[4] << <VCC>
+LED[5] << <VCC>
+LED[6] << <VCC>
+LED[7] << <VCC>
+SW[0] => ~NO_FANOUT~
+SW[1] => ~NO_FANOUT~
+
+

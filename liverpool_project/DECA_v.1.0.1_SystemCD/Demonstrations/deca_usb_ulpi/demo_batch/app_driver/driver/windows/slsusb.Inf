@@ -1,0 +1,117 @@
+; Installation inf for the slsusb driver installation file
+;
+; (c) Copyright 2005 sls
+;
+
+[Version]
+Signature="$CHICAGO$"
+Class=USB
+ClassGUID={36FC9E60-C465-11CF-8056-444553540000}
+provider=%MSFT%
+DriverVer=07/09/2011,5.00.2064
+;;CatalogFile=slsusbamd64.cat
+CatalogFile.NTx86=slsusbx86.cat
+CatalogFile.NTamd64=slsusbamd64.cat
+
+
+[SourceDisksNames]
+1=%Disk_Description%,,,
+
+[SourceDisksFiles]
+slsusb.sys = 1,x32
+
+[SourceDisksFiles.amd64]
+slsusb.sys = 1,x64
+
+[Manufacturer]
+%MfgName%=sls, NTx86, NTia64, NTamd64
+
+[SLS.NTx86]
+%USB\VID_1772&PID_0001.DeviceDesc%=slsusb.Dev, USB\VID_1772&PID_0001
+%USB\VID_1772&PID_0002.DeviceDesc%=slsusb.Dev, USB\VID_1772&PID_0002
+%USB\VID_1772&PID_0003.DeviceDesc%=slsusb.Dev, USB\VID_1772&PID_0003
+%USB\VID_1772&PID_1001.DeviceDesc%=slsusb.Dev, USB\VID_1772&PID_1001
+%USB\VID_1772&PID_1002.DeviceDesc%=slsusb.Dev, USB\VID_1772&PID_1002
+
+%USB\VID_1772&PID_0020.DeviceDesc%=slsusb.Dev, USB\VID_1772&PID_0020
+%USB\VID_1772&PID_0040.DeviceDesc%=slsusb.Dev, USB\VID_1772&PID_0040
+%USB\VID_1772&PID_0041.DeviceDesc%=slsusb.Dev, USB\VID_1772&PID_0041
+
+
+[SLS.NTia64]
+%USB\VID_1772&PID_0001.DeviceDesc%=slsusb.Dev, USB\VID_1772&PID_0001
+%USB\VID_1772&PID_0002.DeviceDesc%=slsusb.Dev, USB\VID_1772&PID_0002
+%USB\VID_1772&PID_0003.DeviceDesc%=slsusb.Dev, USB\VID_1772&PID_0003
+%USB\VID_1772&PID_1001.DeviceDesc%=slsusb.Dev, USB\VID_1772&PID_1001
+%USB\VID_1772&PID_1002.DeviceDesc%=slsusb.Dev, USB\VID_1772&PID_1002
+
+%USB\VID_1772&PID_0020.DeviceDesc%=slsusb.Dev, USB\VID_1772&PID_0020
+%USB\VID_1772&PID_0040.DeviceDesc%=slsusb.Dev, USB\VID_1772&PID_0040
+%USB\VID_1772&PID_0041.DeviceDesc%=slsusb.Dev, USB\VID_1772&PID_0041
+
+
+[SLS.NTamd64]
+%USB\VID_1772&PID_0001.DeviceDesc%=slsusb.Dev, USB\VID_1772&PID_0001
+%USB\VID_1772&PID_0002.DeviceDesc%=slsusb.Dev, USB\VID_1772&PID_0002
+%USB\VID_1772&PID_0003.DeviceDesc%=slsusb.Dev, USB\VID_1772&PID_0003
+%USB\VID_1772&PID_1001.DeviceDesc%=slsusb.Dev, USB\VID_1772&PID_1001
+%USB\VID_1772&PID_1002.DeviceDesc%=slsusb.Dev, USB\VID_1772&PID_1002
+
+%USB\VID_1772&PID_0020.DeviceDesc%=slsusb.Dev, USB\VID_1772&PID_0020
+%USB\VID_1772&PID_0040.DeviceDesc%=slsusb.Dev, USB\VID_1772&PID_0040
+%USB\VID_1772&PID_0041.DeviceDesc%=slsusb.Dev, USB\VID_1772&PID_0041
+
+[DestinationDirs]
+slsusb.Files.Ext = 10,System32\Drivers
+
+[slsusb.Dev.NTx86]
+CopyFiles=slsusb.Files.Ext
+
+[slsusb.Dev.NTx86.Services]
+Addservice = slsusb, 0x00000002, slsusb.AddService
+
+[slsusb.Dev.NTamd64]
+CopyFiles=slsusb.Files.Ext
+
+[slsusb.Dev.NTamd64.Services]
+Addservice = slsusb, 0x00000002, slsusb.AddService
+
+[slsusb.AddService]
+DisplayName    = %slsusb.SvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %10%\System32\Drivers\slsusb.sys
+AddReg         = slsusb.AddReg
+LoadOrderGroup = Base
+
+
+[slsusb.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,slsusb.sys
+HKR,"Parameters","MaximumTransferSize",0x10001,65536
+HKR,"Parameters","DebugLevel",0x10001,2
+HKR,"Parameters","slsusbEnable",0x10001,1
+
+[slsusb.Files.Ext]
+slsusb.sys
+
+;---------------------------------------------------------------;
+
+[Strings]
+MSFT="System Level Solutions"
+MfgName="SLS"
+Disk_Description="slsusb Installation Disk"
+USB\VID_1772&PID_0001.DeviceDesc="SLS USB 1.1 Device"
+USB\VID_1772&PID_0002.DeviceDesc="SLS USB 2.0 Device"
+USB\VID_1772&PID_0003.DeviceDesc="SLS USB 3.0 Device"
+USB\VID_1772&PID_1001.DeviceDesc="SLS USB BitJet"
+USB\VID_1772&PID_1002.DeviceDesc="SLS USB BitJet Lite"
+
+USB\VID_1772&PID_0020.DeviceDesc="CDLogic SLA2100"
+USB\VID_1772&PID_0040.DeviceDesc="DigiPat SPG2100"
+USB\VID_1772&PID_0041.DeviceDesc="DigiPat SPG2101"
+
+
+slsusb.SvcDesc="slsusb device driver"
+

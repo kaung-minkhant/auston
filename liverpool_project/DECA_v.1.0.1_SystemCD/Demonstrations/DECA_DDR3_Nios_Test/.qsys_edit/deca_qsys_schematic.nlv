@@ -1,0 +1,53 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst deca_qsys.timer -pg 1 -lvl 14 -y 240
+preplace inst deca_qsys.onchip_memory2 -pg 1 -lvl 14 -y 460
+preplace inst deca_qsys.mem_if_ddr3_emif.as0 -pg 1
+preplace inst deca_qsys.mem_if_ddr3_emif.afi_reset_export -pg 1
+preplace inst deca_qsys -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst deca_qsys.nios2_gen2.cpu -pg 1
+preplace inst deca_qsys.mem_if_ddr3_emif.afi_clk -pg 1
+preplace inst deca_qsys.mem_if_ddr3_emif.global_reset -pg 1
+preplace inst deca_qsys.mem_if_ddr3_emif -pg 1 -lvl 14 -y 680
+preplace inst deca_qsys.clk_50 -pg 1 -lvl 1 -y 350
+preplace inst deca_qsys.nios2_gen2.clock_bridge -pg 1
+preplace inst deca_qsys.mm_clock_crossing_bridge_ddr3 -pg 1 -lvl 8 -y 470
+preplace inst deca_qsys.mem_if_ddr3_emif.c0.ng0 -pg 1
+preplace inst deca_qsys.mem_if_ddr3_emif.s0 -pg 1
+preplace inst deca_qsys.key -pg 1 -lvl 14 -y 350
+preplace inst deca_qsys.nios2_gen2.reset_bridge -pg 1
+preplace inst deca_qsys.mem_if_ddr3_emif.c0.afi_reset -pg 1
+preplace inst deca_qsys.mem_if_ddr3_emif.c0 -pg 1
+preplace inst deca_qsys.mem_if_ddr3_emif.afi_reset -pg 1
+preplace inst deca_qsys.mem_if_ddr3_emif.afi_half_clk -pg 1
+preplace inst deca_qsys.nios2_gen2 -pg 1 -lvl 13 -y 130
+preplace inst deca_qsys.mem_if_ddr3_emif.c0.a0 -pg 1
+preplace inst deca_qsys.mem_if_ddr3_emif.c0.afi_clk -pg 1
+preplace inst deca_qsys.mem_if_ddr3_emif.soft_reset -pg 1
+preplace inst deca_qsys.mem_if_ddr3_emif.pll_bridge -pg 1
+preplace inst deca_qsys.sysid_qsys -pg 1 -lvl 14 -y 550
+preplace inst deca_qsys.mem_if_ddr3_emif.m0 -pg 1
+preplace inst deca_qsys.mem_if_ddr3_emif.pll_ref_clk -pg 1
+preplace inst deca_qsys.jtag_uart -pg 1 -lvl 14 -y 130
+preplace inst deca_qsys.ddr3_status -pg 1 -lvl 14 -y 30
+preplace inst deca_qsys.mem_if_ddr3_emif.c0.afi_half_clk -pg 1
+preplace inst deca_qsys.mem_if_ddr3_emif.p0 -pg 1
+preplace inst deca_qsys.mem_if_ddr3_emif.pll0 -pg 1
+preplace inst deca_qsys.altpll_sys -pg 1 -lvl 9 -y 390
+preplace netloc FAN_OUT<net_container>deca_qsys</net_container>(SLAVE)ddr3_status.clk,(SLAVE)key.clk,(SLAVE)mm_clock_crossing_bridge_ddr3.s0_clk,(SLAVE)nios2_gen2.clk,(SLAVE)onchip_memory2.clk1,(SLAVE)sysid_qsys.clk,(MASTER)altpll_sys.c0,(SLAVE)jtag_uart.clk) 1 7 7 2820 440 NJ 380 3460 280 NJ 280 NJ 280 3600 290 4000
+preplace netloc INTERCONNECT<net_container>deca_qsys</net_container>(SLAVE)nios2_gen2.debug_mem_slave,(SLAVE)onchip_memory2.s1,(SLAVE)mm_clock_crossing_bridge_ddr3.s0,(SLAVE)mem_if_ddr3_emif.avl,(SLAVE)key.s1,(SLAVE)timer.s1,(MASTER)nios2_gen2.data_master,(SLAVE)jtag_uart.avalon_jtag_slave,(SLAVE)sysid_qsys.control_slave,(MASTER)nios2_gen2.instruction_master,(SLAVE)ddr3_status.s1) 1 7 7 2800 420 NJ 360 NJ 360 NJ 360 NJ 360 3620 270 3980
+preplace netloc EXPORT<net_container>deca_qsys</net_container>(SLAVE)deca_qsys.reset,(SLAVE)clk_50.clk_in_reset) 1 0 1 NJ
+preplace netloc POINT_TO_POINT<net_container>deca_qsys</net_container>(SLAVE)altpll_sys.pll_slave,(MASTER)mm_clock_crossing_bridge_ddr3.m0) 1 8 1 N
+preplace netloc EXPORT<net_container>deca_qsys</net_container>(SLAVE)clk_50.clk_in,(SLAVE)deca_qsys.clk) 1 0 1 NJ
+preplace netloc EXPORT<net_container>deca_qsys</net_container>(SLAVE)mem_if_ddr3_emif.status,(SLAVE)deca_qsys.mem_if_ddr3_emif_status) 1 0 14 NJ 810 NJ 810 NJ 810 NJ 810 NJ 810 NJ 810 NJ 810 NJ 810 NJ 810 NJ 810 NJ 810 NJ 810 NJ 810 NJ
+preplace netloc FAN_OUT<net_container>deca_qsys</net_container>(MASTER)nios2_gen2.irq,(SLAVE)timer.irq,(SLAVE)jtag_uart.irq) 1 13 1 4060
+preplace netloc POINT_TO_POINT<net_container>deca_qsys</net_container>(MASTER)mem_if_ddr3_emif.afi_half_clk,(SLAVE)mm_clock_crossing_bridge_ddr3.m0_clk) 1 7 8 2840 640 NJ 640 NJ 640 NJ 640 NJ 640 NJ 640 NJ 640 4340
+preplace netloc EXPORT<net_container>deca_qsys</net_container>(SLAVE)deca_qsys.mem_if_ddr3_emif_pll_ref_clk,(SLAVE)mem_if_ddr3_emif.pll_ref_clk) 1 0 14 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ
+preplace netloc INTERCONNECT<net_container>deca_qsys</net_container>(SLAVE)mm_clock_crossing_bridge_ddr3.m0_reset,(SLAVE)nios2_gen2.reset,(SLAVE)sysid_qsys.reset,(SLAVE)mm_clock_crossing_bridge_ddr3.s0_reset,(SLAVE)timer.reset,(SLAVE)key.reset,(SLAVE)mem_if_ddr3_emif.soft_reset,(SLAVE)jtag_uart.reset,(SLAVE)onchip_memory2.reset1,(MASTER)clk_50.clk_reset,(SLAVE)ddr3_status.reset,(MASTER)nios2_gen2.debug_reset_request,(SLAVE)altpll_sys.inclk_interface_reset,(SLAVE)mem_if_ddr3_emif.global_reset) 1 1 13 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 2780 460 3180 300 NJ 300 NJ 300 NJ 300 3580 310 4020
+preplace netloc FAN_OUT<net_container>deca_qsys</net_container>(SLAVE)altpll_sys.inclk_interface,(SLAVE)timer.clk,(MASTER)clk_50.clk) 1 1 13 NJ 400 NJ 400 NJ 400 NJ 400 NJ 400 NJ 400 NJ 400 3240 320 NJ 320 NJ 320 NJ 320 NJ 330 NJ
+preplace netloc EXPORT<net_container>deca_qsys</net_container>(SLAVE)deca_qsys.ddr3_status_external_connection,(SLAVE)ddr3_status.external_connection) 1 0 14 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ 60 NJ
+preplace netloc EXPORT<net_container>deca_qsys</net_container>(SLAVE)mem_if_ddr3_emif.pll_sharing,(SLAVE)deca_qsys.mem_if_ddr3_emif_pll_sharing) 1 0 14 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ 770 NJ
+preplace netloc EXPORT<net_container>deca_qsys</net_container>(SLAVE)key.external_connection,(SLAVE)deca_qsys.key_external_connection) 1 0 14 NJ 340 NJ 380 NJ 380 NJ 380 NJ 380 NJ 380 NJ 380 NJ 380 NJ 340 NJ 340 NJ 340 NJ 340 NJ 380 N
+preplace netloc EXPORT<net_container>deca_qsys</net_container>(SLAVE)deca_qsys.memory,(SLAVE)mem_if_ddr3_emif.memory) 1 0 14 NJ 730 NJ 730 NJ 730 NJ 730 NJ 730 NJ 730 NJ 730 NJ 730 NJ 730 NJ 730 NJ 730 NJ 730 NJ 730 NJ
+levelinfo -pg 1 0 200 4380
+levelinfo -hier deca_qsys 210 240 590 1070 1550 1930 2300 2760 3030 3270 3480 3500 3520 3740 4160 4360

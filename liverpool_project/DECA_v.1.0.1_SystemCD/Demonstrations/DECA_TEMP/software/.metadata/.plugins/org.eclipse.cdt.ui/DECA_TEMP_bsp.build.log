@@ -1,0 +1,6 @@
+11:56:16 **** Clean-only build of configuration Nios II for project DECA_TEMP_bsp ****
+make clean 
+[BSP clean complete]
+
+11:56:17 Build Finished (took 1s.344ms)
+

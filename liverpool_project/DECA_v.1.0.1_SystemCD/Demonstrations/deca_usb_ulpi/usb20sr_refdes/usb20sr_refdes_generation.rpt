@@ -1,0 +1,237 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate E:\SVN\deca\amax10\cd\cd_revC\demostration\deca_usb_ulpi\usb20sr_refdes.qsys --block-symbol-file --output-directory=E:\SVN\deca\amax10\cd\cd_revC\demostration\deca_usb_ulpi\usb20sr_refdes --family="MAX 10" --part=10M50DAF484C6GES
+Progress: Loading deca_usb_ulpi/usb20sr_refdes.qsys
+Progress: Reading input file
+Progress: Adding altpll_0 [altpll 14.1]
+Warning: altpll_0: Used altpll 15.0 (instead of 14.1)
+Progress: Parameterizing module altpll_0
+Progress: Adding ccb_slow_per [altera_avalon_mm_clock_crossing_bridge 14.1]
+Warning: ccb_slow_per: Used altera_avalon_mm_clock_crossing_bridge 15.0 (instead of 14.1)
+Progress: Parameterizing module ccb_slow_per
+Progress: Adding ccb_usb [altera_avalon_mm_clock_crossing_bridge 14.1]
+Warning: ccb_usb: Used altera_avalon_mm_clock_crossing_bridge 15.0 (instead of 14.1)
+Progress: Parameterizing module ccb_usb
+Progress: Adding dma_0 [altera_avalon_dma 14.1]
+Warning: dma_0: Used altera_avalon_dma 15.0 (instead of 14.1)
+Progress: Parameterizing module dma_0
+Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 14.1]
+Warning: jtag_uart_0: Used altera_avalon_jtag_uart 15.0 (instead of 14.1)
+Progress: Parameterizing module jtag_uart_0
+Progress: Adding nios2_qsys_0 [altera_nios2_qsys 14.1]
+Warning: nios2_qsys_0: Used altera_nios2_qsys 15.0 (instead of 14.1)
+Progress: Parameterizing module nios2_qsys_0
+Progress: Adding onchip_memory [altera_avalon_onchip_memory2 14.1]
+Warning: onchip_memory: Used altera_avalon_onchip_memory2 15.0 (instead of 14.1)
+Progress: Parameterizing module onchip_memory
+Progress: Adding osc_clk [clock_source 14.1]
+Warning: osc_clk: Used clock_source 15.0 (instead of 14.1)
+Progress: Parameterizing module osc_clk
+Progress: Adding rst_pio [altera_avalon_pio 14.1]
+Warning: rst_pio: Used altera_avalon_pio 15.0 (instead of 14.1)
+Progress: Parameterizing module rst_pio
+Progress: Adding timer_0 [altera_avalon_timer 14.1]
+Warning: timer_0: Used altera_avalon_timer 15.0 (instead of 14.1)
+Progress: Parameterizing module timer_0
+Progress: Adding u20_clk_out [clock_source 14.1]
+Warning: u20_clk_out: Used clock_source 15.0 (instead of 14.1)
+Progress: Parameterizing module u20_clk_out
+Progress: Adding usb20sr [sls_avalon_usb20sr 1.3]
+Progress: Parameterizing module usb20sr
+Progress: Adding user_led [altera_avalon_pio 14.1]
+Warning: user_led: Used altera_avalon_pio 15.0 (instead of 14.1)
+Progress: Parameterizing module user_led
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Warning: usb20sr_refdes.nios2_qsys_0: Nios II Classic cores are now superseded by improved Gen 2 cores.
+Warning: usb20sr_refdes.: All instances of floating feature 5750_0A04 are currently in use, waiting for one to become available...
+Warning: usb20sr_refdes.: All instances of floating feature 5750_0A04 are currently in use, waiting for one to become available...
+Warning: usb20sr_refdes.: All instances of floating feature 5750_0A04 are currently in use, waiting for one to become available...
+Warning: usb20sr_refdes.: All instances of floating feature 5750_0A04 are currently in use, waiting for one to become available...
+Info: usb20sr_refdes.usb20sr: IN Buffer Memory Size = 2 KBytes 
+Info: usb20sr_refdes.usb20sr: OUT Buffer Memory Size = 2 KBytes 
+Info: usb20sr_refdes.usb20sr: Enabling simulation.
+Info: usb20sr_refdes.usb20sr: Use ' / ' instedad of ' \ ' in Hex file path name
+Info: usb20sr_refdes.usb20sr: Hex file : Enum_ram.hex.
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate E:\SVN\deca\amax10\cd\cd_revC\demostration\deca_usb_ulpi\usb20sr_refdes.qsys --synthesis=VERILOG --output-directory=E:\SVN\deca\amax10\cd\cd_revC\demostration\deca_usb_ulpi\usb20sr_refdes\synthesis --family="MAX 10" --part=10M50DAF484C6GES
+Progress: Loading deca_usb_ulpi/usb20sr_refdes.qsys
+Progress: Reading input file
+Progress: Adding altpll_0 [altpll 14.1]
+Warning: altpll_0: Used altpll 15.0 (instead of 14.1)
+Progress: Parameterizing module altpll_0
+Progress: Adding ccb_slow_per [altera_avalon_mm_clock_crossing_bridge 14.1]
+Warning: ccb_slow_per: Used altera_avalon_mm_clock_crossing_bridge 15.0 (instead of 14.1)
+Progress: Parameterizing module ccb_slow_per
+Progress: Adding ccb_usb [altera_avalon_mm_clock_crossing_bridge 14.1]
+Warning: ccb_usb: Used altera_avalon_mm_clock_crossing_bridge 15.0 (instead of 14.1)
+Progress: Parameterizing module ccb_usb
+Progress: Adding dma_0 [altera_avalon_dma 14.1]
+Warning: dma_0: Used altera_avalon_dma 15.0 (instead of 14.1)
+Progress: Parameterizing module dma_0
+Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 14.1]
+Warning: jtag_uart_0: Used altera_avalon_jtag_uart 15.0 (instead of 14.1)
+Progress: Parameterizing module jtag_uart_0
+Progress: Adding nios2_qsys_0 [altera_nios2_qsys 14.1]
+Warning: nios2_qsys_0: Used altera_nios2_qsys 15.0 (instead of 14.1)
+Progress: Parameterizing module nios2_qsys_0
+Progress: Adding onchip_memory [altera_avalon_onchip_memory2 14.1]
+Warning: onchip_memory: Used altera_avalon_onchip_memory2 15.0 (instead of 14.1)
+Progress: Parameterizing module onchip_memory
+Progress: Adding osc_clk [clock_source 14.1]
+Warning: osc_clk: Used clock_source 15.0 (instead of 14.1)
+Progress: Parameterizing module osc_clk
+Progress: Adding rst_pio [altera_avalon_pio 14.1]
+Warning: rst_pio: Used altera_avalon_pio 15.0 (instead of 14.1)
+Progress: Parameterizing module rst_pio
+Progress: Adding timer_0 [altera_avalon_timer 14.1]
+Warning: timer_0: Used altera_avalon_timer 15.0 (instead of 14.1)
+Progress: Parameterizing module timer_0
+Progress: Adding u20_clk_out [clock_source 14.1]
+Warning: u20_clk_out: Used clock_source 15.0 (instead of 14.1)
+Progress: Parameterizing module u20_clk_out
+Progress: Adding usb20sr [sls_avalon_usb20sr 1.3]
+Progress: Parameterizing module usb20sr
+Progress: Adding user_led [altera_avalon_pio 14.1]
+Warning: user_led: Used altera_avalon_pio 15.0 (instead of 14.1)
+Progress: Parameterizing module user_led
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Warning: usb20sr_refdes.nios2_qsys_0: Nios II Classic cores are now superseded by improved Gen 2 cores.
+Warning: usb20sr_refdes.: All instances of floating feature 5750_0A04 are currently in use, waiting for one to become available...
+Warning: usb20sr_refdes.: All instances of floating feature 5750_0A04 are currently in use, waiting for one to become available...
+Warning: usb20sr_refdes.: All instances of floating feature 5750_0A04 are currently in use, waiting for one to become available...
+Warning: usb20sr_refdes.: All instances of floating feature 5750_0A04 are currently in use, waiting for one to become available...
+Info: usb20sr_refdes.usb20sr: IN Buffer Memory Size = 2 KBytes 
+Info: usb20sr_refdes.usb20sr: OUT Buffer Memory Size = 2 KBytes 
+Info: usb20sr_refdes.usb20sr: Enabling simulation.
+Info: usb20sr_refdes.usb20sr: Use ' / ' instedad of ' \ ' in Hex file path name
+Info: usb20sr_refdes.usb20sr: Hex file : Enum_ram.hex.
+Info: usb20sr_refdes: Generating usb20sr_refdes "usb20sr_refdes" for QUARTUS_SYNTH
+Info: Inserting clock-crossing logic between cmd_demux.src3 and cmd_mux_003.sink0
+Info: Inserting clock-crossing logic between rsp_demux_003.src0 and rsp_mux.sink3
+Info: Interconnect is inserted between master ccb_usb.m0 and slave usb20sr.avalon_slave_0 because the master has burstcount signal 1 bit wide, but the slave is 0 bit wide.
+Info: Interconnect is inserted between master ccb_usb.m0 and slave usb20sr.avalon_slave_0 because the master has address signal 21 bit wide, but the slave is 19 bit wide.
+Info: Interconnect is inserted between master ccb_usb.m0 and slave usb20sr.avalon_slave_0 because the master has debugaccess signal 1 bit wide, but the slave is 0 bit wide.
+Info: altpll_0: "usb20sr_refdes" instantiated altpll "altpll_0"
+Info: ccb_slow_per: "usb20sr_refdes" instantiated altera_avalon_mm_clock_crossing_bridge "ccb_slow_per"
+Info: dma_0: softresetEnable = 1
+Info: dma_0: Starting RTL generation for module 'usb20sr_refdes_dma_0'
+Info: dma_0:   Generation command is [exec D:/altera/15.0/quartus/bin64//perl/bin/perl.exe -I D:/altera/15.0/quartus/bin64//perl/lib -I D:/altera/15.0/quartus/sopc_builder/bin/europa -I D:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I D:/altera/15.0/quartus/sopc_builder/bin -I D:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I D:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_dma -- D:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_dma/generate_rtl.pl --name=usb20sr_refdes_dma_0 --dir=C:/Users/Lee/AppData/Local/Temp/alt6545_7276059681455607449.dir/0007_dma_0_gen/ --quartus_dir=D:/altera/15.0/quartus --verilog --config=C:/Users/Lee/AppData/Local/Temp/alt6545_7276059681455607449.dir/0007_dma_0_gen//usb20sr_refdes_dma_0_component_configuration.pl  --do_build_sim=0  ]
+Info: dma_0: # 2015.04.20 18:44:58 (*)   usb20sr_refdes_dma_0: allowing these transactions: word, hw, byte_access
+Info: dma_0: Done RTL generation for module 'usb20sr_refdes_dma_0'
+Info: dma_0: "usb20sr_refdes" instantiated altera_avalon_dma "dma_0"
+Info: jtag_uart_0: Starting RTL generation for module 'usb20sr_refdes_jtag_uart_0'
+Info: jtag_uart_0:   Generation command is [exec D:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I D:/altera/15.0/quartus/bin64/perl/lib -I D:/altera/15.0/quartus/sopc_builder/bin/europa -I D:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I D:/altera/15.0/quartus/sopc_builder/bin -I D:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I D:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- D:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=usb20sr_refdes_jtag_uart_0 --dir=C:/Users/Lee/AppData/Local/Temp/alt6545_7276059681455607449.dir/0008_jtag_uart_0_gen/ --quartus_dir=D:/altera/15.0/quartus --verilog --config=C:/Users/Lee/AppData/Local/Temp/alt6545_7276059681455607449.dir/0008_jtag_uart_0_gen//usb20sr_refdes_jtag_uart_0_component_configuration.pl  --do_build_sim=0  ]
+Info: jtag_uart_0: Done RTL generation for module 'usb20sr_refdes_jtag_uart_0'
+Info: jtag_uart_0: "usb20sr_refdes" instantiated altera_avalon_jtag_uart "jtag_uart_0"
+Info: nios2_qsys_0: Starting RTL generation for module 'usb20sr_refdes_nios2_qsys_0'
+Info: nios2_qsys_0:   Generation command is [exec D:/altera/15.0/quartus/bin64/eperlcmd.exe -I D:/altera/15.0/quartus/bin64/perl/lib -I D:/altera/15.0/quartus/sopc_builder/bin/europa -I D:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I D:/altera/15.0/quartus/sopc_builder/bin -I D:/altera/15.0/quartus/../ip/altera/nios2_ip/altera_nios2/cpu_lib -I D:/altera/15.0/quartus/../ip/altera/nios2_ip/altera_nios2/nios_lib -I D:/altera/15.0/quartus/../ip/altera/nios2_ip/altera_nios2 -I D:/altera/15.0/quartus/../ip/altera/nios2_ip/altera_nios2 -- D:/altera/15.0/quartus/../ip/altera/nios2_ip/altera_nios2/generate_rtl.epl --name=usb20sr_refdes_nios2_qsys_0 --dir=C:/Users/Lee/AppData/Local/Temp/alt6545_7276059681455607449.dir/0009_nios2_qsys_0_gen/ --quartus_bindir=D:/altera/15.0/quartus/bin64 --verilog --config=C:/Users/Lee/AppData/Local/Temp/alt6545_7276059681455607449.dir/0009_nios2_qsys_0_gen//usb20sr_refdes_nios2_qsys_0_processor_configuration.pl  --do_build_sim=0  ]
+Info: nios2_qsys_0: # 2015.04.20 18:44:59 (*) Starting Nios II generation
+Info: nios2_qsys_0: # 2015.04.20 18:44:59 (*)   Checking for plaintext license.
+Info: nios2_qsys_0: # 2015.04.20 18:45:05 (*)   Plaintext license not found.
+Info: nios2_qsys_0: # 2015.04.20 18:45:05 (*)   Checking for encrypted license (non-evaluation).
+Info: nios2_qsys_0: # 2015.04.20 18:45:13 (*)   Encrypted license found.  SOF will not be time-limited.
+Info: nios2_qsys_0: # 2015.04.20 18:45:13 (*)   Elaborating CPU configuration settings
+Info: nios2_qsys_0: # 2015.04.20 18:45:13 (*)   Creating all objects for CPU
+Info: nios2_qsys_0: # 2015.04.20 18:45:13 (*)     Testbench
+Info: nios2_qsys_0: # 2015.04.20 18:45:13 (*)     Instruction decoding
+Info: nios2_qsys_0: # 2015.04.20 18:45:13 (*)       Instruction fields
+Info: nios2_qsys_0: # 2015.04.20 18:45:13 (*)       Instruction decodes
+Info: nios2_qsys_0: # 2015.04.20 18:45:14 (*)       Signals for RTL simulation waveforms
+Info: nios2_qsys_0: # 2015.04.20 18:45:14 (*)       Instruction controls
+Info: nios2_qsys_0: # 2015.04.20 18:45:14 (*)     Pipeline frontend
+Info: nios2_qsys_0: # 2015.04.20 18:45:14 (*)     Pipeline backend
+Info: nios2_qsys_0: # 2015.04.20 18:45:16 (*)   Generating RTL from CPU objects
+Info: nios2_qsys_0: # 2015.04.20 18:45:18 (*)   Creating encrypted RTL
+Info: nios2_qsys_0: # 2015.04.20 18:45:18 (*) Done Nios II generation
+Info: nios2_qsys_0: Done RTL generation for module 'usb20sr_refdes_nios2_qsys_0'
+Info: nios2_qsys_0: "usb20sr_refdes" instantiated altera_nios2_qsys "nios2_qsys_0"
+Info: onchip_memory: Starting RTL generation for module 'usb20sr_refdes_onchip_memory'
+Info: onchip_memory:   Generation command is [exec D:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I D:/altera/15.0/quartus/bin64/perl/lib -I D:/altera/15.0/quartus/sopc_builder/bin/europa -I D:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I D:/altera/15.0/quartus/sopc_builder/bin -I D:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I D:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- D:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=usb20sr_refdes_onchip_memory --dir=C:/Users/Lee/AppData/Local/Temp/alt6545_7276059681455607449.dir/0010_onchip_memory_gen/ --quartus_dir=D:/altera/15.0/quartus --verilog --config=C:/Users/Lee/AppData/Local/Temp/alt6545_7276059681455607449.dir/0010_onchip_memory_gen//usb20sr_refdes_onchip_memory_component_configuration.pl  --do_build_sim=0  ]
+Info: onchip_memory: Done RTL generation for module 'usb20sr_refdes_onchip_memory'
+Info: onchip_memory: "usb20sr_refdes" instantiated altera_avalon_onchip_memory2 "onchip_memory"
+Info: rst_pio: Starting RTL generation for module 'usb20sr_refdes_rst_pio'
+Info: rst_pio:   Generation command is [exec D:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I D:/altera/15.0/quartus/bin64/perl/lib -I D:/altera/15.0/quartus/sopc_builder/bin/europa -I D:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I D:/altera/15.0/quartus/sopc_builder/bin -I D:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I D:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=usb20sr_refdes_rst_pio --dir=C:/Users/Lee/AppData/Local/Temp/alt6545_7276059681455607449.dir/0011_rst_pio_gen/ --quartus_dir=D:/altera/15.0/quartus --verilog --config=C:/Users/Lee/AppData/Local/Temp/alt6545_7276059681455607449.dir/0011_rst_pio_gen//usb20sr_refdes_rst_pio_component_configuration.pl  --do_build_sim=0  ]
+Info: rst_pio: Done RTL generation for module 'usb20sr_refdes_rst_pio'
+Info: rst_pio: "usb20sr_refdes" instantiated altera_avalon_pio "rst_pio"
+Info: timer_0: Starting RTL generation for module 'usb20sr_refdes_timer_0'
+Info: timer_0:   Generation command is [exec D:/altera/15.0/quartus/bin64//perl/bin/perl.exe -I D:/altera/15.0/quartus/bin64//perl/lib -I D:/altera/15.0/quartus/sopc_builder/bin/europa -I D:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I D:/altera/15.0/quartus/sopc_builder/bin -I D:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I D:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer -- D:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer/generate_rtl.pl --name=usb20sr_refdes_timer_0 --dir=C:/Users/Lee/AppData/Local/Temp/alt6545_7276059681455607449.dir/0012_timer_0_gen/ --quartus_dir=D:/altera/15.0/quartus --verilog --config=C:/Users/Lee/AppData/Local/Temp/alt6545_7276059681455607449.dir/0012_timer_0_gen//usb20sr_refdes_timer_0_component_configuration.pl  --do_build_sim=0  ]
+Info: timer_0: Done RTL generation for module 'usb20sr_refdes_timer_0'
+Info: timer_0: "usb20sr_refdes" instantiated altera_avalon_timer "timer_0"
+Warning: All instances of floating feature 5750_0A04 are currently in use, waiting for one to become available...
+Warning: All instances of floating feature 5750_0A04 are currently in use, waiting for one to become available...
+Warning: All instances of floating feature 5750_0A04 are currently in use, waiting for one to become available...
+Warning: All instances of floating feature 5750_0A04 are currently in use, waiting for one to become available...
+Info: usb20sr: "usb20sr_refdes" instantiated sls_avalon_usb20sr "usb20sr"
+Info: user_led: Starting RTL generation for module 'usb20sr_refdes_user_led'
+Info: user_led:   Generation command is [exec D:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I D:/altera/15.0/quartus/bin64/perl/lib -I D:/altera/15.0/quartus/sopc_builder/bin/europa -I D:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I D:/altera/15.0/quartus/sopc_builder/bin -I D:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I D:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=usb20sr_refdes_user_led --dir=C:/Users/Lee/AppData/Local/Temp/alt6545_7276059681455607449.dir/0014_user_led_gen/ --quartus_dir=D:/altera/15.0/quartus --verilog --config=C:/Users/Lee/AppData/Local/Temp/alt6545_7276059681455607449.dir/0014_user_led_gen//usb20sr_refdes_user_led_component_configuration.pl  --do_build_sim=0  ]
+Info: user_led: Done RTL generation for module 'usb20sr_refdes_user_led'
+Info: user_led: "usb20sr_refdes" instantiated altera_avalon_pio "user_led"
+Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_004: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_005: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_006: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_007: Inserting error_adapter: error_adapter_0
+Info: mm_interconnect_0: "usb20sr_refdes" instantiated altera_mm_interconnect "mm_interconnect_0"
+Info: mm_interconnect_1: "usb20sr_refdes" instantiated altera_mm_interconnect "mm_interconnect_1"
+Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
+Info: mm_interconnect_2: "usb20sr_refdes" instantiated altera_mm_interconnect "mm_interconnect_2"
+Info: irq_mapper: "usb20sr_refdes" instantiated altera_irq_mapper "irq_mapper"
+Info: irq_synchronizer: "usb20sr_refdes" instantiated altera_irq_clock_crosser "irq_synchronizer"
+Info: rst_controller: "usb20sr_refdes" instantiated altera_reset_controller "rst_controller"
+Info: nios2_qsys_0_data_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "nios2_qsys_0_data_master_translator"
+Info: jtag_uart_0_avalon_jtag_slave_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "jtag_uart_0_avalon_jtag_slave_translator"
+Info: nios2_qsys_0_data_master_agent: "mm_interconnect_0" instantiated altera_merlin_master_agent "nios2_qsys_0_data_master_agent"
+Info: jtag_uart_0_avalon_jtag_slave_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "jtag_uart_0_avalon_jtag_slave_agent"
+Info: jtag_uart_0_avalon_jtag_slave_agent_rsp_fifo: "mm_interconnect_0" instantiated altera_avalon_sc_fifo "jtag_uart_0_avalon_jtag_slave_agent_rsp_fifo"
+Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
+Info: router_001: "mm_interconnect_0" instantiated altera_merlin_router "router_001"
+Info: router_002: "mm_interconnect_0" instantiated altera_merlin_router "router_002"
+Info: router_004: "mm_interconnect_0" instantiated altera_merlin_router "router_004"
+Info: router_006: "mm_interconnect_0" instantiated altera_merlin_router "router_006"
+Info: router_008: "mm_interconnect_0" instantiated altera_merlin_router "router_008"
+Info: router_011: "mm_interconnect_0" instantiated altera_merlin_router "router_011"
+Info: nios2_qsys_0_data_master_limiter: "mm_interconnect_0" instantiated altera_merlin_traffic_limiter "nios2_qsys_0_data_master_limiter"
+Info: Reusing file E:/SVN/deca/amax10/cd/cd_revC/demostration/deca_usb_ulpi/usb20sr_refdes/synthesis/submodules/altera_avalon_sc_fifo.v
+Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
+Info: cmd_demux_001: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_001"
+Info: cmd_demux_003: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_003"
+Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
+Info: cmd_mux_002: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux_002"
+Info: Reusing file E:/SVN/deca/amax10/cd/cd_revC/demostration/deca_usb_ulpi/usb20sr_refdes/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: cmd_mux_004: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux_004"
+Info: Reusing file E:/SVN/deca/amax10/cd/cd_revC/demostration/deca_usb_ulpi/usb20sr_refdes/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux"
+Info: rsp_demux_003: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux_003"
+Info: rsp_demux_004: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux_004"
+Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
+Info: Reusing file E:/SVN/deca/amax10/cd/cd_revC/demostration/deca_usb_ulpi/usb20sr_refdes/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_mux_001: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux_001"
+Info: Reusing file E:/SVN/deca/amax10/cd/cd_revC/demostration/deca_usb_ulpi/usb20sr_refdes/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: crosser: "mm_interconnect_0" instantiated altera_avalon_st_handshake_clock_crosser "crosser"
+Info: Reusing file E:/SVN/deca/amax10/cd/cd_revC/demostration/deca_usb_ulpi/usb20sr_refdes/synthesis/submodules/altera_avalon_st_pipeline_base.v
+Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
+Info: router: "mm_interconnect_2" instantiated altera_merlin_router "router"
+Info: router_001: "mm_interconnect_2" instantiated altera_merlin_router "router_001"
+Info: cmd_demux: "mm_interconnect_2" instantiated altera_merlin_demultiplexer "cmd_demux"
+Info: cmd_mux: "mm_interconnect_2" instantiated altera_merlin_multiplexer "cmd_mux"
+Info: Reusing file E:/SVN/deca/amax10/cd/cd_revC/demostration/deca_usb_ulpi/usb20sr_refdes/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_demux: "mm_interconnect_2" instantiated altera_merlin_demultiplexer "rsp_demux"
+Info: rsp_mux: "mm_interconnect_2" instantiated altera_merlin_multiplexer "rsp_mux"
+Info: Reusing file E:/SVN/deca/amax10/cd/cd_revC/demostration/deca_usb_ulpi/usb20sr_refdes/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
+Info: usb20sr_refdes: Done "usb20sr_refdes" with 50 modules, 104 files
+Info: ip-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

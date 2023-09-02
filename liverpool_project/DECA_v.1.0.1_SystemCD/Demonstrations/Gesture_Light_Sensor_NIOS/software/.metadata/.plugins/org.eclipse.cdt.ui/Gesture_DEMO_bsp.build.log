@@ -1,0 +1,6 @@
+17:02:42 **** Clean-only build of configuration Nios II for project Gesture_DEMO_bsp ****
+make clean 
+[BSP clean complete]
+
+17:02:43 Build Finished (took 390ms)
+

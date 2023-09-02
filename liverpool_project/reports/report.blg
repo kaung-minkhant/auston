@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: report.aux
+The style file: apalike.bst
+Database file #1: references.bib
+I was expecting a `,' or a `}'---line 54 of file references.bib
+ :  address  = "
+ :              Bangalore, India"
+I'm skipping whatever remains of this entry
+You've used 11 entries,
+            1935 wiz_defined-function locations,
+            528 strings with 5635 characters,
+and the built_in function-call counts, 3418 in all, are:
+= -- 348
+> -- 143
+< -- 9
++ -- 48
+- -- 46
+* -- 238
+:= -- 650
+add.period$ -- 36
+call.type$ -- 11
+change.case$ -- 78
+chr.to.int$ -- 11
+cite$ -- 11
+duplicate$ -- 134
+empty$ -- 200
+format.name$ -- 63
+if$ -- 645
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 1
+newline$ -- 61
+num.names$ -- 33
+pop$ -- 58
+preamble$ -- 1
+purify$ -- 78
+quote$ -- 0
+skip$ -- 110
+stack$ -- 0
+substring$ -- 162
+swap$ -- 10
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 66
+warning$ -- 0
+while$ -- 24
+width$ -- 0
+write$ -- 141
+(There was 1 error message)

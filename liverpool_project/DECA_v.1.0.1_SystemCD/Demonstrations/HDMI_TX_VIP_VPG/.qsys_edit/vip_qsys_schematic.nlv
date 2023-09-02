@@ -1,0 +1,28 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst vip_qsys.altpll_stream -pg 1 -lvl 2 -y 50
+preplace inst vip_qsys.alt_vip_cl_tpg_0.scheduler -pg 1
+preplace inst vip_qsys.alt_vip_cl_tpg_0.av_st_reset_bridge -pg 1
+preplace inst vip_qsys.alt_vip_cl_tpg_0.tpg_core -pg 1
+preplace inst vip_qsys.alt_vip_cl_cvo_0 -pg 1 -lvl 4 -y 100
+preplace inst vip_qsys.alt_vip_cl_tpg_0.video_out -pg 1
+preplace inst vip_qsys.alt_vip_cl_cvo_0.cvo_core -pg 1
+preplace inst vip_qsys.alt_vip_cl_cvo_0.scheduler -pg 1
+preplace inst vip_qsys.alt_vip_cl_cvo_0.video_in -pg 1
+preplace inst vip_qsys -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst vip_qsys.alt_vip_cl_cvo_0.is_reset_bridge -pg 1
+preplace inst vip_qsys.alt_vip_cl_tpg_0 -pg 1 -lvl 3 -y 120
+preplace inst vip_qsys.alt_vip_cl_cvo_0.is_clk_bridge -pg 1
+preplace inst vip_qsys.clk_50 -pg 1 -lvl 1 -y 180
+preplace inst vip_qsys.altpll_hdmi -pg 1 -lvl 2 -y 230
+preplace inst vip_qsys.alt_vip_cl_tpg_0.av_st_clk_bridge -pg 1
+preplace netloc FAN_OUT<net_container>vip_qsys</net_container>(MASTER)clk_50.clk,(SLAVE)altpll_stream.inclk_interface,(SLAVE)altpll_hdmi.inclk_interface) 1 1 1 410
+preplace netloc EXPORT<net_container>vip_qsys</net_container>(MASTER)vip_qsys.altpll_hdmi_c0,(MASTER)altpll_hdmi.c0) 1 2 3 NJ 280 NJ 280 NJ
+preplace netloc EXPORT<net_container>vip_qsys</net_container>(SLAVE)vip_qsys.alt_vip_cl_cvo_0_clocked_video,(SLAVE)alt_vip_cl_cvo_0.clocked_video) 1 0 4 NJ 40 NJ 40 NJ 40 NJ
+preplace netloc POINT_TO_POINT<net_container>vip_qsys</net_container>(MASTER)alt_vip_cl_tpg_0.dout,(SLAVE)alt_vip_cl_cvo_0.din) 1 3 1 N
+preplace netloc EXPORT<net_container>vip_qsys</net_container>(SLAVE)vip_qsys.reset,(SLAVE)clk_50.clk_in_reset) 1 0 1 NJ
+preplace netloc EXPORT<net_container>vip_qsys</net_container>(SLAVE)vip_qsys.clk,(SLAVE)clk_50.clk_in) 1 0 1 NJ
+preplace netloc FAN_OUT<net_container>vip_qsys</net_container>(SLAVE)alt_vip_cl_tpg_0.main_clock,(MASTER)altpll_stream.c0,(SLAVE)alt_vip_cl_cvo_0.main_clock) 1 2 2 650 60 NJ
+preplace netloc FAN_OUT<net_container>vip_qsys</net_container>(SLAVE)altpll_hdmi.inclk_interface_reset,(MASTER)clk_50.clk_reset,(SLAVE)alt_vip_cl_cvo_0.main_reset,(SLAVE)alt_vip_cl_tpg_0.main_reset,(SLAVE)altpll_stream.inclk_interface_reset) 1 1 3 430 220 670 80 NJ
+levelinfo -pg 1 0 200 1270
+levelinfo -hier vip_qsys 210 240 460 760 1040 1150

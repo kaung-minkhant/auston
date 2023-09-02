@@ -1,0 +1,5 @@
+PLL_Name	DECA_QSYS:u0|DECA_QSYS_pll:pll|DECA_QSYS_pll_altpll_4p92:sd1|pll7
+PLLJITTER	30
+PLLSPEmax	84
+PLLSPEmin	-53
+

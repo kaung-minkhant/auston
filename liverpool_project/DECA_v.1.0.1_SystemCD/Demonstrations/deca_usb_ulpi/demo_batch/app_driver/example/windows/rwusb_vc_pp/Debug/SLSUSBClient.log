@@ -1,0 +1,19 @@
+﻿生成启动时间为 1/15/2015 5:12:17 PM。
+     1>项目“D:\SVN\max10\test\peli\deca_usb_ulpi\demo_batch\app_driver\example\windows\rwusb_vc_pp\SLSUSBClient.vcxproj”在节点 2 上(Rebuild 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _VC80_UPGRADE=0x0600 /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /Gy- /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp".\Debug\SLSUSBClient.pch" /Fo".\Debug\\" /Fd".\Debug\vc110.pdb" /FR".\Debug\\" /Gd /TP /analyze- /errorReport:prompt StdAfx.cpp
+         StdAfx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _VC80_UPGRADE=0x0600 /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /Gy- /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp".\Debug\SLSUSBClient.pch" /Fo".\Debug\\" /Fd".\Debug\vc110.pdb" /FR".\Debug\\" /Gd /TP /analyze- /errorReport:prompt SLSUSBClient.cpp
+         SLSUSBClient.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:".\Debug\SLSUSBClient.exe" /INCREMENTAL /NOLOGO /LIBPATH:D:\SW_DEV\projects\SLSUSBClient\Debug odbc32.lib odbccp32.lib slsusb.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:".\Debug\SLSUSBClient.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\Debug\SLSUSBClient.lib" /MACHINE:X86 /SAFESEH .\Debug\SLSUSBClient.obj
+         .\Debug\StdAfx.obj
+     1>SLSUSBClient.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/SAFESEH”规范)
+         SLSUSBClient.vcxproj -> D:\SVN\max10\test\peli\deca_usb_ulpi\demo_batch\app_driver\example\windows\rwusb_vc_pp\.\Debug\SLSUSBClient.exe
+       BscMake:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\bscmake.exe /nologo /o".\Debug\SLSUSBClient.bsc" .\Debug\SLSUSBClient.sbr .\Debug\StdAfx.sbr
+     1>已完成生成项目“D:\SVN\max10\test\peli\deca_usb_ulpi\demo_batch\app_driver\example\windows\rwusb_vc_pp\SLSUSBClient.vcxproj”(Rebuild 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:05.58

@@ -1,0 +1,116 @@
+\section{Serial Peripheral Interface (SPI)}
+This Serial Peripheral Interface (SPI) module is written for Field Programmable Logic Array (FPGA) implementation with VHDL. This module can be duplicated and controlled using external logic or controllers. Big-edianess is used according to specifications. This module can be initialized with desired system clock and desired bus clock frequency and spi mode. This SPI module support 4 standards mode, however, default mode 0 will be the default. These modes are defined with CPOL and CPHA bits.
+
+
+
+\begin{table}[!h]
+	\centering
+	\caption{Modes of SPI}
+	\label{table:spimodes}
+	\def\arraystretch{1.5}
+	\begin{tabular}{|c|c|c|c|p{2.5in}|}
+		\hline
+		Mode & CPOL & CPHA & Clock Polarity in Idle State & Data Sampling and Output                                            \\
+		\hline
+		\hline
+		0    & 0    & 0    & Logic Low                    & Data sampled on rising edge and shifted out on the falling edge     \\
+		\hline
+		1    & 0    & 1    & Logic Low                    & Data sampled on the falling edge and shifted out on the rising edge \\
+		\hline
+		2    & 1    & 0    & Logic High                   & Data sampled on the rising edge and shifted out on the falling edge \\
+		\hline
+		3    & 1    & 1    & Logic High                   & Data sampled on the falling edge and shifted out on the rising edge \\
+		\hline
+	\end{tabular}
+\end{table}
+
+
+\subsection{Why use SPI}
+SPI is a synchronous protocol which also support full duplex data transfer. Due to the nature of the protocol, the controller and peripheral can transmit and receive data at the same time. Since the bus clock is generate only by the controller unlike bus clock in I$^2$C, the receiving peripheral hardware can be easily designed.
+
+Here lists the advantages of SPI. \cite{whyspi}
+\begin{itemize}
+	\item It's faster than asynchronous serial
+	\item The receive hardware can be a simple shift register
+	\item It supports multiple peripherals
+\end{itemize}
+
+\subsection{Block Diagram and I/O}
+\insertBlockDiagram{spi_module}{0.8}{SPI Module Block Diagram}{block_diagram:spi}
+
+\begin{table}[!h]
+	\centering
+	\caption{Input/Output Table for SPI Module}
+	\label{io:spi}
+	\def\arraystretch{1.5}
+	\begin{tabular}{|c|c||c|c|}
+		\hline
+		\textbf{Input Name} & \textbf{Function}         & \textbf{Output Name} & \textbf{Function}                              \\
+		\hline
+		\hline
+		\io{clk}            & main clock input          & \io{o\_TX\_Ready}    & \makecell{indicate whether module is \\ready for next byte} \\
+		\hline
+		\io{reset\_n}       & asynchronous reset        & \io{o\_RX\_DV}       & received data is valid to use                  \\
+		\hline
+		\io{i\_TX\_Byte}    & Data to transmit          & \io{o\_RX\_Byte}     & Received data                                  \\
+		\hline
+		\io{i\_TX\_DV}      & Data is ready to transmit & \io{o\_SPI\_Clk}     & SPI Clock Line                                 \\
+		\hline
+		\io{i\_SPI\_MISO}   & SPI MISO Line             & \io{o\_SPI\_MOSI}    & SPI MOSI Line                                  \\
+		\hline
+	\end{tabular}
+\end{table}
+
+\subsection{Usage}
+The SPI module only consists of one overall module, which is called a master or controller. The system clock of desired frequency need to be feed through \io{clk}. This module can be reset using active low \io{reset\_n}.
+
+This module does not contain Chip Select Pin. Thus, the designer will need to add chip select pin during his own overall implementation. The number of chip select pin is not limited as required by the number of peripherals that are to be connected to the bus. 
+
+To operate this module, if chip select is implemented, as per SPI standard, this pin needs to be pulled low to select a particular peripheral. Then, the data to be transmitted is placed on \io{i\_TX\_Byte}. After the data has been placed, \io{i\_TX\_DV} will need to be pulsed high in order to start the transmission. During transmission, \io{o\_TX\_Ready} will be pulled low, indicating the module is transmitting. After, successful transmission, \io{o\_TX\_Ready} will be pulled high, at that point, new data can be placed and repeat the transmission.
+
+Due to the full-duplex nature of SPI Protocol, during transmission, reception of data also takes place at the same time. After successful reception, \io{o\_RX\_DV} will be pulsed high, and the received data will be available on \io{o\_RX\_Byte}. Thus, if conditional data reception is intended, first, data is needed to be transmitted, then discard the received data, then empty data is transmitted then read the received data.
+
+\subsubsection{Initialization}
+The module has three generic variable which needs to be set according to the desired system clock frequency, bus clock frequency and SPI operating mode.
+
+\noindent \sig{SPI\_MODE} : SPI Operating Mode\\
+\sig{INPUT\_CLK} : system input clock in Hz \\
+\sig{BUS\_CLK} : desired bus clock in Hz
+
+\subsection{SPI Architecture}
+The most common SPI operating Mode is mode 0, CPOL=0 and CPHA=0 where the clock is normally set to low, and upon transmission, the first clock edge is a rising edge. Data sampled on rising edge and shifted out on the falling edge of the clock.
+
+\insertWaveform{spi_mode0}{0.8}{SPI Mode 0, CPOL = 0, CPHA = 0: CLK idle state = low, data sampled on rising edge and shifted on falling edge}{wave_form:spi_mode0}
+
+This mode is commonly used with most sensors, thus default mode is set to 0. The transmission and reception of data is simple in SPI protocol. The challenging part is to support all 4 modes of spi. 
+
+\newpage
+\subsection{Implementation}
+Implemetation can be found on the GitHub listed in \ref{appendix:source}.
+The controller is implemented as VHDL module. The implementation can be accessed through the following GitHub repo: \url{https://github.com/kaung-minkhant/risc-v-micro/tree/master/peripherals/spi}.
+
+\subsubsection{Controller Implementation}
+The implementation can be divided in four sections. Each will be explained in detail below. The operation will be demonstrated visually in testing section with simulation waveforms.
+
+\paragraph*{Clock Generation and Data Latch}
+This section generates the requires clock edges at the desired bus frequency and latch the transmit data. As per specification, the number of clock cycle for the bus is limited by the number of bits to transmit. Typically 8 bit data is used, thus, there will be 8 clock cycle per transaction. To support all SPI modes, clock edges are also generated. With 8 clock cycles, there will be 16 clock edges, namely leading edges and trailing edges. This clock generation is synchronized with system clock. 
+
+To get the required bus clock frequency, counters are used. The count for each bit is calculated using the following formula: $$\text{count} = \frac{\text{system clock frequency}}{\text{bus frequency}}$$.
+
+Using these leading and trailing clock edges, all the required SPI modes can be implemented. Clock Edges will be tested with simulation.
+
+Then there is the latch for transmit data. As soon as \io{i\_TX\_DV} is pulsed, the data is latched into \sig{r\_TX\_Byte}.
+
+\newpage
+\paragraph*{MOSI Process}
+This section concerns with the process for transmission on MOSI line. Depending on SPI Mode, using the leading and trailing  edges, the data is transmitted accordingly. Counters are used to track the number of bits already transmitted. Big-endianess can be seen in this case. The process can be seen in figure \ref{code:mosi}.
+
+\insertCode{mosi}{0.7}{MOSI Process}{code:mosi}
+
+\paragraph*{MISO Process}
+This section concerns with the process for receiving from MISO line. Depending on SPI Mode, using the leading and trailing edges, the data is sampled accordingly from MISO line. Counters are again used to track the number of bits received. Big-endianess can be seen. Since these implementations are seperated process, they works in parallel. Thus, full-duplex data transfer can be achieved relatively fast. The process can be seen in figure \ref{code:miso}.
+\insertCode{miso}{0.7}{MISO Process}{code:miso}
+
+\newpage
+\paragraph*{SPI Clock Process}
+This process generate clock signals on SPI Clock line. The clock alignment is done using the system clock. The correct clock polarity is generated using CPOL bit.

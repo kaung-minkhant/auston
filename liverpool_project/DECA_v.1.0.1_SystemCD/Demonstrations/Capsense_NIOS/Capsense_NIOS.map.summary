@@ -1,0 +1,16 @@
+Analysis & Synthesis Status : Successful - Fri Apr 17 20:37:49 2015
+Quartus II 64-Bit Version : 15.0.0 Build 142 04/01/2015 SJ Full Version
+Revision Name : Capsense_NIOS
+Top-level Entity Name : Capsense_NIOS
+Family : MAX 10
+Total logic elements : 2,335
+    Total combinational functions : 2,061
+    Dedicated logic registers : 1,195
+Total registers : 1195
+Total pins : 225
+Total virtual pins : 0
+Total memory bits : 811,264
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0
+UFM blocks : 0
+ADC blocks : 0

@@ -1,0 +1,18 @@
+Fitter Status : Successful - Fri Apr 17 21:18:15 2015
+Quartus II 64-Bit Version : 15.0.0 Build 142 04/01/2015 SJ Full Version
+Revision Name : SDCARD
+Top-level Entity Name : SDCARD
+Family : MAX 10
+Device : 10M50DAF484C7G
+Timing Models : Preliminary
+Total logic elements : 2,143 / 49,760 ( 4 % )
+    Total combinational functions : 1,941 / 49,760 ( 4 % )
+    Dedicated logic registers : 1,119 / 49,760 ( 2 % )
+Total registers : 1119
+Total pins : 202 / 360 ( 56 % )
+Total virtual pins : 0
+Total memory bits : 1,211,264 / 1,677,312 ( 72 % )
+Embedded Multiplier 9-bit elements : 0 / 288 ( 0 % )
+Total PLLs : 0 / 4 ( 0 % )
+UFM blocks : 0 / 1 ( 0 % )
+ADC blocks : 0 / 2 ( 0 % )

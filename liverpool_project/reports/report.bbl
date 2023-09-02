@@ -1,0 +1,70 @@
+\begin{thebibliography}{}
+
+\bibitem[Brisk, 2017]{ri5cy}
+Brisk, D. (2017).
+\newblock Ri5cy: A risc-v isa-based energy-efficient processor generator.
+\newblock
+  \url{https://www.researchgate.net/publication/321340163_Experimental_Study_on_Water_Sensitivity_Difference_Based_on_Oiliness_of_Porous_Medium_Rock}.
+
+\bibitem[Gurkaynak, 2019]{pulpino}
+Gurkaynak, F.~K. (2019).
+\newblock pulpino.
+\newblock \url{https://github.com/pulp-platform/pulpino}.
+
+\bibitem[Lee, 2016]{rocket_chip}
+Lee, Y. (2016).
+\newblock Risc-v rocket chip soc generator in chisel.
+\newblock
+  \url{https://riscv.org/wp-content/uploads/2015/01/riscv-rocket-chip-generator-workshop-jan2015.pdf}.
+
+\bibitem[Papon, 2023]{vexriscv}
+Papon, C. (2023).
+\newblock Vexriscv: A 32-bit risc-v cpu implementation in spinalhdl.
+\newblock \url{https://github.com/lowRISC/ibex}.
+
+\bibitem[Pena and Legaspi, 2020]{whyUart}
+Pena, E. and Legaspi, M.~G. (2020).
+\newblock Uart: A hardware communication protocol understanding universal
+  asynchronous receiver/transmitter.
+\newblock
+  \url{https://www.analog.com/en/analog-dialogue/articles/uart-a-hardware-communication-protocol.html#:~:text=The%20UART%20port%20provides%20a,half%20or%20two%20stop%20bits.}
+\newblock Accessed: 2023-05-19.
+
+\bibitem[Phangestu et~al., 2022]{32bitcore}
+Phangestu, A.~E., Mujiono, I.~T., Kom, M., and Ahmad~Zaini, S. (2022).
+\newblock Five-stage pipelined 32-bit risc-v base integer instruction set
+  architecture soft microprocessor core in vhdl.
+\newblock In {\em 2022 International Seminar on Intelligent Technology and Its
+  Applications (ISITIA)}, pages 304--309.
+
+\bibitem[sparkfun and MIKEGRUSIN, 2018]{whyspi}
+sparkfun and MIKEGRUSIN (2018).
+\newblock Serial peripheral interface (spi).
+\newblock
+  \url{https://learn.sparkfun.com/tutorials/serial-peripheral-interface-spi/all}.
+\newblock Accessed: 2023-05-27.
+
+\bibitem[sparkfun and SFUPTOWNMAKER, 2015]{whyI2c}
+sparkfun and SFUPTOWNMAKER (2015).
+\newblock I2c.
+\newblock \url{https://learn.sparkfun.com/tutorials/i2c/all}.
+\newblock Accessed: 2023-05-19.
+
+\bibitem[Wallentowitz, 2023]{ibex}
+Wallentowitz, S. (2023).
+\newblock Ibex: An open-source, parameterizable risc-v processor core.
+\newblock \url{https://github.com/lowRISC/ibex}.
+
+\bibitem[Waterman et~al., 2017]{riscvISA}
+Waterman, A., Asanovic, K., and Inc., S. (2017).
+\newblock The risc-v instruction set manual volume i: User-level isa.
+\newblock
+  \url{https://riscv.org/wp-content/uploads/2017/05/riscv-spec-v2.2.pdf}.
+
+\bibitem[Zhang et~al., 2021]{annikacore}
+Zhang, Y., Guo, Z., Li, J., Cai, F., and Zhou, J. (2021).
+\newblock Annikacore: Risc-v architecture processor design and implementation
+  for iot.
+\newblock \url{https://ieeexplore.ieee.org/document/9651690}.
+
+\end{thebibliography}

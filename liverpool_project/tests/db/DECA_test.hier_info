@@ -1,0 +1,13 @@
+|DECA_test
+LED[0] <= LED.DB_MAX_OUTPUT_PORT_TYPE
+LED[1] <= <VCC>
+LED[2] <= <VCC>
+LED[3] <= <VCC>
+LED[4] <= <VCC>
+LED[5] <= <VCC>
+LED[6] <= <VCC>
+LED[7] <= <VCC>
+SW[0] => LED.IN0
+SW[1] => LED.IN1
+
+

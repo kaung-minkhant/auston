@@ -1,0 +1,59 @@
+\subsection{Introduction}
+This section will conduct testings on the CPU without peripheral connections.
+The CPU will be tested with a sample program and various memories will be tested against the expected memory contents.
+The test will be carried out in ModelSim.
+
+\subsection{Sample Test Program}
+In the following program, a simple fibonacci number generator is implemented.
+The program will take in the number of fibonacci number to be generated in the first instruction.
+It will proceed to execute the program as described in Table \ref{program:sample_simulation}.
+This demonstrates the data dependencies and data dependencies during branching instructions.
+The expected memory and the simulated memory content will be compared to confirm the operation of the CPU.
+\begin{table}[!h]
+    \centering
+    \caption{Sample Simulation Program}
+    \label{program:sample_simulation}
+    \begin{tabular}{|c|l|l|}
+        \hline
+        \textbf{Line} & \multicolumn{1}{c|}{\textbf{Instruction}} & \multicolumn{1}{c|}{\textbf{Description}}   \\ \hline
+        1             & addi x1 x0 3                              & setting count = 3                           \\ \hline
+        2             & addi x2 x0 1                              & Initialize temp1 as 1                       \\ \hline
+        3             & addi x3 x0 1                              & Initialize temp2 as 1                       \\ \hline
+        4             & addi x1 x1 -2                             & does not need to iterate the first two loop \\ \hline
+        5             & L1: add x4 x2 x3                          & output = temp1 + temp2                      \\ \hline
+        6             & add x2 x0 x3                              & temp1 = temp2                               \\ \hline
+        7             & add x3 x0 x4                              & temp2 = output                              \\ \hline
+        8             & addi x1 x1 -1                             & count--                                     \\ \hline
+        9             & bne x1 x0 L1                              & loop if count is not 0                      \\ \hline
+    \end{tabular}
+\end{table}
+
+\subsection{Expected and Simulated Register File Content}
+Table \ref{table:expected_rf} described the expected register file after the execution of the sample program.
+\begin{table}[]
+    \centering
+    \caption{Expected Register File for Sample Program}
+    \label{table:expected_rf}
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Memory Location} & \textbf{Value (Decimal)} \\ \hline
+        0                        & 0                        \\ \hline
+        1                        & 0                        \\ \hline
+        2                        & 1                        \\ \hline
+        3                        & 2                        \\ \hline
+        4                        & 2                        \\ \hline
+    \end{tabular}
+\end{table}
+
+\insertWaveform{simulation_testing_rf}{0.5}{Simulated Register FIle Content}{waveform:simulated_rf}
+
+As can be observed, the simulation, the final register file contents match the expected register file contents, thus confirming the operation of the CPU.
+Further testings will be contacted during hardware testings in a later section.
+
+\newpage
+\subsection{Pipeline Execution}
+Figure \ref{graphic:sample_pipeline_execution} describes the pipeline execution with respect to the clock cycles and the instructions.
+In the figure, the required data forwardings are indicated with a red arrow.
+The arrow starts from the pipeline stage that the data comes from and ends on the pipeline stage where the data is needed.
+
+\insertGraphic{sample_pipeline_execution}{0.3}{0}{Sample Pipeline Execution}{graphic:sample_pipeline_execution}

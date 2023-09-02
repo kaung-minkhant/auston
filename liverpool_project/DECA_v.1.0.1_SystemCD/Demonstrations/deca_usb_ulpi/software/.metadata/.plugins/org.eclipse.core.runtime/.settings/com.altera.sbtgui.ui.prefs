@@ -1,0 +1,4 @@
+eclipse.preferences.version=1
+newSoftwareExampleWizardPage.defaultLocation=D\:\\SVN\\max10\\test\\peli\\deca_usb_ulpi\\software\\usb_portinterface
+newSoftwareExampleWizardPage.sopcinfoFile=D\:\\SVN\\max10\\test\\peli\\deca_usb_ulpi\\usb20sr_refdes.sopcinfo
+newSoftwareExampleWizardPage2.newBspLocation=D\:\\SVN\\max10\\test\\peli\\deca_usb_ulpi\\software\\usb_portinterface_bsp

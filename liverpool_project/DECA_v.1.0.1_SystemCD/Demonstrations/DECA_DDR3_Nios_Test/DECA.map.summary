@@ -1,0 +1,16 @@
+Analysis & Synthesis Status : Successful - Wed Apr 22 19:24:20 2015
+Quartus II 64-Bit Version : 15.0.0 Build 143 04/08/2015 SJ Full Version
+Revision Name : DECA
+Top-level Entity Name : DECA
+Family : MAX 10
+Total logic elements : 11,012
+    Total combinational functions : 8,708
+    Dedicated logic registers : 6,151
+Total registers : 6309
+Total pins : 277
+Total virtual pins : 0
+Total memory bits : 1,107,944
+Embedded Multiplier 9-bit elements : 6
+Total PLLs : 2
+UFM blocks : 0
+ADC blocks : 0

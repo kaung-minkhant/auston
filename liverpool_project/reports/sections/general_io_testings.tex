@@ -1,0 +1,37 @@
+\subsection{Testing of I/O Module}
+\subsubsection{Testbench Setup}
+There is no special need to setup a testbench.
+Thus, in this testing, the required data will be fed to the inputs of the module and the outputs will be monitored.
+The following tests are performed. Special I/O SPI and I$^2$C testings are ommitted since they will require a seperate slave device.
+Their indivitual testings have be performed in the previous sections
+\begin{itemize}
+    \item General I/O Output testings
+    \item General I/O Input testings
+    \item Special I/O UART testings
+\end{itemize}
+
+\newpage
+\subsubsection{General I/O Output Testing}
+In this test, the general I/O ports is set as output and required to produce the bit sequence of ``0000010101000101''.
+
+\insertWaveform{general_io_output}{0.8}{Output Testing of General I/O}{waveform:general_io_output}
+
+The results can be confirmed by examining the simulated waveform in Figure \ref{waveform:general_io_output}.
+It can be noticed that the output is synchronous to clock.
+
+\subsubsection{General I/O Input Testing}
+In this test, the lower 5 bits of the general I/O is set as inputs, and there will be ``10101'' on the lower five pins.
+Thus, the data that will be read from the input will be ``0000000000010101''.
+
+\insertWaveform{general_io_input}{0.8}{Input Testing of General I/O}{waveform:general_io_input}
+The results can be confirmed by examining the simulated waveform in Figure \ref{waveform:general_io_output}.
+It can be noted that the input is asynchronous inside the I/O Module.
+
+\subsubsection{Special I/O UART Transmission Testing}
+In this test, a data of 230 will be loaded into UART data write register, and that data will be transmitted.
+Thus, the UART transmitter will transmit, ``11100110'', ``00000000'', ``00000000'' and ``00000000'', since the total amount of data is 32 bits.
+
+\insertWaveform{special_io_uart_tx}{0.8}{UART Transmission Testing of Special I/O}{waveform:special_io_uart_tx}
+As can be observed in Figure \ref{waveform:special_io_uart_tx}, the transmission is correctly working.
+Four pockets of data can be seen, each with the start and end bits. Little endianess is also displayed.
+And the correct transmit bit pattern is also observed.

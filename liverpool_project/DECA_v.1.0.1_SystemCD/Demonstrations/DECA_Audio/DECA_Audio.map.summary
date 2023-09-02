@@ -1,0 +1,16 @@
+Analysis & Synthesis Status : Successful - Mon Mar 23 11:07:24 2015
+Quartus II 64-Bit Version : 15.0.0 Internal Build 130 02/26/2015 Patches 0.01zb SJ Full Version
+Revision Name : DECA_Audio
+Top-level Entity Name : DECA_Audio
+Family : MAX 10
+Total logic elements : 5,009
+    Total combinational functions : 3,803
+    Dedicated logic registers : 2,941
+Total registers : 2941
+Total pins : 227
+Total virtual pins : 0
+Total memory bits : 1,025,084
+Embedded Multiplier 9-bit elements : 6
+Total PLLs : 2
+UFM blocks : 0
+ADC blocks : 0

@@ -1,0 +1,27 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: SLSUSBClient - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\SLSEMP~1\AppData\Local\Temp\RSP8316.tmp" with contents
+[
+/nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Release/SLSUSBClient.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\designs\sls\i_usb20sr\trunk\software\application\windows\rwusb_vc_pp\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\Users\SLSEMP~1\AppData\Local\Temp\RSP8316.tmp" 
+Creating command line "link.exe slsusb.lib /nologo /subsystem:console /incremental:no /pdb:"Release/SLSUSBClient.pdb" /machine:I386 /out:"Release/SLSUSBClient.exe" /libpath:"D:\SW_DEV\projects\SLSUSBClient\Release"  .\Release\SLSUSBClient.obj .\Release\StdAfx.obj "
+<h3>Output Window</h3>
+Compiling...
+StdAfx.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+SLSUSBClient.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,37 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst usb20sr_refdes.nios2_qsys_0 -pg 1 -lvl 5 -y 230
+preplace inst usb20sr_refdes.u20_clk_out -pg 1 -lvl 7 -y 350
+preplace inst usb20sr_refdes.rst_pio -pg 1 -lvl 9 -y 1010
+preplace inst usb20sr_refdes.osc_clk -pg 1 -lvl 1 -y 250
+preplace inst usb20sr_refdes.usb20sr -pg 1 -lvl 9 -y 230
+preplace inst usb20sr_refdes.ccb_usb -pg 1 -lvl 8 -y 290
+preplace inst usb20sr_refdes.ccb_slow_per -pg 1 -lvl 8 -y 520
+preplace inst usb20sr_refdes.user_led -pg 1 -lvl 9 -y 900
+preplace inst usb20sr_refdes -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst usb20sr_refdes.onchip_memory -pg 1 -lvl 9 -y 590
+preplace inst usb20sr_refdes.dma_0 -pg 1 -lvl 6 -y 110
+preplace inst usb20sr_refdes.timer_0 -pg 1 -lvl 9 -y 790
+preplace inst usb20sr_refdes.jtag_uart_0 -pg 1 -lvl 9 -y 680
+preplace inst usb20sr_refdes.altpll_0 -pg 1 -lvl 7 -y 470
+preplace netloc EXPORT<net_container>usb20sr_refdes</net_container>(SLAVE)u20_clk_out.clk_in,(SLAVE)usb20sr_refdes.u20_clk_out) 1 0 7 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 360 NJ
+preplace netloc EXPORT<net_container>usb20sr_refdes</net_container>(SLAVE)usb20sr_refdes.altpll_0_phasedone_conduit,(SLAVE)altpll_0.phasedone_conduit) 1 0 7 NJ 560 NJ 560 NJ 560 NJ 560 NJ 560 NJ 560 NJ
+preplace netloc POINT_TO_POINT<net_container>usb20sr_refdes</net_container>(SLAVE)altpll_0.inclk_interface,(MASTER)osc_clk.clk) 1 1 6 NJ 260 NJ 260 NJ 260 NJ 400 NJ 340 2060
+preplace netloc FAN_OUT<net_container>usb20sr_refdes</net_container>(MASTER)u20_clk_out.clk,(SLAVE)usb20sr.clock,(SLAVE)ccb_usb.m0_clk) 1 7 2 2360 420 2670
+preplace netloc FAN_OUT<net_container>usb20sr_refdes</net_container>(MASTER)nios2_qsys_0.d_irq,(SLAVE)usb20sr.irq0,(SLAVE)dma_0.irq,(SLAVE)jtag_uart_0.irq,(SLAVE)timer_0.irq) 1 5 4 1770 100 NJ 280 NJ 280 2610
+preplace netloc FAN_OUT<net_container>usb20sr_refdes</net_container>(SLAVE)ccb_slow_per.s0_clk,(SLAVE)onchip_memory.clk1,(SLAVE)nios2_qsys_0.clk,(MASTER)altpll_0.c0,(SLAVE)ccb_usb.s0_clk,(SLAVE)dma_0.clk,(SLAVE)jtag_uart_0.clk) 1 4 5 1290 120 1790 60 NJ 260 2380 670 2690
+preplace netloc FAN_OUT<net_container>usb20sr_refdes</net_container>(MASTER)ccb_slow_per.m0,(SLAVE)rst_pio.s1,(SLAVE)timer_0.s1,(SLAVE)user_led.s1) 1 8 1 2570
+preplace netloc EXPORT<net_container>usb20sr_refdes</net_container>(SLAVE)usb20sr_refdes.reset,(SLAVE)osc_clk.clk_in_reset) 1 0 1 NJ
+preplace netloc EXPORT<net_container>usb20sr_refdes</net_container>(SLAVE)altpll_0.locked_conduit,(SLAVE)usb20sr_refdes.altpll_0_locked_conduit) 1 0 7 NJ 540 NJ 540 NJ 540 NJ 540 NJ 540 NJ 540 NJ
+preplace netloc POINT_TO_POINT<net_container>usb20sr_refdes</net_container>(MASTER)ccb_usb.m0,(SLAVE)usb20sr.avalon_slave_0) 1 8 1 2650
+preplace netloc INTERCONNECT<net_container>usb20sr_refdes</net_container>(SLAVE)dma_0.reset,(MASTER)osc_clk.clk_reset,(SLAVE)u20_clk_out.clk_in_reset,(SLAVE)rst_pio.reset,(SLAVE)onchip_memory.reset1,(SLAVE)nios2_qsys_0.reset_n,(SLAVE)altpll_0.inclk_interface_reset,(SLAVE)jtag_uart_0.reset,(SLAVE)user_led.reset,(MASTER)nios2_qsys_0.jtag_debug_module_reset,(SLAVE)ccb_usb.m0_reset,(SLAVE)timer_0.reset,(SLAVE)ccb_usb.s0_reset,(SLAVE)ccb_slow_per.m0_reset,(SLAVE)ccb_slow_per.s0_reset) 1 1 8 NJ 280 NJ 280 NJ 280 1250 360 1790 380 2120 620 2420 690 2630
+preplace netloc EXPORT<net_container>usb20sr_refdes</net_container>(SLAVE)usb20sr.conduit_end,(SLAVE)usb20sr_refdes.usb20sr_conduit_end) 1 0 9 NJ 40 NJ 40 NJ 40 NJ 40 NJ 40 NJ 40 NJ 240 NJ 240 NJ
+preplace netloc EXPORT<net_container>usb20sr_refdes</net_container>(SLAVE)osc_clk.clk_in,(SLAVE)usb20sr_refdes.osc_clk) 1 0 1 NJ
+preplace netloc INTERCONNECT<net_container>usb20sr_refdes</net_container>(MASTER)nios2_qsys_0.data_master,(SLAVE)ccb_usb.s0,(SLAVE)nios2_qsys_0.jtag_debug_module,(MASTER)dma_0.write_master,(SLAVE)altpll_0.pll_slave,(SLAVE)dma_0.control_port_slave,(SLAVE)ccb_slow_per.s0,(MASTER)nios2_qsys_0.instruction_master,(SLAVE)onchip_memory.s1,(SLAVE)jtag_uart_0.avalon_jtag_slave,(MASTER)dma_0.read_master) 1 4 5 1290 380 1750 80 2080 460 2440 710 2670
+preplace netloc EXPORT<net_container>usb20sr_refdes</net_container>(SLAVE)usb20sr_refdes.user_led_external_connection,(SLAVE)user_led.external_connection) 1 0 9 NJ 930 NJ 930 NJ 930 NJ 930 NJ 930 NJ 930 NJ 930 NJ 930 NJ
+preplace netloc POINT_TO_POINT<net_container>usb20sr_refdes</net_container>(SLAVE)usb20sr.clock_reset,(MASTER)u20_clk_out.clk_reset) 1 7 2 NJ 440 2690
+preplace netloc EXPORT<net_container>usb20sr_refdes</net_container>(SLAVE)usb20sr_refdes.rst_pio_external_connection,(SLAVE)rst_pio.external_connection) 1 0 9 NJ 1040 NJ 1040 NJ 1040 NJ 1040 NJ 1040 NJ 1040 NJ 1040 NJ 1040 NJ
+preplace netloc EXPORT<net_container>usb20sr_refdes</net_container>(SLAVE)usb20sr_refdes.altpll_0_areset_conduit,(SLAVE)altpll_0.areset_conduit) 1 0 7 NJ 480 NJ 480 NJ 480 NJ 480 NJ 480 NJ 480 NJ
+preplace netloc FAN_OUT<net_container>usb20sr_refdes</net_container>(MASTER)altpll_0.c2,(SLAVE)rst_pio.clk,(SLAVE)timer_0.clk,(SLAVE)ccb_slow_per.m0_clk,(SLAVE)user_led.clk) 1 7 2 2360 650 2590
+levelinfo -pg 1 0 180 2890
+levelinfo -hier usb20sr_refdes 190 220 590 940 1230 1530 1840 2170 2470 2730 2880

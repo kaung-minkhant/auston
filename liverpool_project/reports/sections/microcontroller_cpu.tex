@@ -1,0 +1,593 @@
+\chapter{Microcontroller CPU Design and Implementation}
+
+\section{Introduction}
+CPU design is the process of creating the central processing unit, the core component of a computer responsible for executing instructions and calculations.
+It comprises components like the Control Unit, Arithmetic Logic Unit, and registers, following an Instruction Set Architecture (ISA) that defines the CPU's capabilities.
+CPUs may often employ pipeline architectures, cache memory, and parallel processing to enhance performance.
+In this work, a simple CPU Architecture is devised and designed.
+
+\section{System Design}
+\insertBlockDiagram{CPU Block Diagram Overview}{0.5}{Overview of CPU}{block_diagram:cpu_overview}
+Figure \ref{block_diagram:cpu_overview} describe the block diagram overview for the designed CPU. This diagram seves as a general overview without the complications
+of pipelining. In this diagram, it can be observed that Havard CPU architecture is used, since Instruction Memory and Data Memory are seperated.
+It can also be seen that the flow of data between components, which will be explained below.
+
+
+At start up, instruction fetch operation is performed on Instruction Memory, and at the same time
+increment the program counter by 4. Then, the fetched instruction is decoded and fed into control unit and immediate generator.
+The control unit asserts and clear the control lines necessary for the operation of CPU.
+Immediate generator is resposible for generating corrent immediates required for the operation of ALU.
+Then data in the register file is accessed by the bit fields of the instructions. These data and the immediate
+is used for ALU operations. If branch instructions are used, the program counter is set with the appropriate address value.
+Finally, datas are stored into Data Memory if store instructions are used. The summerized flow diagram can be see in
+Figure \ref{graphic:flow_diagram}.
+
+% TODO: FIX THIS DIAGRAM IF HAVE TIME
+\insertGraphic{CPU Flow Diagram}{0.8}{0}{Flow Diagram of CPU}{graphic:flow_diagram}
+
+\section{Instruction Formats}
+In order to support pipelining and modularity, only certain types of instruction formats are
+supported in RISC-V architectures. The instruction types supported in this work are R-type, I-type, SB-type and S-types.
+The instruction formats can be seen in Figure \ref{graphic:instruction_formats}. It should be noted that several
+instruction fields occupy the same location in the instruction format, which simplify hardware implementation and decoding
+the instructions.
+
+\insertGraphic{instruction_formats}{0.4}{0}{Instruction Formats}{graphic:instruction_formats}
+
+Serveral bit fields highlight in Figure \ref{graphic:instruction_formats} are explained in Table \ref{table:instruction_fields}
+
+\begin{table}[!h]
+    \centering
+    \caption{Instruction Fields Definition}
+    \label{table:instruction_fields}
+    \resizebox{0.8\textwidth}{!}{
+        \begin{tabular}{|l|l|}
+            \hline
+            \textbf{Field Name} & \textbf{Definition}                              \\ \hline
+            opcode              & instruction code                                 \\ \hline
+            rd                  & destination register in Register File            \\ \hline
+            rs1                 & source 1 register in Register File               \\ \hline
+            rs2                 & source 2 register in Register File               \\ \hline
+            immediate/immed     & immediate to be used for ALU operation           \\ \hline
+            funct3              & 3 bits function code to distinguish instructions \\ \hline
+            funct7              & 7 bits function code to distinguish instructions \\ \hline
+        \end{tabular}
+    }
+    
+\end{table}
+\section{Support Instructions}
+The instructions supported in this work will be outlined here along with the instruction type they belong to.
+These instructions are enough to make simple computations, though not complex ones. There are three types all of these
+supported instructions fall into: Arithmetic, Load/Store, Branching Instructions.
+
+\subsection{Arithmetic Instrucitons}
+Arithmetic Instructions can be broken down into two sub types, based on their usage:
+Register Arithmatic and Constant Arithmetic. All arithmetic instructions must be performed
+using registers and constants. If the data to be used is in the Data Memory, load/store instructions
+must be utilized in order to load in the required data into a register.
+
+\paragraph*{Register Arithmetic Instructions}
+These types of instructions utilize two pieces of data stored in registers to perform arithmetic
+operations on them. Then the result is stored back into the register specified.
+
+\begin{table}[!h]
+    \centering
+    \caption{Register Arithmetic Instructions}
+    \label{table:register_arithmatic_instructions}
+    \resizebox{\textwidth}{!}{
+        \begin{tabular}{|l|l|l|c|}
+            \hline
+            \multicolumn{1}{|c|}{\textbf{Instruction}} & \multicolumn{1}{c}{\textbf{Description}}                      & \multicolumn{1}{|c|}{\textbf{Usage}} & \textbf{Instruction Type} \\ \hline
+            add                                        & \makecell{add two registers, rs1 and rs2,\\ then store the result into rd} & add rd rs1 rs2                       & R                         \\ \hline
+            sub                                        & \makecell{subtract rs2 from rs1, \\then store the result into rd }         & sub rd rs1 rs2                       & R                         \\ \hline
+            or                                         & \makecell{binary OR between rs1 and rs2, \\then store the result into rd}  & or rd rs1 rs2                        & R                         \\ \hline
+            and                                        & \makecell{binary AND between rs1 and rs2, \\then store the result into rd} & and rd rs1 rs2                       & R                         \\ \hline
+        \end{tabular}
+    }
+\end{table}
+
+\paragraph*{Constant Arithmetic Instructions}
+Since arithmetic operations with constants are very popular in computations, instructions with
+constant fields are provided. In these instructions, the constants are stored as signed 12 bit integer.
+Thus, they operate the data from one register and the constant, then store the result back into
+specified destination register.
+\begin{table}[!h]
+    \centering
+    \caption{Constant/Immediate Arithmetic Instructions}
+    \label{table:constant_arithmetic_instructions}
+    \resizebox{\textwidth}{!}{
+        \begin{tabular}{|l|l|l|c|}
+            \hline
+            \multicolumn{1}{|c|}{\textbf{Instruction}} & \multicolumn{1}{c}{\textbf{Description}}                                  & \multicolumn{1}{|c|}{\textbf{Usage}} & \textbf{Instruction Type} \\ \hline
+            addi                                       & \makecell{add rs1 and signed constant, \\then store the result into rd }               & addi rd rs1 constant                 & I                         \\ \hline
+            ori                                        & \makecell{binary OR between rs1 and signed constant, \\then store the result into rd}  & ori rd rs1 constant                  & I                         \\ \hline
+            andi                                       & \makecell{binary AND between rs1 and signed constant, \\then store the result into rd} & andi rd rs1 constant                 & I                         \\ \hline
+        \end{tabular}
+    }
+\end{table}
+
+\newpage
+\subsection{Load/Store Instructions}
+As the name suggests, these instructions fall into two categories: Load and Store Instructions.
+These instructions are mainly used to access and interact with the Data Memory in the system.
+Since they interact with Data Memory, a way to specify the address of Data Memory must be provided.
+It is accomplished by using offseting address method. The base address is stored in rs1 while offset constant
+is provided via immediate in the instruction. This way, all the addresses will be covered without the need to
+use a very large immediate, which will require more bits. As can be seen in the instruction format in
+Figure \ref{graphic:instruction_formats}, the immediate fields takes up only 12 bit of data, thus, offset
+addressing will enable full coverage of Data Memory.
+
+\begin{table}[!h]
+    \centering
+    \caption{Load/Store Instructions}
+    \label{table:load/store_instructions}
+    \resizebox{\textwidth}{!}{
+        \begin{tabular}{|l|l|l|c|}
+            \hline
+            \multicolumn{1}{|c|}{\textbf{Instruction}} & \multicolumn{1}{c}{\textbf{Description}}                              & \multicolumn{1}{|c|}{\textbf{Usage}} & \textbf{Type} \\ \hline
+            ld                                         & \makecell{load 32 bit data from data memory \\at location of rs1+offset into rd}  & ld rd rs1 offset                     & I             \\ \hline
+            sd                                         & \makecell{store 32 bit data from rs2 into data memory \\at location of rs1+offset} & sd rs2 rs1 offset                    & S             \\ \hline
+        \end{tabular}
+    }
+\end{table}
+
+\subsection{Branching Instruction}
+Branching instructions are required in order to do decision making within the CPU.
+Notably loops and conditionals. Traditionally, two types of branching instruction are required, namely
+conditional branching and unconditional branching. In this work, only conditional branching
+has been implemented. If a programmer requires unconditional branching, condtional branching with a condition of always true
+can be utilized. The destination instruction address is calculated using the current Program Counter, which is the current instruction address,
+and the offset. This addressing is called PC-relative addressing. Since the source code can be several lines long,
+using this kind of addressing solves the problem of storing large addresses in the offset/immediate fields in the instruction.
+
+When calculating offset for branching, the memory alignment will need to be kept in mind.
+Thus if current instruction wants to jump to previous instruction, that would be the offset of -4.
+However, as per RISC-V standards, this value is halved, since there is a shift-left-once hardware inside the branch calculator.
+Therefore, the actual offset will be -2.
+
+\begin{table}[!h]
+    \centering
+    \caption{Branching Instructions}
+    \label{table:branching_instructions}
+    \resizebox{\textwidth}{!}{
+        \begin{tabular}{|l|l|l|c|}
+            \hline
+            \multicolumn{1}{|c|}{\textbf{Instruction}} & \multicolumn{1}{c}{\textbf{Description}}                                    & \multicolumn{1}{|c|}{\textbf{Usage}} & \textbf{Type} \\ \hline
+            beq                                        & \makecell{branch to the instruction address of \\pc+offset if rs1 and rs2 are equal}     & beq rs1 rs2 offset                   & SB            \\ \hline
+            bne                                        & \makecell{branch to the instruction address of \\pc+offset if rs1 and rs2 are not equal} & bne rs1 rs2 offset                   & SB            \\ \hline
+        \end{tabular}
+    }
+\end{table}
+
+\subsection{Opcodes}
+Below lists the opcodes assigned for each instruction type. Note that there are two subtypes within I-type instructions.
+\begin{table}[!h]
+    \centering
+    \caption{Opcodes for Each Instruction Type}
+    \label{table:opcodes}
+    \begin{tabular}{|c|l|}
+        \hline
+        \textbf{Instruction Type} & \multicolumn{1}{c|}{\textbf{Opcode}} \\ \hline
+        R                         & 0110011                              \\ \hline
+        I - Arithmatic            & 0010011                              \\ \hline
+        I - Load                  & 0000011                              \\ \hline
+        S                         & 0100011                              \\ \hline
+        SB                        & 1100011                              \\ \hline
+    \end{tabular}
+\end{table}
+
+\section{Program Counter}
+Program Counter module is responsible for keeping track of where the current instruction being executed is.
+This module accomplish this task by remembering the address of instruction in the Instruction Memory
+This address is advanced by 4, if the next instruction from the Instruction Memory is required.
+When branching, the desired address of the instruction in the Instruction Memory is set in the
+Program Counter as well, thus forming the integral part of the CPU. The operation such as
+stalling is performed here as well, by stopping the Program Counter from advancing. The reason of advancing the
+Program Counter will be discussed in Instruction Memory Section.
+
+\subsection{Implementation and Operation}
+The source code for Program Counter
+can be accessed using \url{https://github.com/kaung-minkhant/risc-v-deca/blob/master/cpu/pc_container.vhd}.
+The overall block diagram can be seen in Figure \ref{block_diagram:pc}
+\insertBlockDiagram{pc_block_diagram}{1}{Block Diagram of Program Counter}{block_diagram:pc}
+
+\begin{table}[!h]
+    \centering
+    \caption{Input/Output of Program Counter}
+    \label{table:io_pc}
+    \resizebox{0.7\textwidth}{!}{
+        \begin{tabular}{|l|l|l|}
+            \hline
+            \multicolumn{1}{|c|}{\textbf{Signal}} & \multicolumn{1}{c|}{\textbf{Description}} & \multicolumn{1}{c|}{\textbf{Port}} \\ \hline
+            branch\_target                        & the address of instruction to branch to   & Input                              \\ \hline
+            stall                                 & stalling signal                           & Input                              \\ \hline
+            branch\_condition                     & indicates if it is branch instruction     & Input                              \\ \hline
+            controls                              & branch and load                           & Input                              \\ \hline
+            reset\_n                              & system reset                              & Input                              \\ \hline
+            clk                                   & CPU clock                                 & Input                              \\ \hline
+            clk\_main                             & system clock                              & Input                              \\ \hline
+            pc\_address                           & Address of current instruction            & Output                             \\ \hline
+        \end{tabular}
+    }
+\end{table}
+
+
+\paragraph*{Operation}
+By default, with every rising edge of the CPU Clock, the PC is advanced by 4. However, if \io{branch\_condition}
+is asserted, the pc will take \io{branch\_target} into its internal buffer, but not set it as output.
+Only when the \sig{branch} signal within \io{controls} is asserted, the \io{branch\_target} is
+asserted as output on \io{pc\_address}. Otherwise, the output \io{pc\_address} will be the pc which is
+advanced by 4. When \io{stall} is asserted, the Program Counter is `freezed' at current instruction address.
+
+\section{Instruction Memory}
+The Instruction Memory is responsible for storing the instructions to be executed.
+In order to simplify the instruction decoding and further extenstion of the cpu, the byte addressing is used.
+In byte addressing, the address incremented by each byte.
+In the 32 bit system, it means 32 bit instructions are seperated by 4 bytes.
+If the first instruction is located at address 0, the next instruction will be at address 4.
+Thus the Program Counter is advanced by 4. This is called memory alignment, in this case, it is aligned with 32 bit.
+
+\subsection{Implementation and Operation}
+The source code for Program Counter
+can be accessed using \url{https://github.com/kaung-minkhant/risc-v-deca/blob/master/cpu/instruction_memory.vhd}.
+The overall block diagram can be seen in Figure \ref{block_diagram:im}
+\insertBlockDiagram{im_block_diagram}{1}{Block Diagram of Instruction Memory}{block_diagram:im}
+
+\begin{table}[!h]
+    \centering
+    \caption{Input/Output of Instruction Memory}
+    \label{table:io_im}
+    \resizebox{0.7\textwidth}{!}{
+        \begin{tabular}{|l|l|l|}
+            \hline
+            \multicolumn{1}{|c|}{\textbf{Signal}} & \multicolumn{1}{c|}{\textbf{Description}} & \multicolumn{1}{c|}{\textbf{Port}} \\ \hline
+            instruction\_address                  & address of the instruction                & Input                              \\ \hline
+            instruction                           & instruction at current address            & Output                             \\ \hline
+            clk                                   & CPU clock                                 & Input                              \\ \hline
+            reset\_n                              & system reset                              & Input                              \\ \hline
+        \end{tabular}
+    }
+\end{table}
+
+\paragraph*{Operation}
+The Instruction Memory only operate as a ROM module.
+The instruction to be executed will be loaded in the Instruction Memory when compiling the CPU.
+The instruction at the current PC on \io{instruction\_address} will be available on \io{instruction}
+
+\section{Register File}
+The Register File is responsible for storing all the necessary data required by the CPU.
+As stated in the supported instructions, all arithmetic operations will be done on the data stored within the Register File.
+As per the RISC-V specification, there are 32 registers. While noting these registers, the prefix `x' must be used.
+For example, register 1 will be x1. Register 0, x0, is tied to 0, due to the popular usage of the constant 0.
+Since most of the instructions have two source register as can be seen in Figure \ref{graphic:instruction_formats}, two address ports and two output data ports are required.
+One address port and input data port is needed for destination register. The Register File can be controlled whether to write based on the control signals.
+
+\subsection{Implementation and Operation}
+The source code for Register FIle
+can be accessed using \url{https://github.com/kaung-minkhant/risc-v-deca/blob/master/cpu/register_file.vhd}.
+The overall block diagram can be seen in Figure \ref{block_diagram:rf}
+\insertBlockDiagram{rf_block_diagram}{0.8}{Block Diagram of Register File}{block_diagram:rf}
+
+\begin{table}[!h]
+    \centering
+    \caption{Input/Output of Register File}
+    \label{table:io_rf}
+    \resizebox{0.7\textwidth}{!}{
+        \begin{tabular}{|l|l|l|}
+            \hline
+            \multicolumn{1}{|c|}{\textbf{Signal}} & \multicolumn{1}{c|}{\textbf{Description}} & \multicolumn{1}{c|}{\textbf{Port}} \\ \hline
+            rs1                                   & source register 1                         & Input                              \\ \hline
+            rs2                                   & source register 2                         & Input                              \\ \hline
+            rd                                    & destination register                      & Input                              \\ \hline
+            rd\_data                              & data to write for destination register    & Input                              \\ \hline
+            rw                                    & write control                             & Input                              \\ \hline
+            rs1\_data                             & source register 1 data                    & Output                             \\ \hline
+            rs2\_data                             & source register 2 data                    & Ouput                              \\ \hline
+            clk                                   & CPU clock                                 & Input                              \\ \hline
+            reset\_n                              & system reset                              & Input                              \\ \hline
+        \end{tabular}
+    }
+\end{table}
+
+\paragraph*{Operation}
+The register operates on the principle called write-before-read, which write the data first before attempting to read if the source and destination register are the same.
+\io{rs1} and \io{rs2} receive the addresses of the source registers from the instruction, while \io{rd} receives the address of the destination register.
+The file itseft is constructed as an array within the Register File. The read portion of the Register File is not synchronized.
+The read data is available at all time regardless of the clock and control on \io{rs1\_data} and \io{rs2\_data}.
+The write, however, is synchronized to the falling edge of CPU clock.
+When \io{rw} is asserted, on the falling edge of the CPU clock, the data on \io{rd\_data} is written into the specified address on \io{rd}.
+
+Normally, the result from the ALU is stored into Register File.
+In order to support Load Instruction, which load the data from Data Memory into Register File, a multiplexer is implemented on \io{rd\_data}.
+It is placed outside of the Register File and can be controlled by Control Unit.
+
+\section{Immediate Generator}
+Immediate Generator is responsible for extracting proper immediate from the instructions to be used as constants and offsets.
+Since all data need to be aligned to 32 bit, sign extension is performed on the extracted data.
+Based on each instruction, immediate fields from different parts of the instruction is extracted.
+
+\subsection{Implementation and Operation}
+The source code for Immediate Generator
+can be accessed using \url{https://github.com/kaung-minkhant/risc-v-deca/blob/master/cpu/immediate_generator.vhd}.
+The overall block diagram can be seen in Figure \ref{block_diagram:ig}
+\insertBlockDiagram{ig_block_diagram}{1}{Block Diagram of Immediate Generator}{block_diagram:ig}
+
+\begin{table}[!h]
+    \centering
+    \caption{Input/Output of Immediate Generator}
+    \label{table:io_ig}
+    \resizebox{0.6\textwidth}{!}{
+        \begin{tabular}{|l|l|l|}
+            \hline
+            \multicolumn{1}{|c|}{\textbf{Signal}} & \multicolumn{1}{c|}{\textbf{Description}} & \multicolumn{1}{c|}{\textbf{Port}} \\ \hline
+            Instruction                           & Instructioon                              & Input                              \\ \hline
+            Immediate                             & Immediate/Constant/Offset                 & Output                             \\ \hline
+        \end{tabular}
+    }
+\end{table}
+
+\paragraph*{Operation}
+Since the instruction formats are limited, the extraction of immediate fields from \io{Instruction} are not complicated.
+Depending on opcode, funct3 and funct3 fields, the immediate fields are extracted and sign extended and set the output on \io{Immediate}.
+
+\section{Arithmetic Logic Unit}
+In a CPU, Arithmetic Logic Unit is the heart of the system.
+It handles all of the arithmetic operations that is to be done on the data.
+Multiple operations are supported and all of these operation are done in signed integer notation.
+The following operations are supported: binary and, binary or, add and substract.
+
+\subsection{Implementation and Operation}
+The source code for Arithmetic Logic Unit
+can be accessed using \url{https://github.com/kaung-minkhant/risc-v-deca/blob/master/cpu/alu.vhd}.
+The overall block diagram can be seen in Figure \ref{block_diagram:alu}
+\insertBlockDiagram{alu_block_diagram}{1}{Block Diagram of Arithmetic Logic Unit}{block_diagram:alu}
+
+\begin{table}[!h]
+    \centering
+    \caption{Input/Output of Arithmetic Logic Unit}
+    \label{table:io_alu}
+    \resizebox{0.5\textwidth}{!}{
+        \begin{tabular}{|l|l|l|}
+            \hline
+            \multicolumn{1}{|c|}{\textbf{Signal}} & \multicolumn{1}{c|}{\textbf{Description}} & \multicolumn{1}{c|}{\textbf{Port}} \\ \hline
+            A                                     & Input A                                   & Input                              \\ \hline
+            B                                     & Input B                                   & Input                              \\ \hline
+            operation                             & Operation of ALU                          & Input                              \\ \hline
+            result                                & ALU result                                & Output                             \\ \hline
+            clk                                   & CPU clock                                 & Input                              \\ \hline
+            reset\_n                              & system reset                              & Input                              \\ \hline
+        \end{tabular}
+    }
+\end{table}
+
+\paragraph*{Operation}
+The 32 bit ALU can be broken down into a single 1 bit ALU.
+This 1 bit ALU performs the specified ALU Operation on the given data of \io{A} and \io{B}.
+The carry bits are carry away into the next 1 bit ALU in order to fully build the 32 bit ALU.
+Within this 1 bit ALU, the results are set to the output based on the operation code, \io{operation}, set by the Control Unit.
+The list of operation codes support in this ALU can be seen in Table \ref{table:alu_operation}. All of the results
+from all 32 1-bit ALUs are aggregated into the final result of the ALU, which is \io{result}.
+\begin{table}[!h]
+    \centering
+    \caption{Support ALU Operation and Their Operation Codes}
+    \label{table:alu_operation}
+    \resizebox{0.4\textwidth}{!}{
+        \begin{tabular}{|l|l|}
+            \hline
+            \multicolumn{1}{|c|}{\textbf{Operation}} & \multicolumn{1}{c|}{\textbf{ALU Operation}} \\ \hline
+            00000                                    & and                                         \\ \hline
+            00001                                    & or                                          \\ \hline
+            00010                                    & add                                         \\ \hline
+            01010                                    & sub                                         \\ \hline
+        \end{tabular}
+    }
+\end{table}
+
+To perform operations with immediates, a multiplexer is inserted on the \io{B} which can be controlled from the Control Unit.
+This multiplex is placed outside of the ALU module.
+
+
+\section{Data Memory}
+Data Memory is necessary for storing user data during program execution.
+Programmer can use all registers from Register File, however, in order to implement data structures like arrays, Data Memory with a large memory space is required.
+Data Memory is advantageous when storing many different data.
+Programmer should only use registers to store data required for current computation.
+Other results that may or may not be used on different parts of the program should be stored in Data Memory.
+Data Memory is also required to create interfaces for Peripherals.
+Some addresses of Data Memory can be reserved to create communtion between CPU and Peripherals
+
+\subsection{Implementation and Operation}
+The source code for Data Memory
+can be accessed using \url{https://github.com/kaung-minkhant/risc-v-deca/blob/master/cpu/data_memory.vhd}.
+The overall block diagram can be seen in Figure \ref{block_diagram:dm}
+\insertBlockDiagram{dm_block_diagram}{0.8}{Block Diagram of Data Memory}{block_diagram:dm}
+
+\begin{table}[!h]
+    \centering
+    \caption{Input/Output of Data Memory}
+    \label{table:io_dm}
+    \resizebox{\textwidth}{!}{
+        \begin{tabular}{|l|l|l|l|}
+            \hline
+            \multicolumn{1}{|c|}{\textbf{Signal}} & \multicolumn{1}{c|}{\textbf{Description}}                       & \multicolumn{1}{c|}{\textbf{Constituants}} & \multicolumn{1}{c|}{\textbf{Port}} \\ \hline
+            address                               & address of data in Data Memory to be written or read            &                                            & Input                              \\ \hline
+            write\_data                           & data to be written                                              &                                            & Input                              \\ \hline
+            write                                 & write signal                                                    &                                            & Input                              \\ \hline
+            read                                  & read signal                                                     &                                            & Input                              \\ \hline
+            read\_data                            & data read from the Data Memory                                  &                                            & Output                             \\ \hline
+            \multirow{3}{*}{general\_pin}         & \multirow{3}{*}{the ports required for interfacing General I/O} & general\_pin\_dir                          & Output                             \\ \cline{3-4}
+                                                  &                                                                 & general\_pin\_write                        & Output                             \\ \cline{3-4}
+                                                  &                                                                 & general\_pin\_read                         & Input                              \\ \hline
+            \multirow{5}{*}{uart1}                & \multirow{5}{*}{the ports required for interfacing UART 1}      & uart1\_flags                               & Input                              \\ \cline{3-4}
+                                                  &                                                                 & uart1\_controls                            & Output                             \\ \cline{3-4}
+                                                  &                                                                 & uart1\_data\_write                         & Output                             \\ \cline{3-4}
+                                                  &                                                                 & uart1\_data\_read                          & Input                              \\ \cline{3-4}
+                                                  &                                                                 & uart1\_data\_32\_read                      & input                              \\ \hline
+            \multirow{4}{*}{spi1}                 & \multirow{4}{*}{the ports required for interfacing SPI 1}       & spi1\_flags                                & Input                              \\ \cline{3-4}
+                                                  &                                                                 & spi1\_controls                             & Output                             \\ \cline{3-4}
+                                                  &                                                                 & spi1\_data\_write                          & Output                             \\ \cline{3-4}
+                                                  &                                                                 & spi1\_data\_read                           & Input                              \\ \hline
+            \multirow{5}{*}{i2c1}                 & \multirow{5}{*}{the ports required for interfacing I2C 1}       & i2c1\_flags                                & Input                              \\ \cline{3-4}
+                                                  &                                                                 & i2c1\_controls                             & Output                             \\ \cline{3-4}
+                                                  &                                                                 & i2c1\_data\_read                           & Input                              \\ \cline{3-4}
+                                                  &                                                                 & i2c1\_data\_write                          & Output                             \\ \cline{3-4}
+                                                  &                                                                 & i2c1\_addr\_write                          & Output                             \\ \hline
+        \end{tabular}
+    }
+\end{table}
+\paragraph*{Operation}
+In order to avoid some stalling problems when performing pipelining, the behavior of Data Memory is varied from the traditional Data Memory.
+The normal behavior of Data Memory is to write and read data only on rising or falling edge of the clock, simplifying the hardware.
+However, this approach suffer performance when performing pipelining. This will be explored in Pipeline section.
+
+
+
+In this work, Data Memory is implemented to write on rising edge and read on the falling edge of the clock.
+However, they are being controlled by two other signals, \io{write} and \io{read}.
+When \io{write} is asserted on the rising edge of the clock, the data on \io{write\_data} at the given address on \io{address}.
+When \io{read} is asserted on the falling edge of the clock, the data at the given address \io{address} is read, and put on \io{read\_data}.
+Otherwise, the previously read data is retained.
+Interfaces for connecting to Peripherals have been provided and they are stored and set output to different parts of the Data Memory.
+Data Memory Mapping of the peripherals is provided when discussing peripheral connection with Data Memory.
+
+\section{Branching Hardware}
+In order to properly branch and to support different types of branching, this Branching Hardware is provided.
+The responsibility of this Branching Hardware is to perform required comparisims and make desicions.
+
+\subsection{Implementation and Operation}
+The source code for Branching Hardware
+can be accessed using \url{https://github.com/kaung-minkhant/risc-v-deca/blob/master/cpu/branch_controller.vhd}.
+The overall block diagram can be seen in Figure \ref{block_diagram:bh}
+\insertBlockDiagram{bh_block_diagram}{0.8}{Block Diagram of Branching Hardware}{block_diagram:bh}
+
+\begin{table}[!h]
+    \centering
+    \caption{Input/Output of Branching Hardware}
+    \label{table:io_bh}
+    \resizebox{0.8\textwidth}{!}{
+        \begin{tabular}{|l|l|l|}
+            \hline
+            \multicolumn{1}{|c|}{\textbf{Signal}} & \multicolumn{1}{c|}{\textbf{Description}}     & \multicolumn{1}{c|}{\textbf{Port}} \\ \hline
+            funct3                                & 3 Bit Function field from instruction         & Input                              \\ \hline
+            branch\_condition                     & branch signal indicating a branch instruction & Input                              \\ \hline
+            opcode                                & Opcode field from instruction                 & Input                              \\ \hline
+            rs1\_data                             & Data from rs1 register                        & Input                              \\ \hline
+            rs2\_data                             & Data from rs2 register                        & Input                              \\ \hline
+            branch                                & Branch signal indicating to branch            & Output                             \\ \hline
+            clk                                   & CPU clock                                     & Input                              \\ \hline
+            clk\_main                             & system clock                                  & Input                              \\ \hline
+            reset\_n                              & system reset                                  & Input                              \\ \hline
+        \end{tabular}
+    }
+\end{table}
+
+\paragraph*{Operation}
+This Branching Hardware takes in the funct3 field from instruction on \io{funct3} to determine which comparisim to make.
+The data on \io{rs1\_data} and \io{rs2\_data} are used to make decisions from branches.
+In this work, two branching comparisims are support, equal and not equal comparisims.
+Once the desicion is made, the result is put on \io{branch}.
+The hardware asserts \io{branch} to make a branch and clears \io{branch} to not make a branch.
+This Branch Hardware is also synchronized with the clock to provide branching signal at the right instant.
+
+\section{Control Unit}
+The Control Unit is the brain of the CPU.
+The responsibility of Control Unit is instruction decoding and setting necessary control signals to perform various tasks within the system.
+
+\subsection{Implementation and Operation}
+The source code for Control Unit
+can be accessed using \url{https://github.com/kaung-minkhant/risc-v-deca/blob/master/cpu/control_unit.vhd}.
+The overall block diagram can be seen in Figure \ref{block_diagram:cu}
+\insertBlockDiagram{cu_block_diagram}{1}{Block Diagram of Control Unit}{block_diagram:cu}
+
+\begin{table}[!h]
+    \centering
+    \caption{ Input/Output of Control Unit}
+    \label{table:io_cu}
+    \resizebox{0.7\textwidth}{!}{
+        \begin{tabular}{|l|l|l|}
+            \hline
+            \multicolumn{1}{|c|}{\textbf{Signal}} & \multicolumn{1}{c|}{\textbf{Description}}    & \multicolumn{1}{c|}{\textbf{Port}} \\ \hline
+            opcode                                & Opcode field from instructions               & Input                              \\ \hline
+            stall                                 & Stall signal for stalling                    & Input                              \\ \hline
+            control\_string                       & controls signals required to control the CPU & Output                             \\ \hline
+        \end{tabular}
+    }
+\end{table}
+
+
+\paragraph*{Operation}
+This Control Unit is not synchronized to clk, since the PC which provided the address for the instruction is already synchronized.
+This simplifies the hardware to be implemented.
+The instruction decoding is done based on the opcode field of the instruction on \io{opcode}.
+The decoded instruction will set the required controls on \io{control\_string}.
+If \io{stall} is asserted, the \io{control\_string} is set to zero, to stall the CPU.
+The value that \io{control\_string} was assigned based on instrutions can be seen in Table \ref{table:control_strings}.
+The descriptions of the control signal are described in Table \ref{table:control_description}
+\begin{table}[!h]
+    \centering
+    \caption{Controls Strings from Control Unit}
+    \label{table:control_strings}
+    \resizebox{\textwidth}{!}{
+        \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            \textbf{\begin{tabular}[c]{@{}c@{}}Instruction\\ Type\end{tabular}} & \textbf{pc\_controls} & \textbf{\begin{tabular}[c]{@{}c@{}}register\_file\_\\ rw\end{tabular}} & \textbf{alu\_src} & \textbf{alu\_op} & \textbf{memtoreg} & \textbf{write} & \textbf{read} & \textbf{branch\_condition} \\ \hline
+            R                                   & 1                     & 1                                   & 0                 & 00               & 0                 & 0              & 0             & 0                          \\ \hline
+            I - Arithmetic                      & 1                     & 1                                   & 1                 & 01               & 0                 & 0              & 0             & 0                          \\ \hline
+            I - Load                            & 1                     & 1                                   & 1                 & 01               & 1                 & 0              & 1             & 0                          \\ \hline
+            SB                                  & 1                     & 0                                   & 0                 & 11               & 0                 & 0              & 0             & 1                          \\ \hline
+            S                                   & 1                     & 0                                   & 1                 & 01               & 0                 & 1              & 0             & 0                          \\ \hline
+        \end{tabular}
+    }
+\end{table}
+
+\begin{table}[!h]
+    \centering
+    \caption{Control Signal Description}
+    \label{table:control_description}
+    \resizebox{0.8\textwidth}{!}{
+        \begin{tabular}{|l|l|}
+            \hline
+            \multicolumn{1}{|c|}{\textbf{Control Signal}} & \multicolumn{1}{c|}{\textbf{Description}}                 \\ \hline
+            load                                          & Program Counter Load Signal to advance PC                 \\ \hline
+            register\_file\_rw                            & rw control signal for writing into Register File          \\ \hline
+            alu\_src                                      & B data source for ALU                                     \\ \hline
+            alu\_op                                       & ALU Operation                                             \\ \hline
+            memtoreg                                      & To select which data is to be written into Register File  \\ \hline
+            write                                         & write signal for Data Memory                              \\ \hline
+            read                                          & read signal for Data Memory                               \\ \hline
+            branch\_condition                             & to indicate the current instruction is branch instruction \\ \hline
+        \end{tabular}
+    }
+\end{table}
+
+\newpage
+\section{Clock Divider}
+Clock Divider is responsible for reducing the system clock to a desired CPU clock.
+One of the reason that needs the Clock Divder is that, some module will only work on a specific clock frequency to ensure integraty.
+\subsection{Implementation and Operation}
+The source code for Clock Divider
+can be accessed using \url{https://github.com/kaung-minkhant/risc-v-deca/blob/master/cpu/clk_divider.vhd}.
+The overall block diagram can be seen in Figure \ref{block_diagram:cd}.
+\insertBlockDiagram{cd_block_diagram}{1}{Block Diagram of Clock Divider}{block_diagram:cd}
+
+\begin{table}[!h]
+    \centering
+    \caption{Input/Output of Clock Divider}
+    \label{table:io_cd}
+    \resizebox{0.4\textwidth}{!}{
+        \begin{tabular}{|l|l|l|}
+            \hline
+            \multicolumn{1}{|c|}{\textbf{Signal}} & \multicolumn{1}{c|}{\textbf{Description}} & \multicolumn{1}{c|}{\textbf{Port}} \\ \hline
+            clk                                   & system clock                              & Input                              \\ \hline
+            reset\_n                              & system reset                              & Input                              \\ \hline
+            clk\_o                                & CPU clock                                 & Output                             \\ \hline
+        \end{tabular}
+    }
+\end{table}
+\newpage
+\paragraph*{Operation}
+The Clock Divider works on a simple principle.
+On every rising edge of the system clock, the internal counter is increment.
+Once the counter reached the desired frequency count, the output simply needs to be toggled between High and Low, creating a clock of desired frequency.
+
+\input{sections/pipeline.tex}
