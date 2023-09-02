@@ -1,0 +1,73 @@
+\section{Input/Output (IO) Module}
+I/O Module is used to communicate with the outside world.
+It contains input ports, which will take in sensor signals, and output ports, which will drive other devices.
+It also features communication ports, so that the microcontroller can communicate with different type of complex sensor systems.
+This will enable microcontroller to talk to other systems.
+Thus, this module is one of the core module of Peripherals.
+
+This module is structured into two parts: general I/O and special I/O.
+General I/O features normal inputs and outputs. They can take in digital inputs such as switches, and output digital logic signals.
+Special I/O features other families of peripherals, such as communication protocols like SPI, UART, TIMERS and other modules that might be added
+in the future.
+
+In order to communicate with CPU, this module is connected to CPU via Data Memory in CPU as mentioned in CPU section.
+All the ports required to communicate between CPU and peripherals is provided.
+
+
+\subsection{Block Diagram and I/O}
+\insertBlockDiagram{io_block_diagram}{1}{I/O Module Block Diagram}{block_diagram:io}
+
+\begin{table}[!h]
+    \centering
+    \caption{Input/Output Table of I/O Module}
+    \label{table:io_io}
+    \resizebox{\textwidth}{!}{
+        \begin{tabular}{|ll|l|l|}
+            \hline
+            \multicolumn{1}{|c|}{\textbf{Signal}}              & \multicolumn{1}{c|}{\textbf{Constituents}} & \multicolumn{1}{c|}{\textbf{Description}}          & \multicolumn{1}{c|}{\textbf{Port}} \\ \hline
+            \multicolumn{2}{|l|}{general\_io}                  & general io port connected to outside world & Input/Output                                                                            \\ \hline
+            \multicolumn{2}{|l|}{special\_io}                  & special io port connected to outside world & Input/Output                                                                            \\ \hline
+            \multicolumn{1}{|l|}{\multirow{3}{*}{general\_io}} & general\_io\_dir                           & direction of General I/O ( 0 = output, 1 = input ) & Input                              \\ \cline{2-4}
+            \multicolumn{1}{|l|}{}                             & general\_io\_data\_in                      & data to be output by general io                    & Input                              \\ \cline{2-4}
+            \multicolumn{1}{|l|}{}                             & general\_io\_data\_out                     & data read from general io                          & Output                             \\ \hline
+            \multicolumn{1}{|l|}{\multirow{5}{*}{uart1}}       & uart1\_controls                            & control bits of UART1                              & Input                              \\ \cline{2-4}
+            \multicolumn{1}{|l|}{}                             & uart1\_flags                               & flag bits of UART1                                 & Output                             \\ \cline{2-4}
+            \multicolumn{1}{|l|}{}                             & uart1\_data\_in                            & data to be transmitted by UART1                    & Input                              \\ \cline{2-4}
+            \multicolumn{1}{|l|}{}                             & uart1\_data\_out                           & 8 bit data read by UART1                           & Output                             \\ \cline{2-4}
+            \multicolumn{1}{|l|}{}                             & uart1\_data\_out\_32                       & 32 bit data read by UART1                          & Output                             \\ \hline
+            \multicolumn{1}{|l|}{\multirow{4}{*}{spi1}}        & spi1\_controls                             & control bits for SPI1                              & Input                              \\ \cline{2-4}
+            \multicolumn{1}{|l|}{}                             & spi1\_flags                                & flag bits for SPI1                                 & Output                             \\ \cline{2-4}
+            \multicolumn{1}{|l|}{}                             & spi1\_data\_in                             & data to be transmitted by SPI1                     & Input                              \\ \cline{2-4}
+            \multicolumn{1}{|l|}{}                             & spi1\_data\_out                            & data read by SPI1                                  & Output                             \\ \hline
+            \multicolumn{1}{|l|}{\multirow{5}{*}{i2c1}}        & i2c1\_controls                             & control bits for I2C1                              & Input                              \\ \cline{2-4}
+            \multicolumn{1}{|l|}{}                             & i2c1\_flags                                & flag bits for I2C1                                 & Output                             \\ \cline{2-4}
+            \multicolumn{1}{|l|}{}                             & i2c1\_data\_in                             & data to be transmitted by I2C1                     & Input                              \\ \cline{2-4}
+            \multicolumn{1}{|l|}{}                             & i2c1\_data\_out                            & data read by I2C1                                  & Output                             \\ \cline{2-4}
+            \multicolumn{1}{|l|}{}                             & i2c1\_addr                                 & address to transmitted by I2C1                     & Input                              \\ \hline
+            \multicolumn{2}{|l|}{clk}                          & CPU clock                                  & Input                                                                                   \\ \hline
+            \multicolumn{2}{|l|}{clk\_main}                    & system clock                               & Input                                                                                   \\ \hline
+            \multicolumn{2}{|l|}{reset\_n}                     & system reset                               & Input                                                                                   \\ \hline
+        \end{tabular}
+    }
+\end{table}
+
+\newpage
+\subsection{Usage}
+This module is an extensible module. If designers decided to add more functinalities that would work with the outside world,
+this module will need to be modified to add new modules and related ports.
+Currently one of SPI, I$^2$C, UART and general io modules are added.
+Furthermore, the new module ports will need to be mapped in Data Memory of CPU as well.
+\subsubsection{Initialization}
+The system frequency must be initiated when using the module, since some of the connected module use that infomation to calculate their own clocks.
+
+\newpage
+\subsection{Architecture and Implementation}
+Special I/O modules such as SPI and I$^2$C are brought in as portable modules in this I/O module by simply instanctiating them.
+The architecture of those modules have be explored above.
+
+As for general I/O, the heart and soul of it is iopin module, and source code can be found in \url{https://github.com/kaung-minkhant/risc-v-deca/blob/master/peripherals/io/iopin.vhd}.
+This module is responsible for retriving pin direction data, the date to write, and reading data.
+The read and write are synchronized to system clock.
+Thus the sensor values at the input pins are sampled at system clock frequency.
+If the direction is 1 (input), the pin is released from drivers, which means setting it as tristate, so that the correct data can be read. 
+

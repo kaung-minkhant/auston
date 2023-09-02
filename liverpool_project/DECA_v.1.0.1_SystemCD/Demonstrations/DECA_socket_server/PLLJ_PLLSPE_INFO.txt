@@ -1,0 +1,10 @@
+PLL_Name	DECA_Qsys:u0|DECA_Qsys_mem_if_ddr3_emif:mem_if_ddr3_emif|DECA_Qsys_mem_if_ddr3_emif_pll0:pll0|altpll:upll_memphy|altpll_t0j3:auto_generated|pll1
+PLLJITTER	32
+PLLSPEmax	84
+PLLSPEmin	-53
+
+PLL_Name	DECA_Qsys:u0|DECA_Qsys_pll:pll|DECA_Qsys_pll_altpll_vdm2:sd1|pll7
+PLLJITTER	30
+PLLSPEmax	84
+PLLSPEmin	-53
+

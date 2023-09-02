@@ -1,0 +1,256 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dA:/Project/RISC-V RV32E Micro/peripherals/io
+Eio
+Z0 w1692177098
+Z1 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+Z4 d/home/polar/Documents/liverpool_project/risc-v-micro-master/peripherals/io
+Z5 8/home/polar/Documents/liverpool_project/risc-v-micro-master/peripherals/io/io.vhd
+Z6 F/home/polar/Documents/liverpool_project/risc-v-micro-master/peripherals/io/io.vhd
+l0
+L5
+VmbUSIiP6cNO<C>AH2EmWZ3
+!s100 <nZdVg_lY>d;^PnZlL>]:0
+Z7 OV;C;10.5b;63
+32
+Z8 !s110 1692507476
+!i10b 1
+Z9 !s108 1692507476.000000
+Z10 !s90 -reportprogress|300|-work|work|/home/polar/Documents/liverpool_project/risc-v-micro-master/peripherals/io/io.vhd|
+Z11 !s107 /home/polar/Documents/liverpool_project/risc-v-micro-master/peripherals/io/io.vhd|
+!i113 1
+Z12 o-work work
+Z13 tExplicit 1 CvgOpt 0
+Aarch
+R1
+R2
+R3
+DEx4 work 2 io 0 22 mbUSIiP6cNO<C>AH2EmWZ3
+l164
+L52
+V15a_QU42W5AO?;<4J>bE02
+!s100 AQ^?U<^29X[0FcF1nRn2i0
+R7
+32
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13
+Eiopin
+Z14 w1692115435
+R1
+R2
+R3
+R4
+Z15 8/home/polar/Documents/liverpool_project/risc-v-micro-master/peripherals/io/iopin.vhd
+Z16 F/home/polar/Documents/liverpool_project/risc-v-micro-master/peripherals/io/iopin.vhd
+l0
+L5
+VnIIkmSn:mfcH7zYb51gDK0
+!s100 __OH?>flRfm^LMJccR>>H0
+R7
+32
+R8
+!i10b 1
+R9
+Z17 !s90 -reportprogress|300|-work|work|/home/polar/Documents/liverpool_project/risc-v-micro-master/peripherals/io/iopin.vhd|
+Z18 !s107 /home/polar/Documents/liverpool_project/risc-v-micro-master/peripherals/io/iopin.vhd|
+!i113 1
+R12
+R13
+Aarch
+R1
+R2
+R3
+DEx4 work 5 iopin 0 22 nIIkmSn:mfcH7zYb51gDK0
+l23
+L21
+VX8znoo3zSJZVl2mVP5Mj]3
+!s100 ;3[ncVm=PEWlR@NaDUeVz3
+R7
+32
+R8
+!i10b 1
+R9
+R17
+R18
+!i113 1
+R12
+R13
+Euart
+Z19 w1691816105
+R1
+R2
+R3
+R4
+Z20 8/home/polar/Documents/liverpool_project/risc-v-micro-master/peripherals/uart/uart.vhd
+Z21 F/home/polar/Documents/liverpool_project/risc-v-micro-master/peripherals/uart/uart.vhd
+l0
+L5
+VkaTLgKZE8d9X;6<0QHi790
+!s100 eg>Kb697`G=zdf0`KZdW;3
+R7
+32
+Z22 !s110 1692509299
+!i10b 1
+Z23 !s108 1692509298.000000
+Z24 !s90 -reportprogress|300|-work|work|/home/polar/Documents/liverpool_project/risc-v-micro-master/peripherals/uart/uart.vhd|
+Z25 !s107 /home/polar/Documents/liverpool_project/risc-v-micro-master/peripherals/uart/uart.vhd|
+!i113 1
+R12
+R13
+Artl
+R1
+R2
+R3
+DEx4 work 4 uart 0 22 kaTLgKZE8d9X;6<0QHi790
+l59
+L33
+V=n_Ea>HNFAM3c9WB?S6Ie3
+!s100 ^Y_eC3obQ7^>kKO>nEfnN2
+R7
+32
+R22
+!i10b 1
+R23
+R24
+R25
+!i113 1
+R12
+R13
+Euart_container
+Z26 w1691826767
+R1
+R2
+R3
+R4
+Z27 8/home/polar/Documents/liverpool_project/risc-v-micro-master/peripherals/uart/uart_container.vhd
+Z28 F/home/polar/Documents/liverpool_project/risc-v-micro-master/peripherals/uart/uart_container.vhd
+l0
+L5
+VZm0mQIfbmIDbjnCBzC<e[2
+!s100 lI]N^mIP:E47C6PWDeWK[0
+R7
+32
+R22
+!i10b 1
+Z29 !s108 1692509299.000000
+Z30 !s90 -reportprogress|300|-work|work|/home/polar/Documents/liverpool_project/risc-v-micro-master/peripherals/uart/uart_container.vhd|
+Z31 !s107 /home/polar/Documents/liverpool_project/risc-v-micro-master/peripherals/uart/uart_container.vhd|
+!i113 1
+R12
+R13
+Aarch
+R1
+R2
+R3
+DEx4 work 14 uart_container 0 22 Zm0mQIfbmIDbjnCBzC<e[2
+l65
+L31
+ViO78Bb[IU[5_8ClfS`NSE2
+!s100 :QOdFJ^G>]fMe6bAd=T4f1
+R7
+32
+R22
+!i10b 1
+R29
+R30
+R31
+!i113 1
+R12
+R13
+Euart_rx
+Z32 w1688107372
+R1
+R2
+R3
+R4
+Z33 8/home/polar/Documents/liverpool_project/risc-v-micro-master/peripherals/uart/uart_rx.vhd
+Z34 F/home/polar/Documents/liverpool_project/risc-v-micro-master/peripherals/uart/uart_rx.vhd
+l0
+L5
+V3?fEeH5314lnYiFE2:nen3
+!s100 Ab:ag31DPzGR@WKa3IL9[2
+R7
+32
+R22
+!i10b 1
+R29
+Z35 !s90 -reportprogress|300|-work|work|/home/polar/Documents/liverpool_project/risc-v-micro-master/peripherals/uart/uart_rx.vhd|
+Z36 !s107 /home/polar/Documents/liverpool_project/risc-v-micro-master/peripherals/uart/uart_rx.vhd|
+!i113 1
+R12
+R13
+Artl
+R1
+R2
+R3
+DEx4 work 7 uart_rx 0 22 3?fEeH5314lnYiFE2:nen3
+l28
+L19
+VCSakOl7I]Jc0igK@lVX9Z3
+!s100 5j4lUZ^[fB[74]5K;CCg53
+R7
+32
+R22
+!i10b 1
+R29
+R35
+R36
+!i113 1
+R12
+R13
+Euart_tx
+R32
+R1
+R2
+R3
+R4
+Z37 8/home/polar/Documents/liverpool_project/risc-v-micro-master/peripherals/uart/uart_tx.vhd
+Z38 F/home/polar/Documents/liverpool_project/risc-v-micro-master/peripherals/uart/uart_tx.vhd
+l0
+L5
+VS;[[I;Y4QcJLLS`9KgiYW0
+!s100 @4=6PPkbfPBOBU1[fKZC[3
+R7
+32
+R22
+!i10b 1
+R29
+Z39 !s90 -reportprogress|300|-work|work|/home/polar/Documents/liverpool_project/risc-v-micro-master/peripherals/uart/uart_tx.vhd|
+Z40 !s107 /home/polar/Documents/liverpool_project/risc-v-micro-master/peripherals/uart/uart_tx.vhd|
+!i113 1
+R12
+R13
+Artl
+R1
+R2
+R3
+DEx4 work 7 uart_tx 0 22 S;[[I;Y4QcJLLS`9KgiYW0
+l27
+L16
+V8?=0iQFR2_=QdgZVm2ZE61
+!s100 _IDj_keTBGl`jIb=gmBz02
+R7
+32
+R22
+!i10b 1
+R29
+R39
+R40
+!i113 1
+R12
+R13

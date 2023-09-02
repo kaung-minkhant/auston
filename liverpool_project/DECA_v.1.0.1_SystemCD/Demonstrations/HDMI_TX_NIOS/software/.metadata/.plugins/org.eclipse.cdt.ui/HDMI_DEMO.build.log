@@ -1,0 +1,34 @@
+
+**** Build of configuration Nios II for project HDMI_DEMO ****
+
+make all 
+Info: Building ../HDMI_DEMO_bsp/
+make --no-print-directory -C ../HDMI_DEMO_bsp/
+[BSP build complete]
+Info: Compiling adv7513.c to obj/default/adv7513.o
+nios2-elf-gcc -xc -MP -MMD -c -I../HDMI_DEMO_bsp//HAL/inc -I../HDMI_DEMO_bsp/ -I../HDMI_DEMO_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/adv7513.o adv7513.c
+adv7513.c: In function 'adv7513_vendor_infoframe_3d':
+adv7513.c:831:6: warning: unused variable 'regv' [-Wunused-variable]
+adv7513.c: At top level:
+adv7513.c:828:12: warning: 'adv7513_vendor_infoframe_3d' defined but not used [-Wunused-function]
+Info: Compiling edid.c to obj/default/edid.o
+nios2-elf-gcc -xc -MP -MMD -c -I../HDMI_DEMO_bsp//HAL/inc -I../HDMI_DEMO_bsp/ -I../HDMI_DEMO_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/edid.o edid.c
+edid.c: In function 'edid_print_cea':
+edid.c:382:10: warning: unused variable 'dtd' [-Wunused-variable]
+edid.c:779:40: warning: 'c' may be used uninitialized in this function [-Wuninitialized]
+Info: Compiling encoder.c to obj/default/encoder.o
+nios2-elf-gcc -xc -MP -MMD -c -I../HDMI_DEMO_bsp//HAL/inc -I../HDMI_DEMO_bsp/ -I../HDMI_DEMO_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/encoder.o encoder.c
+Info: Compiling i2c.c to obj/default/i2c.o
+nios2-elf-gcc -xc -MP -MMD -c -I../HDMI_DEMO_bsp//HAL/inc -I../HDMI_DEMO_bsp/ -I../HDMI_DEMO_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/i2c.o i2c.c
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc -xc -MP -MMD -c -I../HDMI_DEMO_bsp//HAL/inc -I../HDMI_DEMO_bsp/ -I../HDMI_DEMO_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/main.o main.c
+main.c: In function 'adv7513_int_handler':
+main.c:63:10: warning: variable 'irq_status' set but not used [-Wunused-but-set-variable]
+Info: Linking HDMI_DEMO.elf
+nios2-elf-g++  -T'../HDMI_DEMO_bsp//linker.x' -msys-crt0='../HDMI_DEMO_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../HDMI_DEMO_bsp/   -Wl,-Map=HDMI_DEMO.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o HDMI_DEMO.elf obj/default/adv7513.o obj/default/edid.o obj/default/encoder.o obj/default/i2c.o obj/default/main.o -lm 
+c:/altera/14.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/4.7.3/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x62604 of HDMI_DEMO.elf section `.bss' is not within region `onchip_memory2'
+c:/altera/14.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/4.7.3/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x62604 of HDMI_DEMO.elf section `.bss' is not within region `onchip_memory2'
+collect2.exe: error: ld returned 1 exit status
+make: *** [HDMI_DEMO.elf] Error 1
+
+**** Build Finished ****

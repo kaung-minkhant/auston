@@ -1,0 +1,18 @@
+Fitter Status : Successful - Mon Mar 23 10:51:53 2015
+Quartus II 64-Bit Version : 15.0.0 Internal Build 130 02/26/2015 Patches 0.01zb SJ Full Version
+Revision Name : DECA_Power_Monitor_Nios
+Top-level Entity Name : DECA_Power_Monitor_Nios
+Family : MAX 10
+Device : 10M50DAF484C6GES
+Timing Models : Preliminary
+Total logic elements : 4,154 / 49,760 ( 8 % )
+    Total combinational functions : 3,496 / 49,760 ( 7 % )
+    Dedicated logic registers : 2,562 / 49,760 ( 5 % )
+Total registers : 2562
+Total pins : 232 / 360 ( 64 % )
+Total virtual pins : 0
+Total memory bits : 1,025,088 / 1,677,312 ( 61 % )
+Embedded Multiplier 9-bit elements : 6 / 288 ( 2 % )
+Total PLLs : 1 / 4 ( 25 % )
+UFM blocks : 0 / 1 ( 0 % )
+ADC blocks : 0 / 2 ( 0 % )

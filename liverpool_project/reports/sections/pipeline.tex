@@ -1,0 +1,246 @@
+\section{Pipelining}
+Pipelining in CPU design is a technique used to enhance the efficiency and throughput of instruction processing.
+It breaks down the execution of instructions into a series of stages, with each stage being handled by a different segment of the CPU.
+This allows multiple instructions to be in various stages of execution simultaneously, overlapping and speeding up the overall processing of instructions.
+
+The key advantage of pipelining is that it allows different instructions to be processed simultaneously, improving the CPU's overall throughput.
+However, for pipelining to work effectively, the stages must be carefully synchronized,
+and potential hazards such as data dependencies (where one instruction depends on the result of a previous one) must be managed to avoid incorrect results.
+This will be tackled in a later section.
+Additionally, pipeline stalls can occur if a stage has to wait for a previous stage to complete its work, which can reduce the performance gains.
+
+\subsection{Why use Pipelining?}
+Pipelining is used in CPU design for several important reasons, all aimed at improving the efficiency and performance of the central processing unit (CPU):
+\paragraph*{Increased Throughput}
+Pipelining allows multiple instructions to be in various stages of execution simultaneously.
+As a result, the CPU can process a new instruction in each clock cycle, greatly increasing the overall throughput and execution speed of instructions.
+\paragraph*{Reduced Latency}
+By breaking down instruction processing into stages, pipelining reduces the time it takes to complete an individual instruction.
+This reduction in latency means that the CPU can start processing the next instruction before the previous one is finished,
+making better use of the available time.
+\paragraph*{Resource Utilization}
+Pipelining improves the utilization of CPU resources. While one stage of the pipeline is working on an instruction,
+other stages can simultaneously work on different instructions.
+This ensures that CPU components like the arithmetic logic unit (ALU) and registers are continuously engaged, maximizing their efficiency.
+\paragraph*{Improved Performance Scaling}
+As CPU clock speeds increase, it becomes challenging to increase performance solely by increasing clock frequency due to power and heat constraints.
+Pipelining is one of the techniques used to improve performance without dramatically increasing clock speeds.
+It allows designers to achieve more work per clock cycle.
+\subsection{How Pipelining Works?}
+Pipelining in CPU design breaks down the execution of instructions into several stages, allowing multiple instructions to be processed simultaneously.
+Each stage of the pipeline performs a specific function, and as an instruction progresses through the pipeline, new instructions can enter the pipeline,
+making more efficient use of the CPU's resources. Here's how pipelining works with its stages:
+\paragraph*{Fetch Stage (IF - Instruction Fetch)}
+In this stage, the CPU fetches the next instruction from Instruction Memory.
+The program counter (PC) or instruction pointer points to the memory location of the instruction.
+Simultaneously, the previous instruction is being decoded and executed in subsequent stages.
+\paragraph*{Decode Stage (ID - Instruction Decode)}
+In this stage, the fetched instruction is decoded.
+The CPU determines the operation to be performed and identifies the registers or memory locations involved.
+While this decoding occurs, the next instruction is fetched in the fetch stage.
+\paragraph*{Execute Stage (EX - Execution)}
+In this stage, the actual computation or operation specified by the instruction is carried out.
+This can involve arithmetic calculations, logical operations, or data manipulation.
+While execution is happening, the next instruction is being decoded, and the instruction after that is being fetched.
+\paragraph*{Memory Stage (MEM - Memory Access)}
+Not all CPUs have this stage, but in Microcontroller that interact frequently with Data Memory that connects to peripherals,
+this stage handles memory-related operations like loading data from memory or storing data to memory.
+Like the other stages, it operates simultaneously with the other stages, and the next instruction is in the decode stage while memory operations occur.
+\paragraph*{Write Back Stage (WB - Write Back)}
+In this final stage, the results of the executed instruction are written back to the appropriate registers in Register File.
+At the same time, a new instruction is fetched in the fetch stage, starting the process again.
+
+\newpage
+\insertGraphic{pipeline_execution}{0.5}{0}{Sample Pipeline Execution with respect to CPU Clock}{graphic:pipeline_execution}
+A sample pipeline execution would be as follows and can be viewed graphically in Figure \ref{graphic:pipeline_execution}:
+\begin{itemize}
+    \item In the first clock cycle (1), Instruction 1 is in the Fetch stage (IF), Instruction 2 is in the Decode stage (ID), and so on.
+    \item In the second clock cycle (2), Instruction 1 moves to the Decode stage (ID), Instruction 2 moves to the Execute stage (EX), and Instruction 3 moves to the Decode stage (ID), and so on.
+    \item This continues for subsequent clock cycles, with each instruction advancing through the stages, and new instructions being fetched.
+\end{itemize}
+
+\subsubsection{Performance Analysis}
+If the following instruction delays are assumed in Figure \ref{graphic:sample_delay}
+\insertGraphic{sample_delay}{0.4}{0}{Sample Instruction Delays}{graphic:sample_delay}
+
+The following simple analysis can be done with respect to computation time, as can be seen in Figure \ref{graphic:performance_pipeline}
+As can be observed in Figure \ref{graphic:performance_pipeline}, the non-pipeline cpu will take more execution time as the number of instructions grows.
+Thus, for prgrams with large instrucitons, pipelining is necessary in order to increase the instruction throughput, other than increasing clock frequency.
+\insertGraphic{performance_pipeline}{0.5}{0}{Sample Analysis on Computation Time}{graphic:performance_pipeline}
+
+\newpage
+\subsection{Pipelining Architecture}
+\insertBlockDiagram{cpu_pipeline_block_diagram}{0.8}{Pipelined CPU Block Diagram with Pipeline Registers}{block_diagram:cpu_pipeline}
+In Figure \ref{block_diagram:cpu_pipeline}, it can be seen that a simple pipeline structure is implemented in this work.
+Between each stage, specific pipeline registers are inserted to latch in the previous results.
+All pipeline registers are synchronized by CPU clock.
+Description and Responsibilities of each pipeline registers will be described below.
+\paragraph*{IF/ID Register}
+This register is responsible for latching the current instruction. It will provide the instruction to the ID stage.
+
+\paragraph*{ID/EX Register}
+This register is responsible for keeping the contents of the accessed registers by the current instruction.
+It also keeps current source register addresses, and destination register address, opcodes to make decisions late in the pipeline.
+This will be of importance when dealing with pipeline hazards.
+
+\paragraph*{EX/MEM Register}
+This register is to keep all the results from ALU.
+The data that needs to be written into Data Memory will be kept in this register.
+It also keeps source register addresses, and destination register address, opcodes to make decisions late in the pipeline.
+
+\paragraph*{MEM/WB Register}
+This register holds data, that will be stored back into Register File.
+It also latch in destination register address so that the CPU knows where to write the data to.
+
+\subsection{Pipelining Hardwre}
+The implementation of the above pipeline registers can be access through \url{https://github.com/kaung-minkhant/risc-v-deca/tree/master/cpu}.
+The files are named based on the name of the register in Figure \ref{block_diagram:cpu_pipeline}.
+All of these registers are implementated as simple registers, thus simplifying the hardware implementation.
+
+\subsection{Pipelining Hazards}
+Pipelining in CPU design, while highly effective at improving performance,
+can encounter various hazards or issues that need to be carefully managed to ensure the correct execution of instructions
+and to prevent performance degradation. The main types of pipelining hazards are:
+
+\paragraph*{Structural Hazards}
+This occurs when multiple pipeline stages need the same CPU resource simultaneously.
+For example, if the Fetch stage and Memory stage both require access to the memory unit, a structural hazard arises.
+This can be addressed through resource allocation and scheduling techniques.
+In this work, this hazard will not occur, since all the hardware resources are seperated and will only be used by a single stage.
+The instructions are designed to behave this way as well.
+
+\paragraph*{Data Hazards}
+\begin{itemize}
+    \item \textbf{Read-After-Write (RAW) Hazard}: Also known as a data dependency hazard,
+          this occurs when an instruction depends on the result of a previous instruction that is still in the pipeline.
+          For example, if Instruction A writes to a register, and Instruction B reads from the same register,
+          B must wait until A's result is available.
+    \item \textbf{Write-After-Read (WAR) Hazard:} This happens when an instruction writes to a register that another instruction reads from,
+          causing the reading instruction to get the wrong data. This hazard is less common than RAW hazards but can be resolved
+          using proper data forwarding.
+\end{itemize}
+
+\paragraph*{Control Hazards}
+When a branch instruction is encountered, the pipeline may have already fetched and partially processed subsequent instructions.
+If the branch condition is resolved late, it can lead to wasted work and incorrect instruction execution.
+
+\subsection{Data Harzards Mitigation}
+Data Hazards can be mitigated through a process called Data Forwarding.
+Data forwarding, in the context of a pipeline CPU, is like giving instructions a shortcut to quickly get the data they need to work correctly.
+Since each instruction may need data from different stages of the pipeline, various forwarding paths are created.
+Without data forwarding, the CPU would have to pause and wait for the result to be stored in memory before the second instruction can use it.
+This pause would slow down the whole process. But with data forwarding,
+the first instruction's result can be directly passed to the second instruction, allowing the CPU to work faster and more efficiently.
+
+\subsubsection{Mitigation Hardware}
+As stated above, all of the necessary data to determine data dependencies are latched into pipeline registers.
+Thus, Data Forwarding Hardware can easily retrieve these data, make decision, and then forward the right data to the next instruciton.
+The Data Forwarding Hardware is positioned in EXE stage, since most of the data are forwarded to the ALU, which is in EXE stage.
+The Data Forwarding Hardware block diagram can be seen in Figure \ref{block_diagram:data_forwarding}.
+Since the data are required for execution stage, and there are two inputs that are fed into the ALU, two forwarding outputs are required.
+All the required data to make proper decision are included in the diagram, with the stage into which they are latched.
+This hardware only generate the forwarding signal, and this signal control the multiplexer that select the correct data to feed the input of ALU.
+\io{opcode\_i} is taken from ID stage.
+\insertBlockDiagram{df_block_diagram}{0.7}{Block Diagram of Data Forwarding Unit}{block_diagram:data_forwarding}
+
+\newpage
+The implementation algorithm can be found on \url{https://github.com/kaung-minkhant/risc-v-deca/blob/master/cpu/forwarding_unit.vhd}.
+The algorithm will be demonstrated through an example below.
+\begin{center}
+    addi x1 x2 x3\\
+    addi x2 x1 x3\\
+    addi x3 x1 x2
+\end{center}
+
+The first instruction, in the example does not have any dependencies since it is at the start of the program.
+The second instruciton, however, depends on the result of first instruction and the first instruction is a write instruction.
+Thus, forwarding data from the destination of the first instruction to the first source of second instruction is needed.
+This condition is checked in the forwarding hardware and generate appropriate forwarding signal to forward the ALU result of the first instruction to the source of the second instruction.
+
+If the third instruction is inspected, it depends on both the results of the first and second instructions.
+Both of the first two instructions are write instructions, and thus, this condition is caught by the forwarding hardware.
+This allows the hardware to generate the required signals to forward the ALU result of first instruction, which will be in WB stage, and to forward the ALU result of second instruction
+which is in MEM stage. It should be noted that the hardware first check whether the previous instructions are write instructions, such as add, addi, loads, etc.
+
+\subsubsection{Data Memory Design for Pipeline}
+As described in the section of Data Memory, it is stated that the Memory is designed to facillitate the operation of pipeline execution.
+Normally, Data Memory reads and writes on the rising edge of CPU clock.
+However, all of the pipeline register latch data on the rising edge of the CPU clock. The problem can be seen in the following sample program.
+
+\begin{center}
+    ld x2 x0 0 \\
+    add x1 x2 x3
+\end{center}
+
+In this program, the first instruction is a load. This means to load the content of data at location 0 of Data Memory.
+The second instruction is an add instruction that depends on the result of the first instruciton.
+When the second instruction is in EXE stage, where it needs the result of load instruction, the first instruction is still in MEM stage.
+Since the Data Memory reads on the rising edge of the clock, the contents will not be available at the current clock cycle, which means the pipeline need to be stalled.
+By allowing the Data Memory to be able to read on the falling edge of the cycle, the content will be availabe in the same clock to be forwarded to the second instruction.
+
+\subsection{Control Hazards Mitigation}
+Control Hazards are mitigated, in the same way as Data Hazards.
+Unlike Data Hazard Mitigation, the forwarding hardware for control hazards, is positioned in ID stage.
+In addition to it, the Branching Hardware, which acturally make the decision, is also placed in ID stage.
+The reason is that the pipeline needs to know, whether to branch or not, before feeding data to EXE stage.
+Without this prior decision, if the program need to branch, all of the data will need to be flushed out, thus requiring another hardware.
+Thus by placing the forwarding hardware in ID stage and forwarding all the necessary data to it, the pipeline knows whether to branch or not, during Instruction Decoding stage.
+
+\subsubsection{Mitigation Hardware}
+The block digram describing input and output required for forwarding can be seen in Figure \ref{block_diagram:dfb}
+\insertBlockDiagram{dfb_block_diagram}{0.7}{Block Diagram of Branch Forwarding Unit}{block_diagram:dfb}
+As stated in Branching Hardware section, it only need the two pieces of data, then make decision whether to branch or not.
+Forwarding Hardware makes sure to feed in the correct data. The algorithm is very similar to the one utilized in Data Forwarding Hardware.
+The implementation can be view through \url{https://github.com/kaung-minkhant/risc-v-deca/blob/master/cpu/forwarding_unit_branch.vhd}.
+Just as the Data Forwarding Hardware, this checks the destination address of the previous instructions, which will be in different stages, against
+the source addresses of the branch instruction.
+Just like the Data Forwarding Hardware, this forwarding Hardware generate the signal to control the multiplexers sitting at the inputs of Branching Hardware.
+
+One distinction that sets this forwarding hardare apart from Data Forwarding Hardware is stall detection.
+This will be explained using a sample example below.
+\begin{center}
+    ld x2 x0 0 \\
+    beq x1 x2 0
+\end{center}
+
+The first instruction is a load, and the second instruction is a branch instruction which depends on the load instruction.
+However, the result of the load can only be forwarded when the load instruction reaches the MEM stage.
+As stated above, the branching decision is made in ID stage, meaning that the load is in EXE stage, thus, eninevitably resulting in a stall.
+During a stall, all controll signals are cleared and PC is freezed, until the stall is lifted.
+
+\newpage
+\section{Connecting CPU to Peripheral}
+Connecting CPU with Peripherals is accomplished by assigning specific memory locations to the peripherals, and the process is called port mapping.
+There are two types of port mapping, input port mapping and output port mapping.
+Input port mappings updates the respective Data Memory locations whenever they are updated.
+They are the outputs of peripherals.
+These mappings are read only, currently, by the CPU.
+Output port mappings are Data Memory locations and the data is set by CPU and accessed by the peripherals.
+These are inputs to Peripherals.
+
+\subsection{Data Memory Mapping}
+Data Memory is allocated with 8-bit address, thus allowing for 256 spaces.
+
+\begin{table}[!h]
+    \centering
+    \caption{Data Memory Mapping}
+    \label{table:memory_map}
+    \begin{tabular}{|c|l||c|l|}
+        \hline
+        \multicolumn{1}{|l|}{Address} & Description           & \multicolumn{1}{l|}{Address} & Description           \\ \hline
+        0                             & NULL                  & 20                           & spi1\_data\_write     \\ \hline
+        1                             & general\_pin\_dir     & 21                           & spi1\_data\_read      \\ \hline
+        2                             & general\_pin\_write   & 22                           & \multirow{2}{*}{NULL} \\ \cline{1-3}
+        3                             & general\_pin\_read    & 25                           &                       \\ \hline
+        4                             & uart1\_controls       & 26                           & i2c1\_data\_write     \\ \hline
+        5                             & spi1\_controls        & 27                           & i2c1\_data\_read      \\ \hline
+        6                             & i2c1\_controls        & 28                           & i2c1\_addr            \\ \hline
+        7                             & \multirow{2}{*}{NULL} & 29                           & \multirow{2}{*}{NULL} \\ \cline{1-1} \cline{3-3}
+        10                            &                       & 30                           &                       \\ \hline
+        11                            & uart1\_data\_write    & 35                           & uart1\_flags          \\ \hline
+        12                            & uart1\_data\_read     & 38                           & spi1\_flags           \\ \hline
+        13                            & uart1\_data\_read\_32 & 37                           & i2c1\_flags           \\ \hline
+        14                            & \multirow{2}{*}{NULL} & 38                           & \multirow{2}{*}{USER} \\ \cline{1-1} \cline{3-3}
+        19                            &                       & 255                          &                       \\ \hline
+    \end{tabular}
+\end{table}

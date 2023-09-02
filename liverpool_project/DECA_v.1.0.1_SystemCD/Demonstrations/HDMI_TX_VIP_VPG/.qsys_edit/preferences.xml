@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+ <debug showDebugMenu="0" />
+ <systemtable filter="All Interfaces">
+  <columns>
+   <connections preferredWidth="111" />
+   <irq preferredWidth="34" />
+   <export preferredWidth="215" />
+   <name preferredWidth="220" />
+   <inputclock preferredWidth="180" />
+  </columns>
+ </systemtable>
+ <library expandedCategories="Library,Project" />
+ <window width="1258" height="853" x="1247" y="97" />
+ <hdlexample language="VERILOG" />
+</preferences>

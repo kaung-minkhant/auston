@@ -1,0 +1,183 @@
+m255
+K4
+z2
+!s11e vcom 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/Public/Documents/Altera/RISC-V RV32E Micro
+Euart
+Z1 w1680853554
+Z2 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 46
+R0
+Z5 8C:/Users/Public/Documents/Altera/RISC-V RV32E Micro/peripherals/uart/uart.vhd
+Z6 FC:/Users/Public/Documents/Altera/RISC-V RV32E Micro/peripherals/uart/uart.vhd
+l0
+L5 1
+V8N]15gzkbhZB2mW>z7S8O3
+!s100 4H3<_nARR5QXYo0S5]dBG3
+Z7 OV;C;2020.1;71
+32
+Z8 !s110 1680855489
+!i10b 1
+Z9 !s108 1680855489.000000
+Z10 !s90 -reportprogress|300|-work|work|C:/Users/Public/Documents/Altera/RISC-V RV32E Micro/peripherals/uart/uart.vhd|
+Z11 !s107 C:/Users/Public/Documents/Altera/RISC-V RV32E Micro/peripherals/uart/uart.vhd|
+!i113 1
+Z12 o-work work
+Z13 tExplicit 1 CvgOpt 0
+Artl
+R2
+R3
+R4
+DEx4 work 4 uart 0 22 8N]15gzkbhZB2mW>z7S8O3
+!i122 46
+l49
+L23 47
+VACccE6:Tim6Aaa_9gAj^13
+!s100 ^fcS`aGSXIU5`7[V4f9^@1
+R7
+32
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13
+Euart_rx
+Z14 w1680853617
+R2
+R3
+R4
+!i122 47
+R0
+Z15 8C:/Users/Public/Documents/Altera/RISC-V RV32E Micro/peripherals/uart/uart_rx.vhd
+Z16 FC:/Users/Public/Documents/Altera/RISC-V RV32E Micro/peripherals/uart/uart_rx.vhd
+l0
+L5 1
+V@h[zU37X4T2Cb6FT<<KKc0
+!s100 UVgIiUNOlX>UH?b0H4<UX0
+R7
+32
+R8
+!i10b 1
+R9
+Z17 !s90 -reportprogress|300|-work|work|C:/Users/Public/Documents/Altera/RISC-V RV32E Micro/peripherals/uart/uart_rx.vhd|
+Z18 !s107 C:/Users/Public/Documents/Altera/RISC-V RV32E Micro/peripherals/uart/uart_rx.vhd|
+!i113 1
+R12
+R13
+Artl
+R2
+R3
+R4
+DEx4 work 7 uart_rx 0 22 @h[zU37X4T2Cb6FT<<KKc0
+!i122 47
+l30
+L19 78
+VSlo6[42b;@=623ehI93Ze1
+!s100 Q0jA;:z[XT=Q6nfb>h^5d2
+R7
+32
+R8
+!i10b 1
+R9
+R17
+R18
+!i113 1
+R12
+R13
+Euart_tb
+Z19 w1680855476
+R2
+R3
+R4
+!i122 48
+R0
+Z20 8C:/Users/Public/Documents/Altera/RISC-V RV32E Micro/peripherals/uart/uart_tb.vhd
+Z21 FC:/Users/Public/Documents/Altera/RISC-V RV32E Micro/peripherals/uart/uart_tb.vhd
+l0
+L5 1
+VMnNV05eY39=XX^:0Mjbnd0
+!s100 jCac0^1Z2zJS0z7L?5P2Z2
+R7
+32
+R8
+!i10b 1
+R9
+Z22 !s90 -reportprogress|300|-work|work|C:/Users/Public/Documents/Altera/RISC-V RV32E Micro/peripherals/uart/uart_tb.vhd|
+Z23 !s107 C:/Users/Public/Documents/Altera/RISC-V RV32E Micro/peripherals/uart/uart_tb.vhd|
+!i113 1
+R12
+R13
+Atb
+R2
+R3
+R4
+DEx4 work 7 uart_tb 0 22 MnNV05eY39=XX^:0Mjbnd0
+!i122 48
+l40
+L8 58
+VHJB88kLCIYA?OmXXDGeEa0
+!s100 BSBWZeV@76m85SbJ7^LnB0
+R7
+32
+R8
+!i10b 1
+R9
+R22
+R23
+!i113 1
+R12
+R13
+Euart_tx
+Z24 w1680789553
+R2
+R3
+R4
+!i122 49
+R0
+Z25 8C:/Users/Public/Documents/Altera/RISC-V RV32E Micro/peripherals/uart/uart_tx.vhd
+Z26 FC:/Users/Public/Documents/Altera/RISC-V RV32E Micro/peripherals/uart/uart_tx.vhd
+l0
+L5 1
+VSgWz4lR0i4Ueif:`?04Z41
+!s100 PnK7MRUoijVLR?LiZi_B=0
+R7
+32
+Z27 !s110 1680855490
+!i10b 1
+Z28 !s108 1680855490.000000
+Z29 !s90 -reportprogress|300|-work|work|C:/Users/Public/Documents/Altera/RISC-V RV32E Micro/peripherals/uart/uart_tx.vhd|
+Z30 !s107 C:/Users/Public/Documents/Altera/RISC-V RV32E Micro/peripherals/uart/uart_tx.vhd|
+!i113 1
+R12
+R13
+Artl
+R2
+R3
+R4
+Z31 DEx4 work 7 uart_tx 0 22 SgWz4lR0i4Ueif:`?04Z41
+!i122 49
+l27
+Z32 L16 75
+Z33 V[^U3TBMcglbJFi`5HmTfU3
+Z34 !s100 oK2WdaVDS:b00LA<Gza>20
+R7
+32
+R27
+!i10b 1
+R28
+R29
+R30
+!i113 1
+R12
+R13

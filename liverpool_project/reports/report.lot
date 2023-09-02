@@ -1,0 +1,39 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {3.1}{\ignorespaces Instruction Fields Definition}}{7}{table.3.1}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Register Arithmetic Instructions}}{8}{table.3.2}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces Constant/Immediate Arithmetic Instructions}}{8}{table.3.3}%
+\contentsline {table}{\numberline {3.4}{\ignorespaces Load/Store Instructions}}{8}{table.3.4}%
+\contentsline {table}{\numberline {3.5}{\ignorespaces Branching Instructions}}{9}{table.3.5}%
+\contentsline {table}{\numberline {3.6}{\ignorespaces Opcodes for Each Instruction Type}}{9}{table.3.6}%
+\contentsline {table}{\numberline {3.7}{\ignorespaces Input/Output of Program Counter}}{10}{table.3.7}%
+\contentsline {table}{\numberline {3.8}{\ignorespaces Input/Output of Instruction Memory}}{11}{table.3.8}%
+\contentsline {table}{\numberline {3.9}{\ignorespaces Input/Output of Register File}}{12}{table.3.9}%
+\contentsline {table}{\numberline {3.10}{\ignorespaces Input/Output of Immediate Generator}}{13}{table.3.10}%
+\contentsline {table}{\numberline {3.11}{\ignorespaces Input/Output of Arithmetic Logic Unit}}{14}{table.3.11}%
+\contentsline {table}{\numberline {3.12}{\ignorespaces Support ALU Operation and Their Operation Codes}}{15}{table.3.12}%
+\contentsline {table}{\numberline {3.13}{\ignorespaces Input/Output of Data Memory}}{16}{table.3.13}%
+\contentsline {table}{\numberline {3.14}{\ignorespaces Input/Output of Branching Hardware}}{17}{table.3.14}%
+\contentsline {table}{\numberline {3.15}{\ignorespaces Input/Output of Control Unit}}{18}{table.3.15}%
+\contentsline {table}{\numberline {3.16}{\ignorespaces Controls Strings from Control Unit}}{19}{table.3.16}%
+\contentsline {table}{\numberline {3.17}{\ignorespaces Control Signal Description}}{19}{table.3.17}%
+\contentsline {table}{\numberline {3.18}{\ignorespaces Input/Output of Clock Divider}}{20}{table.3.18}%
+\contentsline {table}{\numberline {3.19}{\ignorespaces Data Memory Mapping}}{28}{table.3.19}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces Input/Output Table for UART Module}}{30}{table.4.1}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Input/Output Table for I$^2$C Module}}{35}{table.4.2}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Modes of SPI}}{41}{table.4.3}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Input/Output Table for SPI Module}}{42}{table.4.4}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces Input/Output Table of I/O Module}}{47}{table.4.5}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {5.1}{\ignorespaces Sample Simulation Program}}{50}{table.5.1}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces Expected Register File for Sample Program}}{50}{table.5.2}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {6.1}{\ignorespaces Sample Output Program}}{65}{table.6.1}%
+\contentsline {table}{\numberline {6.2}{\ignorespaces Output counting from 1 to 4}}{66}{table.6.2}%
+\contentsline {table}{\numberline {6.3}{\ignorespaces Sample Input/Output Program}}{67}{table.6.3}%
+\contentsline {table}{\numberline {6.4}{\ignorespaces LED turning on button press}}{67}{table.6.4}%
+\contentsline {table}{\numberline {6.5}{\ignorespaces Sample UART1 Transmission Program}}{68}{table.6.5}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }

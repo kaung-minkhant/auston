@@ -1,0 +1,137 @@
+\BOOKMARK [1][-]{section*.1}{Acknowledgement}{}% 1
+\BOOKMARK [1][-]{section*.2}{Abstract}{}% 2
+\BOOKMARK [0][-]{chapter*.3}{Table of Contents}{}% 3
+\BOOKMARK [0][-]{chapter*.4}{List of Figures}{}% 4
+\BOOKMARK [0][-]{chapter*.5}{List of Tables}{}% 5
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 6
+\BOOKMARK [1][-]{section.1.1}{Project Background}{chapter.1}% 7
+\BOOKMARK [1][-]{section.1.2}{Aims and Objectives}{chapter.1}% 8
+\BOOKMARK [1][-]{section.1.3}{Expected Outcomes}{chapter.1}% 9
+\BOOKMARK [1][-]{section.1.4}{Report Structure}{chapter.1}% 10
+\BOOKMARK [1][-]{section.1.5}{Summary}{chapter.1}% 11
+\BOOKMARK [0][-]{chapter.2}{Literature Review}{}% 12
+\BOOKMARK [0][-]{chapter.3}{Microcontroller CPU Design and Implementation}{}% 13
+\BOOKMARK [1][-]{section.3.1}{Introduction}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.2}{System Design}{chapter.3}% 15
+\BOOKMARK [1][-]{section.3.3}{Instruction Formats}{chapter.3}% 16
+\BOOKMARK [1][-]{section.3.4}{Support Instructions}{chapter.3}% 17
+\BOOKMARK [2][-]{subsection.3.4.1}{Arithmetic Instrucitons}{section.3.4}% 18
+\BOOKMARK [2][-]{subsection.3.4.2}{Load/Store Instructions}{section.3.4}% 19
+\BOOKMARK [2][-]{subsection.3.4.3}{Branching Instruction}{section.3.4}% 20
+\BOOKMARK [2][-]{subsection.3.4.4}{Opcodes}{section.3.4}% 21
+\BOOKMARK [1][-]{section.3.5}{Program Counter}{chapter.3}% 22
+\BOOKMARK [2][-]{subsection.3.5.1}{Implementation and Operation}{section.3.5}% 23
+\BOOKMARK [1][-]{section.3.6}{Instruction Memory}{chapter.3}% 24
+\BOOKMARK [2][-]{subsection.3.6.1}{Implementation and Operation}{section.3.6}% 25
+\BOOKMARK [1][-]{section.3.7}{Register File}{chapter.3}% 26
+\BOOKMARK [2][-]{subsection.3.7.1}{Implementation and Operation}{section.3.7}% 27
+\BOOKMARK [1][-]{section.3.8}{Immediate Generator}{chapter.3}% 28
+\BOOKMARK [2][-]{subsection.3.8.1}{Implementation and Operation}{section.3.8}% 29
+\BOOKMARK [1][-]{section.3.9}{Arithmetic Logic Unit}{chapter.3}% 30
+\BOOKMARK [2][-]{subsection.3.9.1}{Implementation and Operation}{section.3.9}% 31
+\BOOKMARK [1][-]{section.3.10}{Data Memory}{chapter.3}% 32
+\BOOKMARK [2][-]{subsection.3.10.1}{Implementation and Operation}{section.3.10}% 33
+\BOOKMARK [1][-]{section.3.11}{Branching Hardware}{chapter.3}% 34
+\BOOKMARK [2][-]{subsection.3.11.1}{Implementation and Operation}{section.3.11}% 35
+\BOOKMARK [1][-]{section.3.12}{Control Unit}{chapter.3}% 36
+\BOOKMARK [2][-]{subsection.3.12.1}{Implementation and Operation}{section.3.12}% 37
+\BOOKMARK [1][-]{section.3.13}{Clock Divider}{chapter.3}% 38
+\BOOKMARK [2][-]{subsection.3.13.1}{Implementation and Operation}{section.3.13}% 39
+\BOOKMARK [1][-]{section.3.14}{Pipelining}{chapter.3}% 40
+\BOOKMARK [2][-]{subsection.3.14.1}{Why use Pipelining?}{section.3.14}% 41
+\BOOKMARK [2][-]{subsection.3.14.2}{How Pipelining Works?}{section.3.14}% 42
+\BOOKMARK [3][-]{subsubsection.3.14.2.1}{Performance Analysis}{subsection.3.14.2}% 43
+\BOOKMARK [2][-]{subsection.3.14.3}{Pipelining Architecture}{section.3.14}% 44
+\BOOKMARK [2][-]{subsection.3.14.4}{Pipelining Hardwre}{section.3.14}% 45
+\BOOKMARK [2][-]{subsection.3.14.5}{Pipelining Hazards}{section.3.14}% 46
+\BOOKMARK [2][-]{subsection.3.14.6}{Data Harzards Mitigation}{section.3.14}% 47
+\BOOKMARK [3][-]{subsubsection.3.14.6.1}{Mitigation Hardware}{subsection.3.14.6}% 48
+\BOOKMARK [3][-]{subsubsection.3.14.6.2}{Data Memory Design for Pipeline}{subsection.3.14.6}% 49
+\BOOKMARK [2][-]{subsection.3.14.7}{Control Hazards Mitigation}{section.3.14}% 50
+\BOOKMARK [3][-]{subsubsection.3.14.7.1}{Mitigation Hardware}{subsection.3.14.7}% 51
+\BOOKMARK [1][-]{section.3.15}{Connecting CPU to Peripheral}{chapter.3}% 52
+\BOOKMARK [2][-]{subsection.3.15.1}{Data Memory Mapping}{section.3.15}% 53
+\BOOKMARK [0][-]{chapter.4}{Peripheral Designs and Implementations}{}% 54
+\BOOKMARK [1][-]{section.4.1}{UART - Universal Asynchronous Receiver Transmitter}{chapter.4}% 55
+\BOOKMARK [2][-]{subsection.4.1.1}{Why use UART}{section.4.1}% 56
+\BOOKMARK [2][-]{subsection.4.1.2}{Block Diagram and I/O}{section.4.1}% 57
+\BOOKMARK [2][-]{subsection.4.1.3}{Usage}{section.4.1}% 58
+\BOOKMARK [3][-]{subsubsection.4.1.3.1}{Initialization}{subsection.4.1.3}% 59
+\BOOKMARK [2][-]{subsection.4.1.4}{UART Architecture}{section.4.1}% 60
+\BOOKMARK [3][-]{subsubsection.4.1.4.1}{Data Frame}{subsection.4.1.4}% 61
+\BOOKMARK [3][-]{subsubsection.4.1.4.2}{Implementation}{subsection.4.1.4}% 62
+\BOOKMARK [1][-]{section.4.2}{Inter-Integrated Circuit Protocol\(I2C\)}{chapter.4}% 63
+\BOOKMARK [2][-]{subsection.4.2.1}{Why use I2C}{section.4.2}% 64
+\BOOKMARK [2][-]{subsection.4.2.2}{Block Diagram and I/O}{section.4.2}% 65
+\BOOKMARK [2][-]{subsection.4.2.3}{Usage}{section.4.2}% 66
+\BOOKMARK [3][-]{subsubsection.4.2.3.1}{Initialization}{subsection.4.2.3}% 67
+\BOOKMARK [2][-]{subsection.4.2.4}{I2C Architecture}{section.4.2}% 68
+\BOOKMARK [3][-]{subsubsection.4.2.4.1}{I2C Operation and Data Frame}{subsection.4.2.4}% 69
+\BOOKMARK [3][-]{subsubsection.4.2.4.2}{I2C State Machine}{subsection.4.2.4}% 70
+\BOOKMARK [2][-]{subsection.4.2.5}{Implementation}{section.4.2}% 71
+\BOOKMARK [3][-]{subsubsection.4.2.5.1}{Controller Implementation}{subsection.4.2.5}% 72
+\BOOKMARK [1][-]{section.4.3}{Serial Peripheral Interface \(SPI\)}{chapter.4}% 73
+\BOOKMARK [2][-]{subsection.4.3.1}{Why use SPI}{section.4.3}% 74
+\BOOKMARK [2][-]{subsection.4.3.2}{Block Diagram and I/O}{section.4.3}% 75
+\BOOKMARK [2][-]{subsection.4.3.3}{Usage}{section.4.3}% 76
+\BOOKMARK [3][-]{subsubsection.4.3.3.1}{Initialization}{subsection.4.3.3}% 77
+\BOOKMARK [2][-]{subsection.4.3.4}{SPI Architecture}{section.4.3}% 78
+\BOOKMARK [2][-]{subsection.4.3.5}{Implementation}{section.4.3}% 79
+\BOOKMARK [3][-]{subsubsection.4.3.5.1}{Controller Implementation}{subsection.4.3.5}% 80
+\BOOKMARK [1][-]{section.4.4}{Input/Output \(IO\) Module}{chapter.4}% 81
+\BOOKMARK [2][-]{subsection.4.4.1}{Block Diagram and I/O}{section.4.4}% 82
+\BOOKMARK [2][-]{subsection.4.4.2}{Usage}{section.4.4}% 83
+\BOOKMARK [3][-]{subsubsection.4.4.2.1}{Initialization}{subsection.4.4.2}% 84
+\BOOKMARK [2][-]{subsection.4.4.3}{Architecture and Implementation}{section.4.4}% 85
+\BOOKMARK [0][-]{chapter.5}{Simulation Testings}{}% 86
+\BOOKMARK [1][-]{section.5.1}{CPU Testings}{chapter.5}% 87
+\BOOKMARK [2][-]{subsection.5.1.1}{Introduction}{section.5.1}% 88
+\BOOKMARK [2][-]{subsection.5.1.2}{Sample Test Program}{section.5.1}% 89
+\BOOKMARK [2][-]{subsection.5.1.3}{Expected and Simulated Register File Content}{section.5.1}% 90
+\BOOKMARK [2][-]{subsection.5.1.4}{Pipeline Execution}{section.5.1}% 91
+\BOOKMARK [1][-]{section.5.2}{Peripheral Testings}{chapter.5}% 92
+\BOOKMARK [2][-]{subsection.5.2.1}{Testings of UART Modules}{section.5.2}% 93
+\BOOKMARK [3][-]{subsubsection.5.2.1.1}{Testbench Setup}{subsection.5.2.1}% 94
+\BOOKMARK [3][-]{subsubsection.5.2.1.2}{Transmitting same data 2 times with 32 bit mode off}{subsection.5.2.1}% 95
+\BOOKMARK [3][-]{subsubsection.5.2.1.3}{Transmitting different data with 32 bit mode off}{subsection.5.2.1}% 96
+\BOOKMARK [3][-]{subsubsection.5.2.1.4}{Transmitting same data 2 times with 32 bit mode on}{subsection.5.2.1}% 97
+\BOOKMARK [3][-]{subsubsection.5.2.1.5}{Transmitting different data with 32 bit mode on}{subsection.5.2.1}% 98
+\BOOKMARK [3][-]{subsubsection.5.2.1.6}{Testing detection of frame error}{subsection.5.2.1}% 99
+\BOOKMARK [3][-]{subsubsection.5.2.1.7}{Baudrate Testing}{subsection.5.2.1}% 100
+\BOOKMARK [2][-]{subsection.5.2.2}{Testings of I2C Module}{section.5.2}% 101
+\BOOKMARK [3][-]{subsubsection.5.2.2.1}{Testbench Setup}{subsection.5.2.2}% 102
+\BOOKMARK [3][-]{subsubsection.5.2.2.2}{Testing of Start and Stop Conditions}{subsection.5.2.2}% 103
+\BOOKMARK [3][-]{subsubsection.5.2.2.3}{Transmitting Data Once}{subsection.5.2.2}% 104
+\BOOKMARK [3][-]{subsubsection.5.2.2.4}{Transmitting Three Data Consecutively}{subsection.5.2.2}% 105
+\BOOKMARK [3][-]{subsubsection.5.2.2.5}{Transmitting Two Data to Different Peripheral Devices}{subsection.5.2.2}% 106
+\BOOKMARK [3][-]{subsubsection.5.2.2.6}{Reading Data Once}{subsection.5.2.2}% 107
+\BOOKMARK [3][-]{subsubsection.5.2.2.7}{Reading Two Data Consecutively}{subsection.5.2.2}% 108
+\BOOKMARK [3][-]{subsubsection.5.2.2.8}{Reading Two Data from Different Peripheral Devices}{subsection.5.2.2}% 109
+\BOOKMARK [2][-]{subsection.5.2.3}{A Read after a Write}{section.5.2}% 110
+\BOOKMARK [3][-]{subsubsection.5.2.3.1}{Testing Peripheral Device Acknowledge}{subsection.5.2.3}% 111
+\BOOKMARK [2][-]{subsection.5.2.4}{Testings of SPI Module}{section.5.2}% 112
+\BOOKMARK [3][-]{subsubsection.5.2.4.1}{Testbench Setup}{subsection.5.2.4}% 113
+\BOOKMARK [3][-]{subsubsection.5.2.4.2}{Clock Edge Generation}{subsection.5.2.4}% 114
+\BOOKMARK [3][-]{subsubsection.5.2.4.3}{Transmitting Data Once}{subsection.5.2.4}% 115
+\BOOKMARK [3][-]{subsubsection.5.2.4.4}{Transmitting Data Twice}{subsection.5.2.4}% 116
+\BOOKMARK [3][-]{subsubsection.5.2.4.5}{Reading Data Once}{subsection.5.2.4}% 117
+\BOOKMARK [2][-]{subsection.5.2.5}{Testing of I/O Module}{section.5.2}% 118
+\BOOKMARK [3][-]{subsubsection.5.2.5.1}{Testbench Setup}{subsection.5.2.5}% 119
+\BOOKMARK [3][-]{subsubsection.5.2.5.2}{General I/O Output Testing}{subsection.5.2.5}% 120
+\BOOKMARK [3][-]{subsubsection.5.2.5.3}{General I/O Input Testing}{subsection.5.2.5}% 121
+\BOOKMARK [3][-]{subsubsection.5.2.5.4}{Special I/O UART Transmission Testing}{subsection.5.2.5}% 122
+\BOOKMARK [0][-]{chapter.6}{Hardware Testings}{}% 123
+\BOOKMARK [1][-]{section.6.1}{Sample Output Program}{chapter.6}% 124
+\BOOKMARK [1][-]{section.6.2}{Sample Input Program}{chapter.6}% 125
+\BOOKMARK [1][-]{section.6.3}{Sample UART Transmission Program}{chapter.6}% 126
+\BOOKMARK [0][-]{chapter.7}{Conclusion}{}% 127
+\BOOKMARK [1][-]{section.7.1}{Further Works}{chapter.7}% 128
+\BOOKMARK [0][-]{section*.48}{Appendices}{}% 129
+\BOOKMARK [0][-]{appendix.1.A}{Some Appendix}{}% 130
+\BOOKMARK [1][-]{section.1.A.1}{Source Code}{appendix.1.A}% 131
+\BOOKMARK [1][-]{section.1.A.2}{Requirements}{appendix.1.A}% 132
+\BOOKMARK [2][-]{subsection.1.A.2.1}{Hardware and Software Requirements}{section.1.A.2}% 133
+\BOOKMARK [2][-]{subsection.1.A.2.2}{Skill Requirements}{section.1.A.2}% 134
+\BOOKMARK [1][-]{section.1.A.3}{Timeline}{appendix.1.A}% 135
+\BOOKMARK [1][-]{figure.1.A.1}{References}{appendix.1.A}% 136
+\BOOKMARK [0][-]{appendix*.49}{References}{}% 137

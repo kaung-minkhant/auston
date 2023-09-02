@@ -1,0 +1,5 @@
+PLL_Name	TEMP_QSYS:u0|TEMP_QSYS_altpll:altpll|TEMP_QSYS_altpll_altpll_7p92:sd1|pll7
+PLLJITTER	30
+PLLSPEmax	84
+PLLSPEmin	-53
+

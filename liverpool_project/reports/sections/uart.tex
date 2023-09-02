@@ -1,0 +1,91 @@
+\section{UART - Universal Asynchronous Receiver Transmitter}
+This universal asynchronous receiver transmitter (UART) module is written for Field Programmable Logic Array (FPGA) implementation with VHDL. This module can be duplicated and controlled using external logic or controllers. The module can be initialized with desired clock and baudrate. Only one baudrate is used for both transmitter and receiver. Little-endianess is used for both transmission and reception. These can be modified if required.
+
+\subsection{Why use UART}
+There are two types of communication in this category: Universal Synchronous/Asynchronous Receiver Transmitter(USART) and Universal Asynchronous Receiver and Transmitter(UART).
+In order to support USART, the clock to synchronize the communication is needed, thus ruling it out from this work for current iteration.
+
+The UART port provides a simplified UART interface to other peripherals or hosts, supporting full-duplex, DMA, and asynchronous transfer of serial data. The UART port includes support for five to eight data bits, and none, even, or odd parity. A frame is terminated by one and a half or two stop bits.\cite{whyUart}
+
+\newpage
+\subsection{Block Diagram and I/O}
+\insertBlockDiagram{uart_module}{1}{UART Module Block Diagram}{block_diagram:uart}
+\begin{table}[!h]
+	\centering
+	\caption{Input/Output Table for UART Module}
+	\label{io:uart}
+	\def\arraystretch{1.5}
+	\begin{tabular}{|c|c||c|c|}
+		\hline
+		\textbf{Input Name}            & \textbf{Function}     & \textbf{Output Name} & \textbf{Function}        \\
+		\hline
+		\hline
+		\io{clk}                       & main clock input      & \io{uart\_tx\_line}  & UART TX line             \\
+		\hline
+		\underline{\textbf{tx\_start}} & transmitter start bit & \io{tx\_busy}        & transmitter busy bit     \\
+		\hline
+		\io{data\_in}                  & 32 bit data input     & \io{rx\_busy}        & receiver busy bit        \\
+		\hline
+		\io{uart\_rx\_line}            & UART RX line          & \io{tx\_done}        & transmitter done bit     \\
+		\hline
+		                               &                       & \io{rx\_done}        & receiver busy bit        \\
+		\hline
+		                               &                       & \io{data\_out}       & 8 bit receiver data out  \\
+		\hline
+		                               &                       & \io{data\_out\_32}   & 32 bit receiver data out \\
+		\hline
+		                               &                       & \io{frame\_error}    & Frame Error              \\
+		\hline
+	\end{tabular}
+\end{table}
+
+\newpage
+
+
+\subsection{Usage}
+The UART module consists of transmitter and transmitter. The transmitter and receiver can work simultaneously without interfering with each other. The module has 32 bit data input for transmission with 8 bit or 32 bit data output for reception.
+
+The transmission can be initiated by setting \io{tx\_start} bit. The designer should clear \io{tx\_start} bit after setting it to prevent it from triggering multiple times. Data will be transmitted via \io{uart\_tx\_line}. During transmission, \io{tx\_busy} bit will be set to indicate transmission and will be cleared after transmission. \io{tx\_done} bit will be pulsed high once the transmission is completed. The designer can detect the rising edge, falling edge or the pulse level to determine transmission completion.
+
+The receiving is initiated automatically upon receiving the start bit on \io{uart\_rx\_line}. \io{rx\_busy} is set during receiving and cleared upon completion. \io{rx\_done} is pulsed once upon completion.  The designer must use falling edge of the pulse to ensure the data has been stored within the receiver. If 32 bit receiver mode is selected, \io{rx\_done} is pulsed only after receiving 4 bytes.
+
+The received data will be available on \io{data\_out} and 32 bit \io{data\_out\_32} lines based on \io{rx\_mode\_32} input. If \io{rx\_mode\_32} input is set, the receiver will expect four 8 bit data packets to complete 32 bit. If \io{rx\_mode\_32} input is cleared, the receiver will only expect a single 8 bit data packets. (\textit{Note: Protection feature should be implemented to provide the failure of receiving four bytes to the system. Currently the system will always set \sig{rx\_busy} if it fails to complete the reception})
+
+\subsubsection{Initialization}
+The module has two generic variables which needs to be set according to the desired clock frequency and baudrate.
+
+\noindent \sig{input\_clock\_frequency} : system input clock in Hz \textit{Example: 10e6}\\
+\sig{baudrate} : desired baud rate for transmission and reception \textit{Example: 9600}
+
+\subsection{UART Architecture}
+\subsubsection{Data Frame}
+The data frame for the module is chosen for the standard data frame. It is composed as figure \ref{data_frame:uart}. Data frame error is checked for every receiving data frame to ensure data integrity. (\textit{Parity bits can be implement as optional feature})
+
+\insertGraphic{uart_data_frame}{0.3}{0}{Data Frame used in UART Module}{data_frame:uart}
+
+\newpage
+
+\subsubsection{Implementation}
+Implemetation can be found on the GitHub listed in \ref{appendix:source}.
+The transmitter and receiver are implemented as separated modules which are then initialized and combined with top-level VHDL module. The implementation can be accessed through the following GitHub repo: \url{https://github.com/kaung-minkhant/risc-v-micro/tree/master/peripherals/uart}.
+\paragraph*{Transmitter Implementation}
+The transmitter receives 32 bit data, which needs to be seperated, since standard UART only transmits 8 bit of data at a time. (\textit{This behavior can be modified using necessary controls and implementation}). It is accomplished by simple data truncation to respective data groups.
+
+The module is set to work every system clock cycle. However, in order to match the desired baudrate, counters are utilized. Once the transmitter start signal (in this case: \io{send}) is set, the necessary flags are raised and transmission is started on the next clock cycle. In order to transmit all 4 bytes of data, a counter \sig{word} is utilized to keep track. Each segment is modified to fit into correct data frame with a single stop bit and start bit. According to the system clock cycle and desired baudrate, the count value for full bit can be obtained using $$ full\_bit\_count = \frac{System\_clock}{baudrate} $$
+
+According to UART specifications, each data bit need to be transmitted at the middle of the full bit count to ensure data integrity. \sig{index} is used to keep track of bit position. The data is transmitted on \io{tx} signal. Once all the bits are transmitted and transmission is completed. \io{tx\_done} output is pulsed high as soon as the transmission is completed and transmission line is kept high until \io{send} signal is asserted.
+
+
+\paragraph*{Receiver Implementation}
+
+The receiver will receive data on \io{rx} signal line at a given baudrate. The calculation is identical as transmitter baudrate calculation. Full bit counting is used the same way as the transmitter. At every rising edge of system clock cycle, the \io{rx} line is monitored, and once the start bit is properly detected, the process of receiving starts and necessary flags are raised. The start bit on the \io{rx} line must be held low for half bit count in order to be read as valid data, as per UART specification. \sig{index} is used to keep track of bit addressing.
+
+Currently, two modes of receiving is implemented: 8 bit mode and 32 bit mode. This mode can be changed using \io{mode32} signal. If \io{mode32} signal is set, 32 bit receiving mode is selected.
+
+In 8 bit receiver mode, the data on the \io{rx} signal at half bit count to ensure data integrity. \io{rx\_done} is pulsed high at the end of receiving 8 bit data.
+
+\sig{index} variable is used to keep track of bit addressing. In 32 bit receiver mode, \sig{word} variable is used to keep track of 8 bit word addressing. \io{rx\_done} is pulsed high at the end of receiving 4 bytes. All flags are reset after each completion.
+
+In both modes, data packet integrity check is performed on the received data. In 8 bit mode, the defected data will be ignored and will assert \io{frame\_error} signal and wait for resend. In 32 bit mode, the defected word will be ignored and will assert \io{frame\_error} signal and wait for resend.
+
+\newpage

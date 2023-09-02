@@ -1,0 +1,18 @@
+Fitter Status : Successful - Fri Apr 17 21:18:46 2015
+Quartus II 64-Bit Version : 15.0.0 Build 142 04/01/2015 SJ Full Version
+Revision Name : NIOS_HDMI_TX
+Top-level Entity Name : NIOS_HDMI_TX
+Family : MAX 10
+Device : 10M50DAF484C6GES
+Timing Models : Preliminary
+Total logic elements : 3,907 / 49,760 ( 8 % )
+    Total combinational functions : 3,440 / 49,760 ( 7 % )
+    Dedicated logic registers : 2,148 / 49,760 ( 4 % )
+Total registers : 2148
+Total pins : 202 / 360 ( 56 % )
+Total virtual pins : 0
+Total memory bits : 1,343,936 / 1,677,312 ( 80 % )
+Embedded Multiplier 9-bit elements : 6 / 288 ( 2 % )
+Total PLLs : 2 / 4 ( 50 % )
+UFM blocks : 0 / 1 ( 0 % )
+ADC blocks : 0 / 2 ( 0 % )

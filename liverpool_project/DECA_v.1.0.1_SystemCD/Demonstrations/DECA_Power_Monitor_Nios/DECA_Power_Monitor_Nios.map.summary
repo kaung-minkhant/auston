@@ -1,0 +1,16 @@
+Analysis & Synthesis Status : Successful - Mon Mar 23 10:50:17 2015
+Quartus II 64-Bit Version : 15.0.0 Internal Build 130 02/26/2015 Patches 0.01zb SJ Full Version
+Revision Name : DECA_Power_Monitor_Nios
+Top-level Entity Name : DECA_Power_Monitor_Nios
+Family : MAX 10
+Total logic elements : 4,572
+    Total combinational functions : 3,480
+    Dedicated logic registers : 2,684
+Total registers : 2684
+Total pins : 227
+Total virtual pins : 0
+Total memory bits : 1,025,088
+Embedded Multiplier 9-bit elements : 6
+Total PLLs : 1
+UFM blocks : 0
+ADC blocks : 0

@@ -1,0 +1,16 @@
+Analysis & Synthesis Status : Successful - Tue May 19 18:43:28 2015
+Quartus II 64-Bit Version : 15.0.0 Build 145 04/22/2015 SJ Full Version
+Revision Name : Light_Sensor
+Top-level Entity Name : Light_Sensor
+Family : MAX 10
+Total logic elements : 4,128
+    Total combinational functions : 3,359
+    Dedicated logic registers : 2,271
+Total registers : 2271
+Total pins : 202
+Total virtual pins : 0
+Total memory bits : 1,103,744
+Embedded Multiplier 9-bit elements : 6
+Total PLLs : 0
+UFM blocks : 0
+ADC blocks : 0

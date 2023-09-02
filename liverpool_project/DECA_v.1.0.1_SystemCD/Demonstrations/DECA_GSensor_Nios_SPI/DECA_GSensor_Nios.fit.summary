@@ -1,0 +1,18 @@
+Fitter Status : Successful - Tue Apr 28 09:00:20 2015
+Quartus II 64-Bit Version : 15.0.0 Build 139 03/11/2015 Patches 0.02zb SJ Full Version
+Revision Name : DECA_GSensor_Nios
+Top-level Entity Name : DECA_GSensor_Nios
+Family : MAX 10
+Device : 10M50DAF484C6GES
+Timing Models : Preliminary
+Total logic elements : 4,987 / 49,760 ( 10 % )
+    Total combinational functions : 4,041 / 49,760 ( 8 % )
+    Dedicated logic registers : 3,272 / 49,760 ( 7 % )
+Total registers : 3272
+Total pins : 232 / 360 ( 64 % )
+Total virtual pins : 0
+Total memory bits : 1,041,472 / 1,677,312 ( 62 % )
+Embedded Multiplier 9-bit elements : 6 / 288 ( 2 % )
+Total PLLs : 1 / 4 ( 25 % )
+UFM blocks : 0 / 1 ( 0 % )
+ADC blocks : 0 / 2 ( 0 % )

@@ -1,0 +1,16 @@
+Info (10281): Verilog HDL Declaration information at alt_vip_cvo_core.sv(174): object "TRS" differs only in case from object "trs" in the same scope
+Info (10281): Verilog HDL Declaration information at alt_vip_cvo_core.sv(93): object "INTERLACED" differs only in case from object "interlaced" in the same scope
+Info (10281): Verilog HDL Declaration information at alt_vip_cvo_core.sv(181): object "H_TOTAL" differs only in case from object "h_total" in the same scope
+Info (10281): Verilog HDL Declaration information at alt_vip_cvo_core.sv(182): object "V_TOTAL" differs only in case from object "v_total" in the same scope
+Info (10281): Verilog HDL Declaration information at alt_vip_cvo_core.sv(94): object "AP_LINE" differs only in case from object "ap_line" in the same scope
+Info (10281): Verilog HDL Declaration information at alt_vip_cvo_core.sv(102): object "H_BLANK" differs only in case from object "h_blank" in the same scope
+Info (10281): Verilog HDL Declaration information at alt_vip_cvo_core.sv(112): object "F_RISING_EDGE" differs only in case from object "f_rising_edge" in the same scope
+Info (10281): Verilog HDL Declaration information at alt_vip_cvo_core.sv(113): object "F_FALLING_EDGE" differs only in case from object "f_falling_edge" in the same scope
+Info (10281): Verilog HDL Declaration information at alt_vip_cvo_sync_conditioner.sv(122): object "UHD_MODE" differs only in case from object "uhd_mode" in the same scope
+Warning (10268): Verilog HDL information at alt_vip_cvo_mode_banks.sv(839): always construct contains both blocking and non-blocking assignments
+Info (10281): Verilog HDL Declaration information at alt_vip_cvo_mode_banks.sv(21): object "INTERLACED" differs only in case from object "interlaced" in the same scope
+Info (10281): Verilog HDL Declaration information at alt_vip_cvo_mode_banks.sv(34): object "AP_LINE" differs only in case from object "ap_line" in the same scope
+Info (10281): Verilog HDL Declaration information at alt_vip_cvo_mode_banks.sv(36): object "F_RISING_EDGE" differs only in case from object "f_rising_edge" in the same scope
+Info (10281): Verilog HDL Declaration information at alt_vip_cvo_mode_banks.sv(37): object "F_FALLING_EDGE" differs only in case from object "f_falling_edge" in the same scope
+Info (10281): Verilog HDL Declaration information at alt_vip_cvo_mode_banks.sv(44): object "H_SYNC_POLARITY" differs only in case from object "h_sync_polarity" in the same scope
+Info (10281): Verilog HDL Declaration information at alt_vip_cvo_mode_banks.sv(45): object "V_SYNC_POLARITY" differs only in case from object "v_sync_polarity" in the same scope

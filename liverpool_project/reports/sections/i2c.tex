@@ -1,0 +1,120 @@
+\section{Inter-Integrated Circuit Protocol(I$^2$C)}
+This Inter-Integrated Circuit Protocol($I^2C$) module is written for Field Programmable Logic Array (FPGA) implementation with VHDL. This module can be duplicated and controlled using external logic or controllers. This module can be initialized with desired system clock and desired bus clock frequency. This I$^2$C module supports peripheral clock stretching due to internal clock generation which is separated from system clock.
+\subsection{Why use I$^2$C}
+I$^2$C can be used if the application needs one or more controllers with multiple peripheral devices. 
+
+Other two popular choices for data communication are SPI and UART. However, SPI only allows one controller on the bus. The most obvious drawback of SPI is the number of pins required, requiring 4 lines for each peripheral device. 
+
+UART will work reliably only when the controller and the peripheral device agrees on the baudrate. Moreover, UART usually is utilized for communication between one controller and one peripheral device.
+
+I$^2$C provides the best of both world, allowing multiple peripheral devices with relatively fast data rate using just two wire lines. \cite{whyI2c}
+
+\subsection{Block Diagram and I/O}
+\insertBlockDiagram{i2c_module}{1}{I2C Module Block Diagram}{block_diagram:i2c}
+\begin{table}[!h]
+	\centering
+	\caption{Input/Output Table for I$^2$C Module}
+	\label{io:i2c}
+	\def\arraystretch{1.5}
+	\resizebox{\textwidth}{!}{
+	\begin{tabular}{|c|c||c|c|}
+		\hline
+		\textbf{Input Name} & \textbf{Function}                & \textbf{Output Name} & \textbf{Function}                 \\
+		\hline
+		\hline
+		\io{clk}            & main clock input                 & \io{busy}            & indicate whether module is busy   \\
+		\hline
+		\io{reset\_n}       & asynchronous reset               & \io{data\_rd}        & data read from read operation     \\
+		\hline
+		\io{ena}            & to initiate communication        & \io{ack\_error}      & peripheral acknowledge error      \\
+		\hline
+		\io{addr}           & peripheral address               & \io{sda}             & I$^2$C data line                  \\
+		\hline
+		\io{rw}             & read/write command               & \io{scl}             & I$^2$C clock line                 \\
+		\hline
+		\io{data\_wr}       & data to be written to peripheral & \io{clk\_data}       & internal data clock for debugging \\ 
+		\hline
+		
+		
+	\end{tabular}
+	}
+\end{table}
+
+\newpage
+\subsection{Usage}
+The I$^2$C module only consists of one overall module, which is called a master or controller. The system clock of desired frequency need to be feed through \io{clk}. This module can be reset using active low \io{reset\_n}.
+
+To operate this module, the designer places 7 bit slave or peripheral address on \io{addr}, places read command(1) or write command(0) on \io{wr}, the data to be written if write command is chosen on \io{data\_wr} while keeping \io{ena} low. If the module is ready to transmit, pulse \io{ena} high. This will initiate the communication between the peripheral device using \io{sda} and \io{scl} lines while \io{busy} will go high indicating the module is in use. If the peripheral doesn't acknowledge the command, \io{ack\_error} will be raised. If the data is read from the peripheral device, the data read will be available on \io{data\_rd}. This data can be read by the controller after the \io{busy} becomes low. 
+
+If the designer wishes to write or read a single byte, \io{ena} should be pulsed, meaning \io{ena} should be pulled low, as soon as \io{busy} is set. If the designer wishes to write or read multiple bytes, \io{ena} should be kept high. New data needs to be updated on the rising edge of \io{busy}. After the last byte is updated, \io{ena} should be pulled low.
+
+\subsubsection{Initialization}
+The module has two generic variables which needs to be set according to the desired system clock frequency and scl bus clock frequency. 
+
+\noindent \sig{input\_clk} : system input clock in Hz \textit{Example: 10e6}\\
+\sig{bus\_clk} : desired scl clock rate \textit{standards: 1e6, 3.4e6, 5e6}
+
+\newpage
+\subsection{I2C Architecture}
+\subsubsection{I$^2$C Operation and Data Frame}
+The overall communication transactions for reading and writing operations of the controller module can be described as in figure \ref{transaction:i2c}
+
+\insertGraphic{i2c_transactions}{0.5}{0}{Communication Transactions for I$^2$C Operation}{transaction:i2c}
+
+
+The data frame implemented in the I$^2$C module is shown in figure \ref{data_frame:i2c}
+
+\insertGraphic{i2c_data_frame}{0.6}{0}{Data Frame used in I$^2$C Module}{data_frame:i2c}
+
+Acknowledge bit is checked between each transaction to make sure the peripheral device responds correctly.
+
+\newpage
+\subsubsection{I$^2$C State Machine}
+The I$^2$C protocol can be viewed as working in states. First, a start state after the module is set to initialize. Then, the state machine goes through a couple of stages to complete the communication. 
+
+\insertStateMachine{i2c_state_machine}{0.6}{State Machine of I$^2$C Module}{state_machine:i2c}
+
+\newpage
+The machine stays in `ready' state when \io{ena} is not set. If \io{ena} got set, the machine transition to `start' state which generate the start condition on I$^2$C lines. Then, it moves to `command' state. Depending on the \io{addr} and \io{wr}, the machine transmit the peripheral address and the read/write command to the peripheral. After all the bits have been transmitted, it transitions to `slv\_ack1' state, where the machine reads in the acknowledge bit send back by the peripheral device. Then, depending on the read/write command, the machine moves to respective states, and read or write data accordingly. Then it reads or writes acknowledge bit. Then, if \io{ena} is set for another round of operation, if the read/write command has been changed from the previous command or the address has been modified, the machine transitions to `start' state and repeats the operation. Otherwise, the machine cycles as seen in figure \ref{state_machine:i2c}. If \io{ena} is cleared, it transitions to `stop' state, which generates stop condition on I$^2$C lines. Then, the machine went back to `ready' state.
+
+\subsection{Implementation}
+
+Implemetation can be found on the GitHub listed in \ref{appendix:source}.
+The controller is implemented as VHDL module. The implementation can be accessed through the following GitHub repo: \url{https://github.com/kaung-minkhant/risc-v-micro/tree/master/peripherals/i2c}.
+
+\subsubsection{Controller Implementation}
+The implementation can be divided in three sections. Each will be explained in detail below. The operation will be demonstrated visually in testing section with simulation waveforms.
+
+\paragraph*{Declaration}
+The first section declares the signal to be used in the implementation and most importantly, the state machine's states. The notable feature of the implementation is that, in this module, the clock for \io{scl} and the data clock, which is used for loading and updating data is generated internally using \io{clk}.
+
+\paragraph*{Clock Generation}
+The second section generates two clock signals: \sig{scl\_clk} and \sig{data\_clk}. \sig{scl\_clk} is used for \io{scl} while \sig{data\_clk} is used for data updates. These two signals are set to be 90\textdegree out of phase. One of the reason is that, \io{scl} is received by the peripheral device and is used for data sampling. Thus, data must be ready and stable before the rising edge of \io{scl}. Counters are utilized here. The clock cycles need for the count is calculated based on the system clock frequency and the desired bus frequency with the following formular: $$\text{Number of clock cycle} = \frac{\text{system clock frequency}}{\text{bus frequency}}$$. To generate the 90\textdegree phase shift, number of clock cycle is divided by 4 to generate four regions of operation as in figure \ref{figure:clock_cycle_division}. The support for peripheral clock stretching can be seen here, as the count has been stopped when the peripheral is stretching the clock. 
+
+\insertGraphic{clock_cycle_division}{0.6}{0}{Clock cycle division for 90\textdegree Phase shift}{figure:clock_cycle_division}
+
+\newpage
+\paragraph*{State Machine}
+The third section is the state machine itself. Here various states and signals have been set and cleared. Asynchronous reset has been utilized. As can be seen in the implementation, the state machine runs on internal data clock, instead of system clock. The detail implementation of each state is described below.
+
+\textbf{ready state}: This is the state to which the machine normally sits in. If the transaction is initiated, i.e \io{ena}=1, the module is set to busy, and initialize all the required data, such as peripheral address, read/write command and the data to be transmitted. Then the state is transitioned to start state.
+
+\textbf{start state}: This state generates start condition for the controller. \sig{scl\_ena} is used to enable \io{scl} output from the controller, because the controller is the one that is transmitting the start condition. The notable piece of code that needs to keep in mind when understanding the implementation is the mux implemented for the \io{sda} using \sig{sda\_ena\_n} shown in figure \ref{code:sda_mux}. As can be seen, \io{sda} depends upon \sig{sda\_ena\_n}, which in turn depends on states. \sig{sda\_ena\_n} is set to generate the correct signal depending on the state, as will be illustrated in the testing of this module. The machine then moves to the command state.
+
+\insertCode{sda_mux}{1}{Implementation of \io{sda} mux}{code:sda_mux}
+
+\textbf{command state}: In this state, the machine transmits the address and the read/write command to the peripheral. The notation implementation is that the data is transmitted with the most significant bit first, as per specification. After all the bits are transmitted, then the machine moves to `slv\_ack1' state.
+
+\textbf{slv\_ack1 state}: This is one of the acknowledge states. During this state, the machine decides which states to transition based on the read/write command. If the command is write command, \io{sda} line is used by the controller. If the command is read command, \io{sda} line is released so that the peripheral can use the line. The implementation can be better understood when keep in mind of the \io{sda} mux described above in figure \ref{code:sda_mux}. The notable piece of code is how the machine handles and checks for the acknowledge error shown in figure \ref{code:ack_check}. If the peripheral successfully acknowledges, the \io{sda} will be pulled low by the peripheral device. In the `slv\_ack1' state, this condition is checked for the error.
+
+\insertCode{ack_check}{0.8}{Implementation for checking Acknowledge Error}{code:ack_check}
+
+\textbf{wr state}: If the command is write command, this state is used after `slv\_ack1' state. Here, the data to be sent is transmitted. If the transmission is completed, then the machine moves to `slv\_ack2' state.
+
+\textbf{rd state}: If the command is read command, this state is used after `slv\_ack1' state. Here the read is performed for all the bits. This can be seen in figure \ref{code:ack_check}. After all the bits have been received, depending on \io{ena}, acknowledge or no-acknowledge bit is sent. If the user wants to read from the same address again, then \io{ena} is set, thus acknowledge bit is sent. If the user wants to stop reading, then no-acknowledge bit is sent. This is done as per I$^2$C specifications.
+
+\textbf{slv\_ack2 state}: This state is used after `wr' state. Within this state, if the user wants to write to the same address, the machine goes back to `wr' state. If the user wants to change the command or write to different address, the new data is latched in and the machine moves to `start' state. If \io{ena} is still cleared, then the communication is finished and the machine transitions to `stop' state. The acknowledge error is checked the same way in figure \ref{code:ack_check}.
+
+\textbf{mstr\_ack state}: This state is used after `rd' state. Within this state, if the user wants to read from the same address, the machine goes back to `rd' state. If the user wants to change the command or read from different address, the new data is latched in and the machine moves to `start' state. If \io{ena} is still cleared, then the communication is finished and the machine transitions to `stop' state.
+
+\textbf{stop state}: This state generates the stop condition for the controller. The correct output for \io{sda} is generated within the mux in figure \ref{code:sda_mux}.

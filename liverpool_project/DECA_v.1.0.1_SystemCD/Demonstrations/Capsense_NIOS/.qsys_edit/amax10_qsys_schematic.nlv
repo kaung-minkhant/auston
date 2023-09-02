@@ -1,0 +1,24 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst amax10_qsys.jtag_uart -pg 1 -lvl 3 -y 30
+preplace inst amax10_qsys.LED -pg 1 -lvl 3 -y 560
+preplace inst amax10_qsys.nios2_gen2.reset_bridge -pg 1
+preplace inst amax10_qsys.sysid_qsys -pg 1 -lvl 3 -y 470
+preplace inst amax10_qsys.nios2_gen2.clock_bridge -pg 1
+preplace inst amax10_qsys.clk_50 -pg 1 -lvl 1 -y 430
+preplace inst amax10_qsys.nios2_gen2.cpu -pg 1
+preplace inst amax10_qsys.timer -pg 1 -lvl 3 -y 140
+preplace inst amax10_qsys.onchip_memory2 -pg 1 -lvl 3 -y 380
+preplace inst amax10_qsys.i2c_opencores -pg 1 -lvl 3 -y 250
+preplace inst amax10_qsys -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst amax10_qsys.nios2_gen2 -pg 1 -lvl 2 -y 420
+preplace netloc INTERCONNECT<net_container>amax10_qsys</net_container>(MASTER)nios2_gen2.data_master,(SLAVE)jtag_uart.avalon_jtag_slave,(SLAVE)onchip_memory2.s1,(SLAVE)nios2_gen2.debug_mem_slave,(SLAVE)LED.s1,(MASTER)nios2_gen2.instruction_master,(SLAVE)i2c_opencores.avalon_slave_0,(SLAVE)sysid_qsys.control_slave,(SLAVE)timer.s1) 1 1 2 380 630 780
+preplace netloc EXPORT<net_container>amax10_qsys</net_container>(SLAVE)clk_50.clk_in,(SLAVE)amax10_qsys.clk) 1 0 1 NJ
+preplace netloc EXPORT<net_container>amax10_qsys</net_container>(SLAVE)amax10_qsys.i2c_opencores_export,(SLAVE)i2c_opencores.export) 1 0 3 NJ 320 NJ 320 NJ
+preplace netloc FAN_OUT<net_container>amax10_qsys</net_container>(SLAVE)timer.irq,(SLAVE)jtag_uart.irq,(MASTER)nios2_gen2.irq,(SLAVE)i2c_opencores.interrupt_sender) 1 2 1 760
+preplace netloc INTERCONNECT<net_container>amax10_qsys</net_container>(MASTER)nios2_gen2.debug_reset_request,(SLAVE)i2c_opencores.clock_reset,(SLAVE)jtag_uart.reset,(SLAVE)onchip_memory2.reset1,(MASTER)clk_50.clk_reset,(SLAVE)LED.reset,(SLAVE)timer.reset,(SLAVE)sysid_qsys.reset,(SLAVE)nios2_gen2.reset) 1 1 2 360 610 800
+preplace netloc EXPORT<net_container>amax10_qsys</net_container>(SLAVE)amax10_qsys.led_external_connection,(SLAVE)LED.external_connection) 1 0 3 NJ 590 NJ 590 NJ
+preplace netloc FAN_OUT<net_container>amax10_qsys</net_container>(MASTER)clk_50.clk,(SLAVE)onchip_memory2.clk1,(SLAVE)nios2_gen2.clk,(SLAVE)sysid_qsys.clk,(SLAVE)timer.clk,(SLAVE)i2c_opencores.clock,(SLAVE)LED.clk,(SLAVE)jtag_uart.clk) 1 1 2 380 380 820
+preplace netloc EXPORT<net_container>amax10_qsys</net_container>(SLAVE)amax10_qsys.reset,(SLAVE)clk_50.clk_in_reset) 1 0 1 NJ
+levelinfo -pg 1 0 150 1020
+levelinfo -hier amax10_qsys 160 190 520 860 1010

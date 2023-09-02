@@ -1,0 +1,27 @@
+"The RISC-V Instruction Set Manual, Volume I: User-Level ISA" by Andrew Waterman et al. (2019)
+
+
+"RI5CY: A RISC-V ISA-Based Energy-Efficient Processor Generator" by Daniel Brisk et al. (2017):
+
+
+"A Scalable, Open-Source RISC-V Processor" by Yunsup Lee et al. (2014)
+
+
+to be removed
+"Zero-RISC-V: Reducing the Complexity of the RISC-V ISA" by Christopher Celio et al. (2018)
+
+
+"PULPino: A Small Open-Source RISC-V Processor for IoT Applications" by Frank K. Gürkaynak et al. (2017)
+
+
+"Ibex: An Open-Source, Parameterizable RISC-V Processor Core" by Stefan Wallentowitz et al. (2020)
+
+
+to be removed
+"A Simple and Efficient RISC-V Architecture with the Compiler in the Loop" by David Donofrio et al. (2017
+
+
+"VexRiscv: A 32-bit RISC-V CPU Implementation in SpinalHDL" by Charles Papon (2021)
+
+
+

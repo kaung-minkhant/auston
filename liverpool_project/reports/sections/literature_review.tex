@@ -1,0 +1,63 @@
+\chapter{Literature Review}
+The development of a RISC-V microcontroller with a focus on simplicity and comprehensive documentation availability has gained significant interest in both 
+academic and industrial circles. RISC-V's open-source nature allows for greater accessibility and collaboration, making it an attractive choice for microcontroller designs. 
+This literature review aims to explore relevant research and publications related to RISC-V-based microcontroller designs, 
+with an emphasis on simplicity in architecture and the availability of extensive documentation.
+
+Researchers can tailor the microcontroller's architecture and features to meet specific application requirements. 
+This customization can lead to energy-efficient, cost-effective solutions optimized for particular tasks\cite{riscvISA}.
+
+``The RISC-V Instruction Set Manual, Volume I: User-Level ISA" by Andrew Waterman provides an in-depth documentation of the RISC-V user-level instruction set architecture, 
+offering a comprehensive understanding of the ISA's base instructions. It serves as a crucial reference for microcontroller designers seeking to implement 
+a simple and standard-compliant RISC-V core. The clear and well-structured presentation of the ISA facilitates an uncomplicated design process, 
+encouraging developers to create efficient and robust microcontrollers \cite{riscvISA}.
+
+
+The paper by Daniel Brisk, focuses on architectural simplicity while maintaining high performance and low power consumption. 
+RI5CY's generator includes customization options, allowing designers to tailor the microcontroller for specific applications. 
+The work underscores the importance of simplicity in the microcontroller design process while enabling adaptability to 
+diverse use cases \cite{ri5cy}.
+
+
+Rocket Chip, RISC-V Processer by Yunsup Lee, provides design philosophy emphasizes simplicity, enabling ease of understanding, modification, and extension. 
+Rocket Chip is highly configurable, allowing designers to create microcontrollers suited to their specific requirements. 
+The paper highlights the significance of open-source projects in facilitating collaboration and fostering a community-driven approach to 
+microcontroller design \cite{rocket_chip}.
+
+
+Frank K. Gürkaynak present PULPino, an open-source RISC-V processor designed for Internet of Things (IoT) applications. The focus of the project is on 
+simplicity and energy efficiency, making it suitable for resource-constrained devices. PULPino's architecture is thoroughly documented, 
+promoting ease of use and customization for specific IoT use cases \cite{pulpino}.
+
+
+Ibex, by Stefan Wallentowitz, is an open-source, parameterizable RISC-V processor core designed for flexibility and simplicity. 
+The paper highlights the core's configurability and comprehensible architecture, which allows designers to optimize it for various applications. 
+Ibex's extensive documentation and open-source nature facilitate 
+community-driven improvements and encourage knowledge exchange \cite{ibex}.
+
+
+VexRiscv by Charles Papon is an open-source RISC-V CPU implementation in SpinalHDL. The project emphasizes clarity and modularity, 
+allowing developers to easily understand and modify the processor core. The repository includes extensive documentation, 
+making it a valuable resource for those interested in building customizable RISC-V microcontrollers \cite{vexriscv}.
+
+
+The paper for AnnikaCore, by Yunrui Zhang, discusses the growing market demand for embedded IoT processors due to the booming IoT industry. 
+It highlights the RISC-V instruction set architecture, known for its concise coding and modular extensions, 
+as an ideal choice for embedded IoT processors. The paper presents the design of a 3-stage pipelined scalar micro-out-of-order 
+processor based on RISC-V's RV32IMA instruction set. The processor has been verified through simulation and FPGA prototype, 
+showing functional correctness with a Coremark performance of 2.93 Coremark/MHz. 
+The final implementation used SMIC 180nm process with a main frequency of 50MHz, resulting in a core circuit of 35K gate 
+and a power consumption of 0.20 mW/MHz \cite{annikacore}.
+
+The article authored by Aaron Elson Phangestu explores the development of a soft processor core with a five-stage pipeline. 
+This core is designed based on the RISC-V RV32I Base Integer Instruction Set Architecture, which is an openly available and 
+modifiable standard ISA. The process of creating this processor core involved adhering to FPGA design principles. 
+Initially, they translated the design specifications into VHDL Hardware Description Language and subsequently conducted 
+simulations using the ModelSim simulation environment. After verification, the core underwent an analysis of 
+resource utilization, critical path assessment, and maximum operating frequency. 
+Finally, the processor core was programmed onto a physical Cyclone IV EP4CE6E22C FPGA. \cite{32bitcore}
+
+The above works, although rich in information and advances in RISC-V Microcontroller technology, lack in a way that prevents a beginner to start designing a customized microcontroller along with providing a comprehensive documentation. 
+They lack either in the detail design steps or in the implementation itself using a hardware description language.
+This work forcus around designing a simple RISC-V microcontroller with a simple enough documentation so that a beginner will have an entry to start designing the desired 
+microcontroller. This work also provides a way for producing a customized assembler for producing the machine code for the controller.

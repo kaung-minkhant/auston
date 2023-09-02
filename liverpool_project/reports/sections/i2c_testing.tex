@@ -1,0 +1,64 @@
+\newpage
+\subsection{Testings of I$^2$C Module}
+Various tests will be performed on the I$^2$C controller module. Unlike UART Module testings, we cannot do data loop back tests. A peripheral device needs to be built in order to simulate the overall operation. The implementation of this peripheral can be found on \ref{appendix:i2c_peripheral_implementation}. The following tests will be performed.
+\begin{enumerate}
+	\item Testing of Start and Stop Conditions
+	\item Transmitting Data Once
+	\item Transmitting Three Data Consecutively
+	\item Transmitting Two Data to Different Peripheral Devices
+	\item Reading Data Once
+	\item Reading Two Data Consecutively
+	\item Reading Two Data from Different Peripheral Devices
+	\item A Read after a Write
+	\item Testing Peripheral Device Acknowledge
+\end{enumerate}
+
+\subsubsection{Testbench Setup}
+The testbench is setup with I$^2$C controller and I$^2$C peripheral device. The necessary signals will be generated within the testbench.
+
+\insertBlockDiagram{i2c_module_tb}{0.6}{Block Diagram of testbench for I$^2$C Module Testing}{block_diagram:i2c_module_testing}
+
+\subsubsection{Testing of Start and Stop Conditions}
+In this test, the controller is set to transmit some data, and the goal of this test is to check the start and stop conditions are correctly generated. The settings for this test are \io{rw} = 0, \io{data\_wr} = 0x55, \io{addr} = 0b000011. \io{ena} will be pulsed to initiate the communication.
+
+In figure \ref{waveform:i2c_start}, it can be observed then the start condition is correctly transmitted. As per I$^2$C specifications, to have a correct start condition, \io{sda} needs to go low first, then \io{scl} go low.
+\insertWaveform{i2c_start}{1}{I$^2$C Start Condition}{waveform:i2c_start}
+
+\newpage
+In figure \ref{waveform:i2c_stop}, it can be observed then the stop condition is correctly transmitted. As per I$^2$C specifications, to have a correct stop condition, \io{scl} needs to go low first, then \io{sda} go low.
+\insertWaveform{i2c_stop}{0.95}{I$^2$C Stop Condition}{waveform:i2c_stop}
+
+\subsubsection{Transmitting Data Once}
+In this test, one data is sent to the peripheral device once. This test is to check the operation of write for just one data.
+\insertWaveform{i2c_transmit_once}{1}{Transmitting Data Once}{waveform:i2c_transmit_once}
+
+\newpage
+\subsubsection{Transmitting Three Data Consecutively}
+In this test, three pieces of data is transmitted consecutively to the same address. This will demonstrate the address is not sent more than once and the data are sent correctly.
+\insertWaveform{i2c_transmit_three_same}{1}{Transmitting Three Data Consecutively}{waveform:i2c_transmit_three_same}
+
+\subsubsection{Transmitting Two Data to Different Peripheral Devices}
+In this test, another peripheral device has been added with different address. The controller is set to transmit different data to these different peripheral devices. In this test, since there are two different address, the new address needs to be sent before transmitting another data.
+\insertWaveform{i2c_transmit_two_different}{1}{Transmitting two data to different devices}{waveform:i2c_transmit_two_different}
+
+\subsubsection{Reading Data Once}
+In this test, one piece of data is read from the peripheral device. \sig{data\_to\_master} holds the data that is to be sent when requested. The received data is available on \io{data\_rd}.
+\insertWaveform{i2c_read_once}{1}{Reading Data Once}{waveform:i2c_read_once}
+
+\newpage
+\subsubsection{Reading Two Data Consecutively}
+In this test, two pieces of data is read from the same peripheral device. \sig{data\_to\_master} holds the data that is to be sent when requested. The received data is available on \io{data\_rd}. It can be seen that, since the address is the same, address is only sent once at the start of transaction.
+\insertWaveform{i2c_read_twice_same}{1}{Reading Two Data Consecutively}{waveform:i2c_read_twice_same}
+
+\subsubsection{Reading Two Data from Different Peripheral Devices}
+In this test, another peripheral device has been added with different address. The controller is set to read different data from these different peripheral devices. In this test, since there are two different address, the new address needs to be sent before reading another data.
+\insertWaveform{i2c_read_two_different}{1}{Reading two data from different devices}{waveform:i2c_read_two_different}
+
+\subsection{A Read after a Write}
+In this test, a standard I$^2$C communication is performed, which is a read after a write operation. The data to be written is available on \io{data\_wr} and the data to be read from the peripheral device is available in \sig{data\_to\_master\_tb}. After successful communication, \sig{data\_from\_master\_tb} should have the data written, and \sig{data\_rd\_tb} should contain the data read.
+\insertWaveform{i2c_read_after_write}{1}{Performing a read after a write}{waveform:i2c_read_after_write}
+
+\newpage
+\subsubsection{Testing Peripheral Device Acknowledge}
+In this test, the detection for peripheral device failing to send acknowledge signal is tested. To achieve this, the code for sending acknowledge signal in the peripheral device implementation is removed. It can be seen from figure \ref{waveform:i2c_slave_ack} that the error is maintained unless cleared by user.
+\insertWaveform{i2c_slave_ack}{1}{Tesing Peripheral Device Acknowledge}{waveform:i2c_slave_ack}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;usb_stream_demo/PortInterface.c&apos; to &apos;stream.c&apos;" description="Rename resource &apos;PortInterface.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="PortInterface.c" name="stream.c" stamp="1422446584000" updateReferences="true"/>
+</session>

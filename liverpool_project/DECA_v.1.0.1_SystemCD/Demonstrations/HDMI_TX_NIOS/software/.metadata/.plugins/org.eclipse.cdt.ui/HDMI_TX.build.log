@@ -1,0 +1,10 @@
+
+**** Build of configuration Nios II for project HDMI_TX ****
+
+make all 
+Info: Building ../HDMI_TX_bsp/
+make --no-print-directory -C ../HDMI_TX_bsp/
+[BSP build complete]
+[HDMI_TX build complete]
+
+**** Build Finished ****

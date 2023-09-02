@@ -1,0 +1,24 @@
+15:10:03 **** Incremental Build of configuration Nios II for project usb_portinterface ****
+make all 
+Info: Building ../usb_portinterface_bsp/
+D:/altera/15.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../usb_portinterface_bsp/
+[BSP build complete]
+[usb_portinterface build complete]
+15:10:09 **** Build of configuration Nios II for project usb_portinterface ****
+make all 
+Info: Building ../usb_portinterface_bsp/
+D:/altera/15.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../usb_portinterface_bsp/
+[BSP build complete]
+[usb_portinterface build complete]
+15:10:10 **** Incremental Build of configuration Nios II for project usb_portinterface ****
+make all 
+Info: Building ../usb_portinterface_bsp/
+D:/altera/15.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../usb_portinterface_bsp/
+[BSP build complete]
+[usb_portinterface build complete]
+15:10:42 **** Incremental Build of configuration Nios II for project usb_portinterface ****
+make all 
+Info: Building ../usb_portinterface_bsp/
+D:/altera/15.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../usb_portinterface_bsp/
+[BSP build complete]
+[usb_portinterface build complete]

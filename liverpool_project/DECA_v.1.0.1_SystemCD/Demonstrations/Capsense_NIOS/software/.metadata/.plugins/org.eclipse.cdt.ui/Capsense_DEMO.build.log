@@ -1,0 +1,10 @@
+
+**** Build of configuration Nios II for project Capsense_DEMO ****
+
+make all 
+Info: Building ../Capsense_DEMO_bsp/
+make --no-print-directory -C ../Capsense_DEMO_bsp/
+[BSP build complete]
+[Capsense_DEMO build complete]
+
+**** Build Finished ****

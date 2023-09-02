@@ -1,0 +1,5 @@
+PLL_Name	adc_qsys:adc_qsys_u0|adc_qsys_altpll_adc:altpll_adc|adc_qsys_altpll_adc_altpll_e932:sd1|pll7
+PLLJITTER	44
+PLLSPEmax	84
+PLLSPEmin	-53
+

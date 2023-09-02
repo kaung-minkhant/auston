@@ -1,0 +1,193 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 1991-2015 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus II License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+*/
+(header "symbol" (version "1.1"))
+(symbol
+	(rect 0 0 528 536)
+	(text "usb20sr_refdes" (rect 218 -1 281 11)(font "Arial" (font_size 10)))
+	(text "inst" (rect 8 520 20 532)(font "Arial" ))
+	(port
+		(pt 0 72)
+		(input)
+		(text "altpll_0_areset_conduit_export" (rect 0 0 120 12)(font "Arial" (font_size 8)))
+		(text "altpll_0_areset_conduit_export" (rect 4 61 184 72)(font "Arial" (font_size 8)))
+		(line (pt 0 72)(pt 224 72)(line_width 1))
+	)
+	(port
+		(pt 0 192)
+		(input)
+		(text "osc_clk_clk" (rect 0 0 47 12)(font "Arial" (font_size 8)))
+		(text "osc_clk_clk" (rect 4 181 70 192)(font "Arial" (font_size 8)))
+		(line (pt 0 192)(pt 224 192)(line_width 1))
+	)
+	(port
+		(pt 0 232)
+		(input)
+		(text "reset_reset_n" (rect 0 0 56 12)(font "Arial" (font_size 8)))
+		(text "reset_reset_n" (rect 4 221 82 232)(font "Arial" (font_size 8)))
+		(line (pt 0 232)(pt 224 232)(line_width 1))
+	)
+	(port
+		(pt 0 312)
+		(input)
+		(text "u20_clk_out_clk" (rect 0 0 64 12)(font "Arial" (font_size 8)))
+		(text "u20_clk_out_clk" (rect 4 301 94 312)(font "Arial" (font_size 8)))
+		(line (pt 0 312)(pt 224 312)(line_width 1))
+	)
+	(port
+		(pt 0 384)
+		(input)
+		(text "usb20sr_conduit_end_Dir" (rect 0 0 102 12)(font "Arial" (font_size 8)))
+		(text "usb20sr_conduit_end_Dir" (rect 4 373 142 384)(font "Arial" (font_size 8)))
+		(line (pt 0 384)(pt 224 384)(line_width 1))
+	)
+	(port
+		(pt 0 400)
+		(input)
+		(text "usb20sr_conduit_end_Nxt" (rect 0 0 105 12)(font "Arial" (font_size 8)))
+		(text "usb20sr_conduit_end_Nxt" (rect 4 389 142 400)(font "Arial" (font_size 8)))
+		(line (pt 0 400)(pt 224 400)(line_width 1))
+	)
+	(port
+		(pt 0 416)
+		(input)
+		(text "usb20sr_conduit_end_phy_clk" (rect 0 0 122 12)(font "Arial" (font_size 8)))
+		(text "usb20sr_conduit_end_phy_clk" (rect 4 405 166 416)(font "Arial" (font_size 8)))
+		(line (pt 0 416)(pt 224 416)(line_width 1))
+	)
+	(port
+		(pt 0 464)
+		(input)
+		(text "usb20sr_conduit_end_Ext_reset_in" (rect 0 0 142 12)(font "Arial" (font_size 8)))
+		(text "usb20sr_conduit_end_Ext_reset_in" (rect 4 453 196 464)(font "Arial" (font_size 8)))
+		(line (pt 0 464)(pt 224 464)(line_width 1))
+	)
+	(port
+		(pt 0 112)
+		(output)
+		(text "altpll_0_locked_conduit_export" (rect 0 0 120 12)(font "Arial" (font_size 8)))
+		(text "altpll_0_locked_conduit_export" (rect 4 101 184 112)(font "Arial" (font_size 8)))
+		(line (pt 0 112)(pt 224 112)(line_width 1))
+	)
+	(port
+		(pt 0 152)
+		(output)
+		(text "altpll_0_phasedone_conduit_export" (rect 0 0 138 12)(font "Arial" (font_size 8)))
+		(text "altpll_0_phasedone_conduit_export" (rect 4 141 202 152)(font "Arial" (font_size 8)))
+		(line (pt 0 152)(pt 224 152)(line_width 1))
+	)
+	(port
+		(pt 0 272)
+		(output)
+		(text "rst_pio_external_connection_export" (rect 0 0 141 12)(font "Arial" (font_size 8)))
+		(text "rst_pio_external_connection_export" (rect 4 261 208 272)(font "Arial" (font_size 8)))
+		(line (pt 0 272)(pt 224 272)(line_width 1))
+	)
+	(port
+		(pt 0 368)
+		(output)
+		(text "usb20sr_conduit_end_Stp" (rect 0 0 103 12)(font "Arial" (font_size 8)))
+		(text "usb20sr_conduit_end_Stp" (rect 4 357 142 368)(font "Arial" (font_size 8)))
+		(line (pt 0 368)(pt 224 368)(line_width 1))
+	)
+	(port
+		(pt 0 432)
+		(output)
+		(text "usb20sr_conduit_end_phy_reset_n" (rect 0 0 142 12)(font "Arial" (font_size 8)))
+		(text "usb20sr_conduit_end_phy_reset_n" (rect 4 421 190 432)(font "Arial" (font_size 8)))
+		(line (pt 0 432)(pt 224 432)(line_width 1))
+	)
+	(port
+		(pt 0 448)
+		(output)
+		(text "usb20sr_conduit_end_phy_cs_n" (rect 0 0 132 12)(font "Arial" (font_size 8)))
+		(text "usb20sr_conduit_end_phy_cs_n" (rect 4 437 172 448)(font "Arial" (font_size 8)))
+		(line (pt 0 448)(pt 224 448)(line_width 1))
+	)
+	(port
+		(pt 0 504)
+		(output)
+		(text "user_led_external_connection_export[7..0]" (rect 0 0 168 12)(font "Arial" (font_size 8)))
+		(text "user_led_external_connection_export[7..0]" (rect 4 493 250 504)(font "Arial" (font_size 8)))
+		(line (pt 0 504)(pt 224 504)(line_width 3))
+	)
+	(port
+		(pt 0 352)
+		(bidir)
+		(text "usb20sr_conduit_end_Data[7..0]" (rect 0 0 129 12)(font "Arial" (font_size 8)))
+		(text "usb20sr_conduit_end_Data[7..0]" (rect 4 341 184 352)(font "Arial" (font_size 8)))
+		(line (pt 0 352)(pt 224 352)(line_width 3))
+	)
+	(drawing
+		(text "altpll_0_areset_conduit" (rect 89 43 316 99)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "export" (rect 229 67 494 144)(font "Arial" (color 0 0 0)))
+		(text "altpll_0_locked_conduit" (rect 89 83 316 179)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "export" (rect 229 107 494 224)(font "Arial" (color 0 0 0)))
+		(text "altpll_0_phasedone_conduit" (rect 63 123 282 259)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "export" (rect 229 147 494 304)(font "Arial" (color 0 0 0)))
+		(text "osc_clk" (rect 181 163 404 339)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "clk" (rect 229 187 476 384)(font "Arial" (color 0 0 0)))
+		(text "reset" (rect 195 203 420 419)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "reset_n" (rect 229 227 500 464)(font "Arial" (color 0 0 0)))
+		(text "rst_pio_external_connection" (rect 61 243 284 499)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "export" (rect 229 267 494 544)(font "Arial" (color 0 0 0)))
+		(text "u20_clk_out" (rect 154 283 374 579)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "clk" (rect 229 307 476 624)(font "Arial" (color 0 0 0)))
+		(text "usb20sr_conduit_end" (rect 100 323 314 659)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "Data" (rect 229 347 482 704)(font "Arial" (color 0 0 0)))
+		(text "Stp" (rect 229 363 476 736)(font "Arial" (color 0 0 0)))
+		(text "Dir" (rect 229 379 476 768)(font "Arial" (color 0 0 0)))
+		(text "Nxt" (rect 229 395 476 800)(font "Arial" (color 0 0 0)))
+		(text "phy_clk" (rect 229 411 500 832)(font "Arial" (color 0 0 0)))
+		(text "phy_reset_n" (rect 229 427 524 864)(font "Arial" (color 0 0 0)))
+		(text "phy_cs_n" (rect 229 443 506 896)(font "Arial" (color 0 0 0)))
+		(text "Ext_reset_in" (rect 229 459 530 928)(font "Arial" (color 0 0 0)))
+		(text "user_led_external_connection" (rect 51 475 270 963)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "export" (rect 229 499 494 1008)(font "Arial" (color 0 0 0)))
+		(text " usb20sr_refdes " (rect 457 520 1010 1050)(font "Arial" ))
+		(line (pt 224 32)(pt 304 32)(line_width 1))
+		(line (pt 304 32)(pt 304 520)(line_width 1))
+		(line (pt 224 520)(pt 304 520)(line_width 1))
+		(line (pt 224 32)(pt 224 520)(line_width 1))
+		(line (pt 225 52)(pt 225 76)(line_width 1))
+		(line (pt 226 52)(pt 226 76)(line_width 1))
+		(line (pt 225 92)(pt 225 116)(line_width 1))
+		(line (pt 226 92)(pt 226 116)(line_width 1))
+		(line (pt 225 132)(pt 225 156)(line_width 1))
+		(line (pt 226 132)(pt 226 156)(line_width 1))
+		(line (pt 225 172)(pt 225 196)(line_width 1))
+		(line (pt 226 172)(pt 226 196)(line_width 1))
+		(line (pt 225 212)(pt 225 236)(line_width 1))
+		(line (pt 226 212)(pt 226 236)(line_width 1))
+		(line (pt 225 252)(pt 225 276)(line_width 1))
+		(line (pt 226 252)(pt 226 276)(line_width 1))
+		(line (pt 225 292)(pt 225 316)(line_width 1))
+		(line (pt 226 292)(pt 226 316)(line_width 1))
+		(line (pt 225 332)(pt 225 468)(line_width 1))
+		(line (pt 226 332)(pt 226 468)(line_width 1))
+		(line (pt 225 484)(pt 225 508)(line_width 1))
+		(line (pt 226 484)(pt 226 508)(line_width 1))
+		(line (pt 0 0)(pt 528 0)(line_width 1))
+		(line (pt 528 0)(pt 528 536)(line_width 1))
+		(line (pt 0 536)(pt 528 536)(line_width 1))
+		(line (pt 0 0)(pt 0 536)(line_width 1))
+	)
+)

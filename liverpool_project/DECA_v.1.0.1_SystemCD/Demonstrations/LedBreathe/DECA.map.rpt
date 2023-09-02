@@ -1,0 +1,552 @@
+Analysis & Synthesis report for DECA
+Sun Aug 13 20:14:29 2023
+Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. General Register Statistics
+  9. Post-Synthesis Netlist Statistics for Top Partition
+ 10. Elapsed Time Per Partition
+ 11. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2023  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                        ;
++------------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Sun Aug 13 20:14:29 2023          ;
+; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
+; Revision Name                      ; DECA                                           ;
+; Top-level Entity Name              ; DECA                                           ;
+; Family                             ; MAX 10                                         ;
+; Total logic elements               ; 48                                             ;
+;     Total combinational functions  ; 44                                             ;
+;     Dedicated logic registers      ; 48                                             ;
+; Total registers                    ; 48                                             ;
+; Total pins                         ; 227                                            ;
+; Total virtual pins                 ; 0                                              ;
+; Total memory bits                  ; 0                                              ;
+; Embedded Multiplier 9-bit elements ; 0                                              ;
+; Total PLLs                         ; 0                                              ;
+; UFM blocks                         ; 0                                              ;
+; ADC blocks                         ; 0                                              ;
++------------------------------------+------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; 10M50DAF484C6GES   ;                    ;
+; Top-level entity name                                            ; DECA               ; DECA               ;
+; Family name                                                      ; MAX 10             ; Cyclone IV GX      ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-4         ;   0.0%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                               ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                 ; Library ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------------------------+---------+
+; DECA.v                           ; yes             ; User Verilog HDL File  ; /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v ;         ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------------------------+---------+
+
+
++-------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                       ;
++---------------------------------------------+---------------------+
+; Resource                                    ; Usage               ;
++---------------------------------------------+---------------------+
+; Estimated Total logic elements              ; 48                  ;
+;                                             ;                     ;
+; Total combinational functions               ; 44                  ;
+; Logic element usage by number of LUT inputs ;                     ;
+;     -- 4 input functions                    ; 0                   ;
+;     -- 3 input functions                    ; 7                   ;
+;     -- <=2 input functions                  ; 37                  ;
+;                                             ;                     ;
+; Logic elements by mode                      ;                     ;
+;     -- normal mode                          ; 13                  ;
+;     -- arithmetic mode                      ; 31                  ;
+;                                             ;                     ;
+; Total registers                             ; 48                  ;
+;     -- Dedicated logic registers            ; 48                  ;
+;     -- I/O registers                        ; 0                   ;
+;                                             ;                     ;
+; I/O pins                                    ; 227                 ;
+;                                             ;                     ;
+; Embedded Multiplier 9-bit elements          ; 0                   ;
+;                                             ;                     ;
+; Maximum fan-out node                        ; MAX10_CLK1_50~input ;
+; Maximum fan-out                             ; 48                  ;
+; Total fan-out                               ; 577                 ;
+; Average fan-out                             ; 0.88                ;
++---------------------------------------------+---------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                ;
++----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------+-------------+--------------+
+; |DECA                      ; 44 (44)             ; 48 (48)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 227  ; 0            ; 0          ; |DECA               ; DECA        ; work         ;
++----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 48    ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 28    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 20    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 227                         ;
+; cycloneiii_ff         ; 48                          ;
+;     CLR               ; 28                          ;
+;     ENA               ; 20                          ;
+; cycloneiii_io_obuf    ; 111                         ;
+; cycloneiii_lcell_comb ; 45                          ;
+;     arith             ; 31                          ;
+;         2 data inputs ; 24                          ;
+;         3 data inputs ; 7                           ;
+;     normal            ; 14                          ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 6                           ;
+;         2 data inputs ; 6                           ;
+;                       ;                             ;
+; Max LUT depth         ; 3.50                        ;
+; Average LUT depth     ; 1.08                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
+    Info: Processing started: Sun Aug 13 20:14:24 2023
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DECA -c DECA
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file DECA.v
+    Info (12023): Found entity 1: DECA File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 40
+Info (12127): Elaborating entity "DECA" for the top level hierarchy
+Warning (10230): Verilog HDL assignment warning at DECA.v(228): truncated value with size 32 to match size of target (27) File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 228
+Warning (10034): Output port "HDMI_TX_D" at DECA.v(114) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 114
+Warning (10034): Output port "NET_TXD" at DECA.v(152) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 152
+Warning (10034): Output port "AUDIO_DIN_MFP1" at DECA.v(59) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 59
+Warning (10034): Output port "AUDIO_MCLK" at DECA.v(62) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 62
+Warning (10034): Output port "AUDIO_SCL_SS_n" at DECA.v(65) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 65
+Warning (10034): Output port "AUDIO_SCLK_MFP3" at DECA.v(66) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 66
+Warning (10034): Output port "AUDIO_SPI_SELECT" at DECA.v(68) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 68
+Warning (10034): Output port "FLASH_DCLK" at DECA.v(94) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 94
+Warning (10034): Output port "FLASH_NCSO" at DECA.v(95) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 95
+Warning (10034): Output port "FLASH_RESET_n" at DECA.v(96) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 96
+Warning (10034): Output port "G_SENSOR_CS_n" at DECA.v(99) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 99
+Warning (10034): Output port "HDMI_TX_CLK" at DECA.v(113) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 113
+Warning (10034): Output port "HDMI_TX_DE" at DECA.v(115) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 115
+Warning (10034): Output port "HDMI_TX_HS" at DECA.v(116) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 116
+Warning (10034): Output port "HDMI_TX_VS" at DECA.v(118) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 118
+Warning (10034): Output port "LIGHT_I2C_SCL" at DECA.v(121) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 121
+Warning (10034): Output port "MIPI_CORE_EN" at DECA.v(126) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 126
+Warning (10034): Output port "MIPI_I2C_SCL" at DECA.v(127) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 127
+Warning (10034): Output port "MIPI_MCLK" at DECA.v(134) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 134
+Warning (10034): Output port "MIPI_RESET_n" at DECA.v(136) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 136
+Warning (10034): Output port "MIPI_WP" at DECA.v(137) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 137
+Warning (10034): Output port "NET_MDC" at DECA.v(142) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 142
+Warning (10034): Output port "NET_PCF_EN" at DECA.v(144) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 144
+Warning (10034): Output port "NET_RESET_n" at DECA.v(145) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 145
+Warning (10034): Output port "NET_TX_EN" at DECA.v(151) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 151
+Warning (10034): Output port "PMONITOR_I2C_SCL" at DECA.v(156) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 156
+Warning (10034): Output port "RH_TEMP_I2C_SCL" at DECA.v(161) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 161
+Warning (10034): Output port "SD_CLK" at DECA.v(165) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 165
+Warning (10034): Output port "SD_CMD_DIR" at DECA.v(167) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 167
+Warning (10034): Output port "SD_D0_DIR" at DECA.v(168) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 168
+Warning (10034): Output port "SD_SEL" at DECA.v(172) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 172
+Warning (10034): Output port "TEMP_CS_n" at DECA.v(178) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 178
+Warning (10034): Output port "TEMP_SC" at DECA.v(179) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 179
+Warning (10034): Output port "USB_CS" at DECA.v(184) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 184
+Warning (10034): Output port "USB_RESET_n" at DECA.v(189) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 189
+Warning (10034): Output port "USB_STP" at DECA.v(190) has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 190
+Warning (13039): The following bidirectional pins have no drivers
+    Warning (13040): bidirectional pin "CAP_SENSE_I2C_SCL" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 54
+    Warning (13040): bidirectional pin "CAP_SENSE_I2C_SDA" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 55
+    Warning (13040): bidirectional pin "AUDIO_BCLK" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 58
+    Warning (13040): bidirectional pin "AUDIO_GPIO_MFP5" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 61
+    Warning (13040): bidirectional pin "AUDIO_RESET_n" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 64
+    Warning (13040): bidirectional pin "AUDIO_SDA_MOSI" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 67
+    Warning (13040): bidirectional pin "AUDIO_WCLK" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 69
+    Warning (13040): bidirectional pin "FLASH_DATA[0]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 93
+    Warning (13040): bidirectional pin "FLASH_DATA[1]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 93
+    Warning (13040): bidirectional pin "FLASH_DATA[2]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 93
+    Warning (13040): bidirectional pin "FLASH_DATA[3]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 93
+    Warning (13040): bidirectional pin "G_SENSOR_SCLK" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 102
+    Warning (13040): bidirectional pin "G_SENSOR_SDI" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 103
+    Warning (13040): bidirectional pin "G_SENSOR_SDO" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 104
+    Warning (13040): bidirectional pin "HDMI_I2C_SCL" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 107
+    Warning (13040): bidirectional pin "HDMI_I2C_SDA" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 108
+    Warning (13040): bidirectional pin "HDMI_I2S[0]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 109
+    Warning (13040): bidirectional pin "HDMI_I2S[1]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 109
+    Warning (13040): bidirectional pin "HDMI_I2S[2]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 109
+    Warning (13040): bidirectional pin "HDMI_I2S[3]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 109
+    Warning (13040): bidirectional pin "HDMI_LRCLK" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 110
+    Warning (13040): bidirectional pin "HDMI_MCLK" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 111
+    Warning (13040): bidirectional pin "HDMI_SCLK" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 112
+    Warning (13040): bidirectional pin "LIGHT_I2C_SDA" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 122
+    Warning (13040): bidirectional pin "LIGHT_INT" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 123
+    Warning (13040): bidirectional pin "MIPI_I2C_SDA" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 128
+    Warning (13040): bidirectional pin "NET_MDIO" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 143
+    Warning (13040): bidirectional pin "PMONITOR_I2C_SDA" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 157
+    Warning (13040): bidirectional pin "RH_TEMP_I2C_SDA" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 162
+    Warning (13040): bidirectional pin "SD_CMD" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 166
+    Warning (13040): bidirectional pin "SD_D123_DIR" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 169
+    Warning (13040): bidirectional pin "SD_DAT[0]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 170
+    Warning (13040): bidirectional pin "SD_DAT[1]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 170
+    Warning (13040): bidirectional pin "SD_DAT[2]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 170
+    Warning (13040): bidirectional pin "SD_DAT[3]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 170
+    Warning (13040): bidirectional pin "TEMP_SIO" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 180
+    Warning (13040): bidirectional pin "USB_DATA[0]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 185
+    Warning (13040): bidirectional pin "USB_DATA[1]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 185
+    Warning (13040): bidirectional pin "USB_DATA[2]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 185
+    Warning (13040): bidirectional pin "USB_DATA[3]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 185
+    Warning (13040): bidirectional pin "USB_DATA[4]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 185
+    Warning (13040): bidirectional pin "USB_DATA[5]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 185
+    Warning (13040): bidirectional pin "USB_DATA[6]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 185
+    Warning (13040): bidirectional pin "USB_DATA[7]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 185
+    Warning (13040): bidirectional pin "GPIO0_D[0]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[1]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[2]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[3]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[4]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[5]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[6]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[7]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[8]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[9]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[10]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[11]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[12]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[13]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[14]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[15]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[16]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[17]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[18]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[19]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[20]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[21]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[22]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[23]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[24]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[25]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[26]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[27]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[28]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[29]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[30]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[31]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[32]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[33]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[34]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[35]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[36]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[37]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[38]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[39]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[40]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[41]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[42]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO0_D[43]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 195
+    Warning (13040): bidirectional pin "GPIO1_D[0]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 197
+    Warning (13040): bidirectional pin "GPIO1_D[1]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 197
+    Warning (13040): bidirectional pin "GPIO1_D[2]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 197
+    Warning (13040): bidirectional pin "GPIO1_D[3]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 197
+    Warning (13040): bidirectional pin "GPIO1_D[4]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 197
+    Warning (13040): bidirectional pin "GPIO1_D[5]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 197
+    Warning (13040): bidirectional pin "GPIO1_D[6]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 197
+    Warning (13040): bidirectional pin "GPIO1_D[7]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 197
+    Warning (13040): bidirectional pin "GPIO1_D[8]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 197
+    Warning (13040): bidirectional pin "GPIO1_D[9]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 197
+    Warning (13040): bidirectional pin "GPIO1_D[10]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 197
+    Warning (13040): bidirectional pin "GPIO1_D[11]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 197
+    Warning (13040): bidirectional pin "GPIO1_D[12]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 197
+    Warning (13040): bidirectional pin "GPIO1_D[13]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 197
+    Warning (13040): bidirectional pin "GPIO1_D[14]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 197
+    Warning (13040): bidirectional pin "GPIO1_D[15]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 197
+    Warning (13040): bidirectional pin "GPIO1_D[16]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 197
+    Warning (13040): bidirectional pin "GPIO1_D[17]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 197
+    Warning (13040): bidirectional pin "GPIO1_D[18]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 197
+    Warning (13040): bidirectional pin "GPIO1_D[19]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 197
+    Warning (13040): bidirectional pin "GPIO1_D[20]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 197
+    Warning (13040): bidirectional pin "GPIO1_D[21]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 197
+    Warning (13040): bidirectional pin "GPIO1_D[22]" has no driver File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 197
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "AUDIO_DIN_MFP1" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 59
+    Warning (13410): Pin "AUDIO_MCLK" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 62
+    Warning (13410): Pin "AUDIO_SCL_SS_n" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 65
+    Warning (13410): Pin "AUDIO_SCLK_MFP3" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 66
+    Warning (13410): Pin "AUDIO_SPI_SELECT" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 68
+    Warning (13410): Pin "FLASH_DCLK" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 94
+    Warning (13410): Pin "FLASH_NCSO" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 95
+    Warning (13410): Pin "FLASH_RESET_n" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 96
+    Warning (13410): Pin "G_SENSOR_CS_n" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 99
+    Warning (13410): Pin "HDMI_TX_CLK" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 113
+    Warning (13410): Pin "HDMI_TX_D[0]" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 114
+    Warning (13410): Pin "HDMI_TX_D[1]" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 114
+    Warning (13410): Pin "HDMI_TX_D[2]" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 114
+    Warning (13410): Pin "HDMI_TX_D[3]" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 114
+    Warning (13410): Pin "HDMI_TX_D[4]" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 114
+    Warning (13410): Pin "HDMI_TX_D[5]" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 114
+    Warning (13410): Pin "HDMI_TX_D[6]" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 114
+    Warning (13410): Pin "HDMI_TX_D[7]" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 114
+    Warning (13410): Pin "HDMI_TX_D[8]" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 114
+    Warning (13410): Pin "HDMI_TX_D[9]" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 114
+    Warning (13410): Pin "HDMI_TX_D[10]" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 114
+    Warning (13410): Pin "HDMI_TX_D[11]" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 114
+    Warning (13410): Pin "HDMI_TX_D[12]" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 114
+    Warning (13410): Pin "HDMI_TX_D[13]" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 114
+    Warning (13410): Pin "HDMI_TX_D[14]" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 114
+    Warning (13410): Pin "HDMI_TX_D[15]" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 114
+    Warning (13410): Pin "HDMI_TX_D[16]" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 114
+    Warning (13410): Pin "HDMI_TX_D[17]" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 114
+    Warning (13410): Pin "HDMI_TX_D[18]" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 114
+    Warning (13410): Pin "HDMI_TX_D[19]" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 114
+    Warning (13410): Pin "HDMI_TX_D[20]" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 114
+    Warning (13410): Pin "HDMI_TX_D[21]" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 114
+    Warning (13410): Pin "HDMI_TX_D[22]" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 114
+    Warning (13410): Pin "HDMI_TX_D[23]" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 114
+    Warning (13410): Pin "HDMI_TX_DE" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 115
+    Warning (13410): Pin "HDMI_TX_HS" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 116
+    Warning (13410): Pin "HDMI_TX_VS" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 118
+    Warning (13410): Pin "LIGHT_I2C_SCL" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 121
+    Warning (13410): Pin "MIPI_CORE_EN" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 126
+    Warning (13410): Pin "MIPI_I2C_SCL" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 127
+    Warning (13410): Pin "MIPI_MCLK" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 134
+    Warning (13410): Pin "MIPI_RESET_n" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 136
+    Warning (13410): Pin "MIPI_WP" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 137
+    Warning (13410): Pin "NET_MDC" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 142
+    Warning (13410): Pin "NET_PCF_EN" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 144
+    Warning (13410): Pin "NET_RESET_n" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 145
+    Warning (13410): Pin "NET_TX_EN" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 151
+    Warning (13410): Pin "NET_TXD[0]" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 152
+    Warning (13410): Pin "NET_TXD[1]" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 152
+    Warning (13410): Pin "NET_TXD[2]" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 152
+    Warning (13410): Pin "NET_TXD[3]" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 152
+    Warning (13410): Pin "PMONITOR_I2C_SCL" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 156
+    Warning (13410): Pin "RH_TEMP_I2C_SCL" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 161
+    Warning (13410): Pin "SD_CLK" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 165
+    Warning (13410): Pin "SD_CMD_DIR" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 167
+    Warning (13410): Pin "SD_D0_DIR" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 168
+    Warning (13410): Pin "SD_SEL" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 172
+    Warning (13410): Pin "TEMP_CS_n" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 178
+    Warning (13410): Pin "TEMP_SC" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 179
+    Warning (13410): Pin "USB_CS" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 184
+    Warning (13410): Pin "USB_RESET_n" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 189
+    Warning (13410): Pin "USB_STP" is stuck at GND File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 190
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 44 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "ADC_CLK_10" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 43
+    Warning (15610): No output dependent on input pin "MAX10_CLK2_50" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 45
+    Warning (15610): No output dependent on input pin "KEY[1]" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 48
+    Warning (15610): No output dependent on input pin "AUDIO_DOUT_MFP2" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 60
+    Warning (15610): No output dependent on input pin "AUDIO_MISO_MFP4" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 63
+    Warning (15610): No output dependent on input pin "G_SENSOR_INT1" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 100
+    Warning (15610): No output dependent on input pin "G_SENSOR_INT2" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 101
+    Warning (15610): No output dependent on input pin "HDMI_TX_INT" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 117
+    Warning (15610): No output dependent on input pin "MIPI_LP_MC_n" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 129
+    Warning (15610): No output dependent on input pin "MIPI_LP_MC_p" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 130
+    Warning (15610): No output dependent on input pin "MIPI_LP_MD_n[0]" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 131
+    Warning (15610): No output dependent on input pin "MIPI_LP_MD_n[1]" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 131
+    Warning (15610): No output dependent on input pin "MIPI_LP_MD_n[2]" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 131
+    Warning (15610): No output dependent on input pin "MIPI_LP_MD_n[3]" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 131
+    Warning (15610): No output dependent on input pin "MIPI_LP_MD_p[0]" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 132
+    Warning (15610): No output dependent on input pin "MIPI_LP_MD_p[1]" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 132
+    Warning (15610): No output dependent on input pin "MIPI_LP_MD_p[2]" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 132
+    Warning (15610): No output dependent on input pin "MIPI_LP_MD_p[3]" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 132
+    Warning (15610): No output dependent on input pin "MIPI_MC_p" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 133
+    Warning (15610): No output dependent on input pin "MIPI_MD_p[0]" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 135
+    Warning (15610): No output dependent on input pin "MIPI_MD_p[1]" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 135
+    Warning (15610): No output dependent on input pin "MIPI_MD_p[2]" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 135
+    Warning (15610): No output dependent on input pin "MIPI_MD_p[3]" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 135
+    Warning (15610): No output dependent on input pin "NET_COL" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 140
+    Warning (15610): No output dependent on input pin "NET_CRS" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 141
+    Warning (15610): No output dependent on input pin "NET_RX_CLK" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 146
+    Warning (15610): No output dependent on input pin "NET_RX_DV" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 147
+    Warning (15610): No output dependent on input pin "NET_RX_ER" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 148
+    Warning (15610): No output dependent on input pin "NET_RXD[0]" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 149
+    Warning (15610): No output dependent on input pin "NET_RXD[1]" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 149
+    Warning (15610): No output dependent on input pin "NET_RXD[2]" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 149
+    Warning (15610): No output dependent on input pin "NET_RXD[3]" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 149
+    Warning (15610): No output dependent on input pin "NET_TX_CLK" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 150
+    Warning (15610): No output dependent on input pin "PMONITOR_ALERT" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 155
+    Warning (15610): No output dependent on input pin "RH_TEMP_DRDY_n" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 160
+    Warning (15610): No output dependent on input pin "SD_FB_CLK" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 171
+    Warning (15610): No output dependent on input pin "SW[0]" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 175
+    Warning (15610): No output dependent on input pin "SW[1]" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 175
+    Warning (15610): No output dependent on input pin "USB_CLKIN" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 183
+    Warning (15610): No output dependent on input pin "USB_DIR" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 186
+    Warning (15610): No output dependent on input pin "USB_FAULT_n" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 187
+    Warning (15610): No output dependent on input pin "USB_NXT" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 188
+    Warning (15610): No output dependent on input pin "BBB_PWR_BUT" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 193
+    Warning (15610): No output dependent on input pin "BBB_SYS_RESET_n" File: /home/polar/Downloads/DECA_v.1.0.1_SystemCD/Demonstrations/LedBreathe/DECA.v Line: 194
+Info (21057): Implemented 275 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 46 input pins
+    Info (21059): Implemented 70 output pins
+    Info (21060): Implemented 111 bidirectional pins
+    Info (21061): Implemented 48 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 258 warnings
+    Info: Peak virtual memory: 435 megabytes
+    Info: Processing ended: Sun Aug 13 20:14:29 2023
+    Info: Elapsed time: 00:00:05
+    Info: Total CPU time (on all processors): 00:00:13
+
+

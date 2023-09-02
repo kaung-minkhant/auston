@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+ <debug showDebugMenu="0" />
+ <systemtable filter="All Interfaces">
+  <columns>
+   <connections preferredWidth="271" />
+   <irq preferredWidth="34" />
+   <name preferredWidth="289" />
+   <inputclock preferredWidth="194" />
+  </columns>
+ </systemtable>
+ <library
+   expandedCategories="Library/DSP/Video and Image Processing,Library/Interface Protocols,Library/Basic Functions/Simulation; Debug and Verification,Project,Library/Interface Protocols/Audio &amp; Video,Library/Basic Functions/Bridges and Adaptors/Memory Mapped,Library/Basic Functions/Bridges and Adaptors/Clock,Library/University Program/Audio &amp; Video,Library/Interface Protocols/Ethernet,Library/Basic Functions/Simulation; Debug and Verification/Simulation,Library/Basic Functions/On Chip Memory,Library/University Program/Audio &amp; Video/Video,Library,Library/Interface Protocols/Ethernet/Reference Design Components,Library/Basic Functions/Clocks; PLLs and Resets,Library/Basic Functions,Library/University Program,Library/Basic Functions/Bridges and Adaptors,Library/DSP,Library/Qsys Interconnect,Library/Qsys Interconnect/Interrupt,Library/University Program/Clock" />
+ <window width="1298" height="850" x="1254" y="57" />
+ <hdlexample language="VERILOG" />
+</preferences>

@@ -1,0 +1,6 @@
+20:17:52 **** Clean-only build of configuration Nios II for project HDMI_TX_bsp ****
+make clean 
+[BSP clean complete]
+
+20:17:53 Build Finished (took 400ms)
+

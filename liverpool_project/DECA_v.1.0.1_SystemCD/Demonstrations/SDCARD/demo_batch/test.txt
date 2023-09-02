@@ -1,0 +1,8 @@
+FFFFFFFFFFFFFFFF  PPPPPPPPPPPPPP     GGGGGGGGGGGGGGG          AAAAAA  
+FFF               PPP          PPP  GGG                      AAA   AAA  
+FFF               PPP          PPP  GGG                     AAA     AAA
+FFF         FF    PPP          PPP  GGG         GGGG       AAA       AAA
+FFFFFFFFFFFFFF    PPPPPPPPPPPPPPP   GGG         GGGG      AAAAAAAAAAAAAAA
+FFF         FF    PPP               GGG           GG     AAA           AAA
+FFF               PPP               GGG           GG    AAA             AAA
+FFF               PPP                GGGGGGGGGGGGGG   AAAAAAA          AAAAAAA
