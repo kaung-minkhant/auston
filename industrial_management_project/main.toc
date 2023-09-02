@@ -1,0 +1,24 @@
+\contentsline {chapter}{\numberline {1}Part 1}{4}%
+\contentsline {section}{\numberline {1.1}Company Profile}{4}%
+\contentsline {subsection}{\numberline {1.1.1}Organization Structure}{4}%
+\contentsline {subsection}{\numberline {1.1.2}Vision}{5}%
+\contentsline {subsection}{\numberline {1.1.3}Mission}{5}%
+\contentsline {section}{\numberline {1.2}Business Case}{6}%
+\contentsline {subsection}{\numberline {1.2.1}IDEF (A-0) Diagram}{6}%
+\contentsline {subsection}{\numberline {1.2.2}IDEF0 Diagram}{7}%
+\contentsline {section}{\numberline {1.3}Appraisal or Evaluation and Summary}{8}%
+\contentsline {chapter}{\numberline {2}Part 2}{9}%
+\contentsline {section}{\numberline {2.1}Introduction}{9}%
+\contentsline {subsection}{\numberline {2.1.1}Project Background}{9}%
+\contentsline {subsection}{\numberline {2.1.2}Stakeholders and Responsibilites}{9}%
+\contentsline {subsection}{\numberline {2.1.3}Project Specifications}{10}%
+\contentsline {subsection}{\numberline {2.1.4}Project Charter}{11}%
+\contentsline {section}{\numberline {2.2}WBS and Risks}{12}%
+\contentsline {subsection}{\numberline {2.2.1}Worrk Breakdown Structure}{12}%
+\contentsline {subsection}{\numberline {2.2.2}Risk Identification & Assessment and Mitigation}{13}%
+\contentsline {section}{\numberline {2.3}Timeline}{13}%
+\contentsline {subsection}{\numberline {2.3.1}Gantt Chart}{13}%
+\contentsline {subsection}{\numberline {2.3.2}Activity on Node}{14}%
+\contentsline {section}{\numberline {2.4}Additional Information: Summary/Conclusion}{15}%
+\contentsline {subsection}{\numberline {2.4.1}Additional Information}{15}%
+\contentsline {section}{References}{16}%
